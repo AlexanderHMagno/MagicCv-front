@@ -6,8 +6,7 @@ import { setContext } from "apollo-link-context";
 
 
 const httpLink = createHttpLink({ 
-  uri: "https://magic-cv.herokuapp.com/",
-  credentials: 'include'
+  uri: "https://magic-cv.herokuapp.com/"
 });
 
 //Adding the header to the authorization app
