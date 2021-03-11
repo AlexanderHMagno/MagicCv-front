@@ -6,7 +6,7 @@ import { setContext } from "apollo-link-context";
 
 
 const httpLink = createHttpLink({ 
-  uri: "https://git.heroku.com/magic-cv.git",
+  uri: "https://magic-cv.herokuapp.com/",
   credentials: 'include'
 });
 
