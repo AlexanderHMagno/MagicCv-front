@@ -5,7 +5,7 @@ import { setContext } from "apollo-link-context";
 
 
 
-const httpLink = createHttpLink({ uri: "https://magic-cv.herokuapp.com/" });
+const httpLink = createHttpLink({ uri: "https://git.heroku.com/magic-cv.git" });
 
 //Adding the header to the authorization app
 const setAuthorizationLink = setContext((request, previousContext) => {
