@@ -5,7 +5,7 @@ import { setContext } from "apollo-link-context";
 
 
 
-const httpLink = createHttpLink({ uri: "http://localhost:4000/graphql" });
+const httpLink = createHttpLink({ uri: "https://magic-cv.herokuapp.com/" });
 
 //Adding the header to the authorization app
 const setAuthorizationLink = setContext((request, previousContext) => {
