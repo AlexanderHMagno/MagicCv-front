@@ -29,7 +29,7 @@ const IndividualPost = (props) => {
     const {body, countsComments,comments, countsLikes,likes, username, createdAt, id , user:owner} = data.getPost;
     const newComments = [...comments].reverse();
     
-    const deletePostCallback = () => props.history.push('/');
+    const deletePostCallback = () => props.history.push('/posts');
 return  (
     <Grid className="mt-20">
         {/* OWNER */}

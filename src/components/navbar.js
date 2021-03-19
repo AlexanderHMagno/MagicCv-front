@@ -18,22 +18,51 @@ const Menubar = () => {
             
             {user ? (
                 <>
-                 <Menu.Item
-                 name= {user.username}
+                <Menu.Item
                  icon ={<Image  size="mini" src='/images/cv.png' wrapped ui={true} />}
-                 active
                  onClick={handleItemClick}
                  as={Link}
-                 to="/"
-                 />
+                 to="/latest"
+                />
+
+                <Menu.Item
+                 name= "Dashboard"
+                 onClick={handleItemClick}
+                 as={Link}
+                 to="/dashboard"
+                />
+
+                <Menu.Item
+                 name= "Templates"
+                 onClick={handleItemClick}
+                 as={Link}
+                 to="/templates"
+                />
+
+                <Menu.Item
+                 name= "Notes"
+                 onClick={handleItemClick}
+                 as={Link}
+                 to="/posts"
+                />
+
+
+
              
                  <Menu.Menu position='right'>
-                 <Menu.Item
-                     name='Logout'
-                     onClick={logOut}
-                     as={Link}
-                     to="/login"
-                 />
+                    <Menu.Item
+                    name= {user.username}
+                    Active
+                    onClick={handleItemClick}
+                    as={Link}
+                    to="/profile"
+                    />
+                    <Menu.Item
+                        name='Logout'
+                        onClick={logOut}
+                        as={Link}
+                        to="/"
+                    />
                  </Menu.Menu>
                  </>
             ) : (
@@ -44,7 +73,7 @@ const Menubar = () => {
                 active={activeItem === 'Home'}
                 onClick={handleItemClick}
                 as={Link}
-                to="/"
+                to="/posts"
                 />
             
                 <Menu.Menu position='right'>

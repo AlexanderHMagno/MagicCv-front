@@ -16,7 +16,7 @@ const Login = (props) => {
     const [userLoging, {loading}] = useMutation(LOGIN_MUTATION, {
         update(proxy, {data:{authentication}}) {
             containerContext.logIn(authentication);
-            props.history.push('./');
+            props.history.push('./posts');
         },
         onError(err) {
             console.log(err.graphQLErrors[0].extensions.errors);

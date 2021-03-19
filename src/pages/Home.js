@@ -18,7 +18,7 @@ const HOME = () => {
      
             <Grid columns={3}>
                 <Grid.Row className="PostGroupTitle">
-                    <h1 >Recent Posts</h1>
+                    <h1 >Recent Notes</h1>
                     
                 </Grid.Row>
                 <Grid.Row>
