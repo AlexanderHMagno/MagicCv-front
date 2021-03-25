@@ -26,7 +26,7 @@ const Menubar = () => {
                 />
 
                 <Menu.Item
-                 name= "Dashboard"
+                 name= "Profile"
                  onClick={handleItemClick}
                  as={Link}
                  to="/dashboard"
