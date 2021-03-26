@@ -49,7 +49,7 @@ function MODALINFO({children, code}) {
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => setOpen(false)} color="teal">
+        <Button onClick={() => setOpen(false)} className={"primary-color"}>
             Save <Icon name='chevron right' />
         </Button>
       </Modal.Actions>

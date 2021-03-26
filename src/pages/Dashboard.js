@@ -9,18 +9,10 @@ const DASHBOARD = () => {
 
     return ( 
 
-        <Grid>
-            <Grid.Column width={10}>
-                <Feature code="Experience"/>
-                <Feature code="Education"/>
-                <Feature code="Volunteer Experience"/>
-                <Feature code="Skills"/>
-            </Grid.Column>
-            <Grid.Column width={1}>
-            </Grid.Column>    
+        <Grid stackable>
             <Grid.Column width={4}  >    
                 <Card>
-                    <ChangePicture trigger={<Image as={Button} src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />}/>
+                    <ChangePicture trigger={<Image className="cursor-pointer" src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />}/>
                     
                     <Card.Content>
                     <Card.Header>Daniel</Card.Header>
@@ -32,7 +24,7 @@ const DASHBOARD = () => {
                     </Card.Content>
                     <Card.Content extra>
                     <MasterModal code="Bio">
-                        <Button color='teal' fluid>
+                        <Button className="primary-color" fluid>
                             Edit Bio
                         </Button>
                     </MasterModal>
@@ -44,12 +36,23 @@ const DASHBOARD = () => {
                         <Card.Header>Contact Information</Card.Header>
                     </Card.Content>
                     <Card.Content>
-                        <p> <Icon color="teal" name='phone' />778-7518081</p>
-                        <p> <Icon color="teal" name='location arrow' />303 Columbia Street</p>
-                        <p> <Icon color="teal" name='mail' />alexander.hortua10@gmail.com</p>
+                        <p> <Icon className="primary-font" name='phone' />778-7518081</p>
+                        <p> <Icon className="primary-font" name='location arrow' />303 Columbia Street</p>
+                        <p> <Icon className="primary-font" name='mail' />alexander.hortua10@gmail.com</p>
                     </Card.Content>
                 </Card>
             </Grid.Column>
+
+            <Grid.Column width={9}>
+                <Feature code="Experience"/>
+                <Feature code="Education"/>
+                <Feature code="Volunteer Experience"/>
+                <Feature code="Skills"/>
+            </Grid.Column>
+            <Grid.Column width={3}>
+                Publicity
+            </Grid.Column>   
+             
         </Grid>
      );
 }

@@ -1,3 +1,15 @@
+/* THEME COLOR */
+.primary-color {
+    background-color: rgba(79, 70, 229, 1)!important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.primary-font {
+    color: rgba(79, 70, 229, 1)!important;
+}
+
+
 .PostGroupTitle {
     display: block !important;
     text-align: center;
@@ -50,10 +62,9 @@
 .badge {
     padding: 5px 10px;
     border-radius: 10px;
+    display: inline-block;
 }
 
-.primary {
-    background-color: teal;
-    color: white;
-    font-weight: bold;
+.margin-zero {
+    margin: 0 !important;
 }

@@ -44,7 +44,7 @@ return  (
                     <Divider horizontal></Divider>
                     <Card.Content>
                     {user && (owner === user.id ) && (<RemoveButton postId={postId} fluid size="mini" callback={deletePostCallback}>Delete Post</RemoveButton>)}
-                    <Button className="mt-20" as={Link} to="/" color="teal"  fluid size="mini" >More Posts</Button>
+                    <Button className="mt-20 primary-color" as={Link} to="/"  fluid size="mini" >More Posts</Button>
                     </Card.Content>
                 </Card.Content>
             </Card>    

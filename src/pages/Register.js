@@ -32,7 +32,7 @@ const Register = (props) => {
     return ( 
         <div className="loginForm" >
             <div className="loginTitle">
-                <Image size="tiny" src='/images/cv.png' wrapped ui={true} />
+                <Image size="small" src='/images/cv.png' wrapped ui={true} />
                 <h3>Register</h3>
             </div>
             <Form size="mini" onSubmit={handleSubmit} className = {loading? 'loading':''}> 
@@ -40,7 +40,7 @@ const Register = (props) => {
                 <Form.Input fluid name="email" label='Email' placeholder='Email' type="email" onChange={onChange} error={ errors.email ? {  content: errors.email , pointing: 'above' } :false} />
                 <Form.Input fluid name="password" label='Password' placeholder='Password' type="password" onChange={onChange} error={ errors.password ? {  content: errors.password, pointing: 'above' } :false} />
                 <Form.Input fluid name="confirmPassword" label='Confirm Password' placeholder='Confirm Password' type="password" onChange={onChange} error={ errors.password ? {  content: errors.password, pointing: 'above' } :false} />
-                <Button type="submit" color='teal' fluid>
+                <Button type="submit" className="primary-color" fluid>
                     Register
                 </Button>
             </Form>

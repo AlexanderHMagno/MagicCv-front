@@ -31,13 +31,13 @@ const Login = (props) => {
     return ( 
         <div className="loginForm" >
             <div className="loginTitle">
-                <Image size="tiny" src='/images/cv.png' wrapped ui={true} />
+                <Image size="small" src='/images/cv.png' wrapped ui={true} />
                 <h3>Login</h3>
             </div>
             <Form size="mini" onSubmit={handleSubmit} className = {loading? 'loading':''}> 
                 <Form.Input fluid name="username" label='Username or Email' placeholder='Username' type="text" onChange={onChange}  />
                 <Form.Input fluid name="password" label='Password' placeholder='Password' type="password" onChange={onChange} error={ errors.general ? {  content: 'The user name or password is incorrect' , pointing: 'above' } :false} />
-                <Button type="submit" color='teal' fluid>
+                <Button type="submit" className="primary-color" fluid>
                     Login
                 </Button>
             </Form>

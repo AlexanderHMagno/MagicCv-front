@@ -14,12 +14,12 @@ const Menubar = () => {
     
     return (
         
-        <Menu pointing secondary size="massive" color="teal">
+        <Menu pointing secondary size="massive">
             
             {user ? (
                 <>
                 <Menu.Item
-                 icon ={<Image  size="mini" src='/images/cv.png' wrapped ui={true} />}
+                 icon ={<Image  size="tiny" src='/images/cv.png' wrapped ui={true} />}
                  onClick={handleItemClick}
                  as={Link}
                  to="/latest"
@@ -52,7 +52,7 @@ const Menubar = () => {
                  <Menu.Menu position='right'>
                     <Menu.Item
                     name= {user.username}
-                    Active
+                    active
                     onClick={handleItemClick}
                     as={Link}
                     to="/profile"

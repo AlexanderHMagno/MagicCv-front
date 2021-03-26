@@ -47,7 +47,7 @@ const FormPost = () => {
             onChange={removeAlerts}
             error={ error && error.message ? {  content: error.message , pointing: 'below' } :false}
           />
-          <Button color="teal" type="submit" fluid>
+          <Button className="primary-color" type="submit" fluid>
               Add Post
           </Button>
         </Form>
