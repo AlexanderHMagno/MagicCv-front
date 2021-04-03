@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Feature from './profile/util/container';
 import ChangePicture from './profile/modal/Picture';
 import MasterModal from './profile/modal/MasterModal';
 

@@ -4,8 +4,10 @@ import { ApolloClient, InMemoryCache,ApolloProvider, createHttpLink } from '@apo
 import { setContext } from "apollo-link-context";
 
 
+const DEV = window.location.hostname === "localhost";
+
 const httpLink = createHttpLink({ 
-  uri: "https://magic-cv.herokuapp.com/graphql"
+  uri: DEV ? "http://localhost:4000/graphql" : "https://magic-cv.herokuapp.com/graphql"
 });
 
 // http://localhost:4000/graphql

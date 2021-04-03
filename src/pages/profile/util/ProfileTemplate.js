@@ -1,9 +1,9 @@
 import React from 'react';
-import { Container, Grid , Icon, Header, Card, Segment } from 'semantic-ui-react';
+import { Container, Grid , Icon, Header } from 'semantic-ui-react';
 import MasterModal from '../modal/MasterModal';
+import MasterContainer from '../container/MasterContainer';
 
-const Experience = ({code}) => {
-
+const ProfileTemplate = ({code, information}) => {
     return (
 
         <Container className="profileContainer">
@@ -22,18 +22,14 @@ const Experience = ({code}) => {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column width={15}> 
-                        <Card
-                            link
-                            fluid
-                            className="profileoptionContainer"
-                            header='Rick Sanchez'
-                            meta='Scientist'
-                            description={[
-                            'Rick is a genius scientist whose alcoholism and reckless,',
-                            ' nihilistic behavior are a source of concern for his family.',
-                            ].join('')}
-                        />
-                        </Grid.Column>    
+                        {information && (information.length > 0) ? 
+                            information.map((info,index) => 
+                                <MasterContainer key={index} info={info} code={code}/>
+                            )
+                        :
+                        <MasterContainer  none={code}/>
+                        }   
+                        </Grid.Column> 
                     </Grid.Row>
                 </Grid>
 
@@ -43,4 +39,4 @@ const Experience = ({code}) => {
 }
 
 
-export default Experience;
+export default ProfileTemplate;

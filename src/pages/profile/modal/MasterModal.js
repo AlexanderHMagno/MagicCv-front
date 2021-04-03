@@ -5,7 +5,7 @@ import Experience from './Experience';
 import Volunteer from './Volunteer';
 import Skills from './Skills';
 
-function MODALINFO({children, code}) {
+function MODALINFO({children, code, info}) {
   const [open, setOpen] = React.useState(false)
   let size = 'small';
   let basic = false;
@@ -13,10 +13,10 @@ function MODALINFO({children, code}) {
   let display;
     switch (code) {
         case 'Education':
-            display = <Education/>
+            display = <Education info={info}/>
             break;
         case 'Experience':
-            display = <Experience/>
+            display = <Experience info={info} closeModal={setOpen}/>
             break;
         case 'Volunteer Experience':
             display = <Volunteer/>
@@ -42,16 +42,16 @@ function MODALINFO({children, code}) {
       size={size}
       basic ={basic}
     >
-      <Modal.Header>Add {code}</Modal.Header>
+      <Modal.Header>{info? 'Edit': 'Add'} {code}</Modal.Header>
       <Modal.Content scrolling>
         <Modal.Description>
            {display}
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => setOpen(false)} className={"primary-color"}>
+        {/* <Button onClick={() => setOpen(false)} className={"primary-color"}>
             Save <Icon name='chevron right' />
-        </Button>
+        </Button> */}
       </Modal.Actions>
     </Modal>
   )

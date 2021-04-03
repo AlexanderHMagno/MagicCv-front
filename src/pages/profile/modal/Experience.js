@@ -1,76 +1,78 @@
-import React from 'react';
-import { Container, Form, Checkbox, Button , Grid } from 'semantic-ui-react';
+import React, {useState} from 'react';
+import { Container, Form, Checkbox, Button , Grid, Icon } from 'semantic-ui-react';
+import {gql, useMutation} from '@apollo/client';
+import {useForm} from '../../../util/hooks';
+import {employmentOptions, Months, YearArray} from '../../../util/types';
 
-const Experience = () => {
-    
-    const options = [
-        { key: 'employmentType:1', text: 'Self-employed', value: 'self-employed' },
-        { key: 'employmentType:2', text: 'Freelance', value: 'freelance' },
-        { key: 'employmentType:3', text: 'Internship', value: 'internship' },
-        { key: 'employmentType:4', text: 'Apprenticeship', value: 'apprenticeship' },
-        { key: 'employmentType:5', text: 'Permanent Full-time', value: 'PFT' },
-        { key: 'employmentType:6', text: 'Permanent Part-time', value: 'PPT' },
-        { key: 'employmentType:7', text: 'Contract Full-time', value: 'CFT' },
-        { key: 'employmentType:8', text: 'Contract Part-time', value: 'CPT' },
-        { key: 'employmentType:9', text: 'Seasonal', value: 'Seasonal' },
-        { key: 'employmentType:10', text: 'Casual / On-call', value: 'Casual' },
-        { key: 'employmentType:11', text: 'Co-op', value: 'coop' },
-      ]
-    
-    const Months = [
-        { key: '1', text: 'January', value: '1' },
-        { key: '2', text: 'February', value: '2' },
-        { key: '3', text: 'March', value: '3' },
-        { key: '4', text: 'April', value: '4' },
-        { key: '5', text: 'May', value: '5' },
-        { key: '6', text: 'June', value: '6' },
-        { key: '7', text: 'July', value: '7' },
-        { key: '8', text: 'August', value: '8' },
-        { key: '9', text: 'Septiembre', value: '9' },
-        { key: '10', text: 'Octubre', value: '10' },
-        { key: '11', text: 'Noviembre', value: '11' },
-        { key: '12', text: 'Diciembre', value: '12' },
-    ];
 
-    const currentYear = new Date();
-    let year = currentYear.getFullYear();
-    let YearArray = [];
-    let i = 0
-    while (i < 60) {
-        
-        YearArray.push({key: year, text: year, value: year});
-        year--;
-        i++;
+const Experience = ({info, closeModal}) => {
+    
+    const startingInformation = info || {};
+    const {values, handleSubmit, onChange, pushChange} = useForm(updateExperience,startingInformation)
+
+    //CheckIfCurrentStatus is corrected or not
+    const [currentWork, setCurrentWork] = useState(values.current);
+
+    const [experience_changer, {loading}] = useMutation(EXPERIENCE_MUTATION, {
+        update(proxy, newData) {
+           closeModal(false);
+        },
+        onError(err) {
+            console.log(err);
+            // setErrors(err.graphQLErrors[0].extensions.errors);
+        },
+        variables : values
+    });
+
+
+    function updateExperience ()  {
+        experience_changer();
     }
-    
-    
 
     return (
 
         <Container>
-            <Form>
+            <Form  onSubmit={handleSubmit} loading={loading}>
                 <Form.Field>
                     <label>Title</label>
-                    <input placeholder='EX: Manager' />
+                    <input onChange={onChange} name="title" placeholder='EX: Manager' defaultValue={values.title} />
                 </Form.Field>
                 <Form.Field>
                 <Form.Select
                     fluid
                     label='Employment type'
-                    options={options}
+                    options={employmentOptions}
                     placeholder='Employment type'
+                    defaultValue = {values.typeExp}
+                    onChange={(e,{name, value})=> pushChange(name, value)} 
+                    name="typeExp"
                 />
                 </Form.Field>
                 <Form.Field>
                     <label>Company</label>
-                    <input placeholder='Ex: Google' />
+                    <input 
+                        placeholder='Ex: Google' 
+                        defaultValue={values.company} 
+                        onChange={onChange} 
+                        name="company"
+                        />
                 </Form.Field>
                 <Form.Field>
                     <label>Location</label>
-                    <input placeholder='Ex: Vancouver, Canada' />
+                    <input 
+                        placeholder='Ex: Vancouver, Canada' 
+                        defaultValue={values.location} 
+                        onChange={onChange} 
+                        name="location"
+                        />
                 </Form.Field>
                 <Form.Field>
-                    <Checkbox label='I am currently working in this role' />
+                    <Checkbox  
+                        name="current" 
+                        onChange={(e,{name, checked})=> pushChange(name, checked)}   
+                        onClick={()=> setCurrentWork(!currentWork)} 
+                        label='I am currently working in this role' 
+                        defaultChecked={values.current} />
                 </Form.Field>
          
                 <Form.Field>
@@ -80,38 +82,95 @@ const Experience = () => {
                         <Form.Select
                             options={Months}
                             placeholder='Month'
+                            defaultValue={+values.startMonth}
+                            onChange={(e,{name, value})=> pushChange(name, value)} 
+                            name="startMonth"
                         />
                         <Form.Select
                             options={YearArray}
                             placeholder='Year'
+                            defaultValue={+values.startYear}
+                            onChange={(e,{name, value})=> pushChange(name, value)} 
+                            name="startYear"
                         />
                     </Grid>
                 </Form.Field>
-                <Form.Field>
-                    <label>End Date *</label>
-                    <br></br>
-                    <Grid>
-                        <Form.Select
-                            options={Months}
-                            placeholder='Month'
-                        />
-                        <Form.Select
-                            options={YearArray}
-                            placeholder='Year'
-                        />
-                    </Grid>
-                </Form.Field>
+                {!currentWork && 
+                     <Form.Field>
+                        <label>End Date *</label>
+                        <br></br>
+                        <Grid>
+                            <Form.Select
+                                options={Months}
+                                placeholder='Month'
+                                defaultValue={+values.endMonth}
+                                onChange={(e,{name, value})=> pushChange(name, value)} 
+                                name="endMonth"
+                            />
+                            <Form.Select
+                                options={YearArray}
+                                placeholder='Year'
+                                defaultValue={+values.endYear}
+                                onChange={(e,{name, value})=> pushChange(name, value)} 
+                                name="endYear"
+                            />
+                        </Grid>
+                    </Form.Field>
+                } 
+               
 
-                <Form.TextArea label='Description' placeholder='Tell us more about you...' />
-    
-
-
-                {/* <Button type='submit'>Submit</Button> */}
+                <Form.TextArea onChange={onChange} name="description" label='Description' placeholder='Tell us more about you...' defaultValue={values.description}/>
+                    
+                <Button fluid type="submit"  className="primary-color m-20 block">
+                            Save 
+                </Button> 
             </Form>   
         </Container>
 
     )
 }
+
+
+
+const EXPERIENCE_MUTATION = gql`
+mutation createExperience
+    (
+        $id: ID,
+        $title: String,
+        $typeExp: String,
+        $company: String,
+        $location: String,
+        $current: Boolean,
+        $startMonth: Int,
+        $startYear: Int,
+        $endMonth: Int,
+        $endYear: Int,
+        $description: String,
+    )
+
+    { 
+	createExperience (experienceInput : {
+    	id: $id
+        title: $title
+        typeExp: $typeExp
+        company: $company
+        location: $location
+        current: $current
+        startMonth: $startMonth
+        startYear: $startYear
+        endMonth: $endMonth
+        endYear: $endYear
+        description: $description
+  }){
+    id
+    experience {
+        id title typeExp company location current
+        startMonth startYear endMonth endYear
+        description createdAt
+    }
+}
+}
+`;
 
 
 export default Experience;

@@ -11,7 +11,6 @@ const CreateComment = ({postId}) => {
     const [createComment] = useMutation(ADDCOMMENT, {
         update (...names) {
             setBody("")
-            console.log(names)
         },
         onError (err) {
             console.error(err);
@@ -23,7 +22,6 @@ const CreateComment = ({postId}) => {
     })
 
     const handleSubmit = () => {
-        console.log(postId, body);
         createComment();
     }
 

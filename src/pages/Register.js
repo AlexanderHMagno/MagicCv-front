@@ -17,7 +17,7 @@ const Register = (props) => {
     const containerContext = useContext(AuthContext);
     const [createUser, {loading}] = useMutation(REGISTER_MUTATION, {
         update(proxy, {data:authentication}) {
-            containerContext.logIn(authentication);
+            containerContext.logIn(authentication.register);
             props.history.push('./posts');
         },
         onError(err) {

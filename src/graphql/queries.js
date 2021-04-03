@@ -13,3 +13,31 @@ export const GET_POSTS = gql`
     `;
 
 
+export const GET_PROFILE = gql`
+    query getProfile ($userId:ID!) { 
+        getProfile (userId:$userId) {
+            id
+            bio  location picture_url 
+            number address email
+            experience {
+                id title typeExp company location current
+                startMonth startYear endMonth endYear
+                description createdAt
+                }
+            education  {
+                school  degree field  startMonth
+                startYear description  order  createdAt
+                }
+        
+            volunteer  {
+                organization  role location current startMonth
+                startYear endMonth endYear description 
+                order  createdAt
+                }
+        
+            skills  {
+                label  createdAt
+                }
+    }
+    }
+`;
