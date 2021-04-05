@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid , Icon, Header } from 'semantic-ui-react';
+import { Container, Grid , Icon, Header, Transition } from 'semantic-ui-react';
 import MasterModal from '../modal/MasterModal';
 import MasterContainer from '../container/MasterContainer';
 
@@ -22,13 +22,17 @@ const ProfileTemplate = ({code, information}) => {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column width={15}> 
-                        {information && (information.length > 0) ? 
-                            information.map((info,index) => 
-                                <MasterContainer key={index} info={info} code={code}/>
-                            )
-                        :
-                        <MasterContainer  none={code}/>
-                        }   
+                        
+                            {information && (information.length > 0) ? 
+                                information.map((info,index) => 
+                                <Transition animation="scale" duration="1500" key={index}>
+                                    <MasterContainer  info={info} code={code}/>
+                                </Transition>
+                                )
+                            :
+                            <MasterContainer  none={code}/>
+                            }   
+                        
                         </Grid.Column> 
                     </Grid.Row>
                 </Grid>

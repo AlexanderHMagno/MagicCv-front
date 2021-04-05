@@ -1,9 +1,13 @@
 import React from 'react'
-import { Button, Modal, Icon } from 'semantic-ui-react';
+import { Button, Modal, Popup } from 'semantic-ui-react';
+
+
 import Education from './Education';
 import Experience from './Experience';
 import Volunteer from './Volunteer';
 import Skills from './Skills';
+import Delete from '../util/deleteOption';
+
 
 function MODALINFO({children, code, info}) {
   const [open, setOpen] = React.useState(false)
@@ -42,16 +46,24 @@ function MODALINFO({children, code, info}) {
       size={size}
       basic ={basic}
     >
-      <Modal.Header>{info? 'Edit': 'Add'} {code}</Modal.Header>
+      <Modal.Header>
+          {info? 'Edit': 'Add'} {code}
+          
+          <Popup
+            inverted
+            position ="center"
+            content = 'Close'
+            trigger={ <Button onClick={()=>  setOpen(false)} floated="right" icon="remove"  color="red" inverted circular size="tiny"/>}
+          />
+          
+          {info? <Delete info={info} code={code} closeModal={setOpen}/>: ''}
+      </Modal.Header>
       <Modal.Content scrolling>
         <Modal.Description>
            {display}
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
-        {/* <Button onClick={() => setOpen(false)} className={"primary-color"}>
-            Save <Icon name='chevron right' />
-        </Button> */}
       </Modal.Actions>
     </Modal>
   )

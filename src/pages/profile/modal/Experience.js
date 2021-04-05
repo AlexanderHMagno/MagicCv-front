@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import { Container, Form, Checkbox, Button , Grid, Icon } from 'semantic-ui-react';
+import { Container, Form, Button , Grid, Radio } from 'semantic-ui-react';
 import {gql, useMutation} from '@apollo/client';
 import {useForm} from '../../../util/hooks';
 import {employmentOptions, Months, YearArray} from '../../../util/types';
 
 
 const Experience = ({info, closeModal}) => {
-    
+    const [errors, setErrors] = useState({});
     const startingInformation = info || {};
     const {values, handleSubmit, onChange, pushChange} = useForm(updateExperience,startingInformation)
 
@@ -18,8 +18,7 @@ const Experience = ({info, closeModal}) => {
            closeModal(false);
         },
         onError(err) {
-            console.log(err);
-            // setErrors(err.graphQLErrors[0].extensions.errors);
+            setErrors(err.graphQLErrors[0].extensions.errors);
         },
         variables : values
     });
@@ -33,10 +32,15 @@ const Experience = ({info, closeModal}) => {
 
         <Container>
             <Form  onSubmit={handleSubmit} loading={loading}>
-                <Form.Field>
-                    <label>Title</label>
-                    <input onChange={onChange} name="title" placeholder='EX: Manager' defaultValue={values.title} />
-                </Form.Field>
+                <Form.Input
+                    type="text"
+                    error= { errors && errors.title ? {  content: errors.title , pointing: 'below' } :false}
+                    onChange={onChange}
+                    label="Title"
+                    name="title"
+                    placeholder="Ex: Manager"
+                    defaultValue={values.title}   
+                />
                 <Form.Field>
                 <Form.Select
                     fluid
@@ -46,28 +50,34 @@ const Experience = ({info, closeModal}) => {
                     defaultValue = {values.typeExp}
                     onChange={(e,{name, value})=> pushChange(name, value)} 
                     name="typeExp"
+                    error= { errors && errors.typeExp ? {  content: errors.typeExp , pointing: 'below' } :false}
                 />
                 </Form.Field>
                 <Form.Field>
-                    <label>Company</label>
-                    <input 
-                        placeholder='Ex: Google' 
-                        defaultValue={values.company} 
-                        onChange={onChange} 
+                    <Form.Input
+                        type="text"
+                        error= { errors && errors.company ? {  content: errors.company , pointing: 'below' } :false}
+                        onChange={onChange}
+                        label="Company"
                         name="company"
-                        />
+                        placeholder="Ex: Google"
+                        defaultValue={values.company}   
+                    />
                 </Form.Field>
                 <Form.Field>
-                    <label>Location</label>
-                    <input 
-                        placeholder='Ex: Vancouver, Canada' 
-                        defaultValue={values.location} 
-                        onChange={onChange} 
-                        name="location"
-                        />
+                    <Form.Input
+                            type="text"
+                            error= { errors && errors.location ? {  content: errors.location , pointing: 'below' } :false}
+                            onChange={onChange}
+                            label="Location"
+                            name="location"
+                            placeholder="Ex: Vancouver, Canada"
+                            defaultValue={values.location}   
+                    />
                 </Form.Field>
                 <Form.Field>
-                    <Checkbox  
+                    <Radio  
+                        toggle
                         name="current" 
                         onChange={(e,{name, checked})=> pushChange(name, checked)}   
                         onClick={()=> setCurrentWork(!currentWork)} 
@@ -85,6 +95,7 @@ const Experience = ({info, closeModal}) => {
                             defaultValue={+values.startMonth}
                             onChange={(e,{name, value})=> pushChange(name, value)} 
                             name="startMonth"
+                            error= { errors && errors.startMonth ? {  content: errors.startMonth , pointing: 'below' } :false}
                         />
                         <Form.Select
                             options={YearArray}
@@ -92,6 +103,7 @@ const Experience = ({info, closeModal}) => {
                             defaultValue={+values.startYear}
                             onChange={(e,{name, value})=> pushChange(name, value)} 
                             name="startYear"
+                            error= { errors && errors.startYear ? {  content: errors.startYear , pointing: 'below' } :false}
                         />
                     </Grid>
                 </Form.Field>
@@ -106,6 +118,7 @@ const Experience = ({info, closeModal}) => {
                                 defaultValue={+values.endMonth}
                                 onChange={(e,{name, value})=> pushChange(name, value)} 
                                 name="endMonth"
+                                error= { errors && errors.endMonth ? {  content: errors.endMonth , pointing: 'below' } :false}
                             />
                             <Form.Select
                                 options={YearArray}
@@ -113,14 +126,21 @@ const Experience = ({info, closeModal}) => {
                                 defaultValue={+values.endYear}
                                 onChange={(e,{name, value})=> pushChange(name, value)} 
                                 name="endYear"
+                                error= { errors && errors.endYear ? {  content: errors.endYear , pointing: 'below' } :false}
                             />
                         </Grid>
                     </Form.Field>
                 } 
                
 
-                <Form.TextArea onChange={onChange} name="description" label='Description' placeholder='Tell us more about you...' defaultValue={values.description}/>
-                    
+                <Form.TextArea 
+                    onChange={onChange} 
+                    name="description" 
+                    label='Description' 
+                    placeholder='Tell us more about you...' 
+                    defaultValue={values.description}
+                    error= { errors && errors.description ? {  content: errors.description , pointing: 'below' } :false}
+                    />
                 <Button fluid type="submit"  className="primary-color m-20 block">
                             Save 
                 </Button> 

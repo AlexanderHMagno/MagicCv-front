@@ -35,7 +35,7 @@ const FormPost = () => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} loading={loading}>
             <h4>Post Something new</h4>
           <Form.Field
             control={TextArea}
