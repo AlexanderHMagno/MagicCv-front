@@ -10,13 +10,13 @@ function CONTAINERINFO({children, code, info, none}) {
   let display = <Experience code={code} info={info}/>;
     switch (code) {
         case 'Education':
-            display = <Education/>
+            display = <Education  code={code} info={info}/>
             break;
         case 'Experience':
             display = <Experience code={code} info={info}/>
             break;
-        case 'Volunteer Experience':
-            display = <Volunteer/>
+        case 'Volunteer':
+            display = <Volunteer code={code} info={info}/>
             break;
         // case 'Skills':
             // display = <Skills/>

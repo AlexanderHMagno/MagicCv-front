@@ -43,3 +43,21 @@ while (i < 60) {
 }
 
 export {YearArray};
+
+
+const YearEducation = () => {
+  const currentYear = new Date();
+  let year = currentYear.getFullYear() + 5;
+  let YearArray = [];
+  let i = 0
+  while (i < 60) {
+      YearArray.push({key: year, text: year, value: year});
+      year--;
+      i++;
+  }
+
+  return YearArray;
+}
+
+export {YearEducation}
+

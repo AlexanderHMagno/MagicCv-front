@@ -17,13 +17,13 @@ function MODALINFO({children, code, info}) {
   let display;
     switch (code) {
         case 'Education':
-            display = <Education info={info}/>
+            display = <Education info={info} closeModal={setOpen}/>
             break;
         case 'Experience':
             display = <Experience info={info} closeModal={setOpen}/>
             break;
-        case 'Volunteer Experience':
-            display = <Volunteer/>
+        case 'Volunteer':
+            display = <Volunteer info={info} closeModal={setOpen}/>
             break;
         case 'Skills':
             basic = true;
@@ -51,7 +51,7 @@ function MODALINFO({children, code, info}) {
           
           <Popup
             inverted
-            position ="center"
+            position ="bottom center"
             content = 'Close'
             trigger={ <Button onClick={()=>  setOpen(false)} floated="right" icon="remove"  color="red" inverted circular size="tiny"/>}
           />

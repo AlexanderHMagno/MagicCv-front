@@ -64,7 +64,7 @@ const DASHBOARD = () => {
             <Grid.Column width={9}>
                 <ProfileTemplate code="Experience" information={experience}/>
                 <ProfileTemplate code="Education" information={education}/>
-                <ProfileTemplate code="Volunteer Experience" information={volunteer}/>
+                <ProfileTemplate code="Volunteer" information={volunteer}/>
                 <ProfileTemplate code="Skills" information={skills}/>
             </Grid.Column>
 

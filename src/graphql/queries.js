@@ -25,16 +25,15 @@ export const GET_PROFILE = gql`
                 description createdAt
                 }
             education  {
-                school  degree field  startMonth
+                id school  degree field  endYear
                 startYear description  order  createdAt
                 }
         
             volunteer  {
-                organization  role location current startMonth
+                id organization  role location current startMonth
                 startYear endMonth endYear description 
                 order  createdAt
                 }
-        
             skills  {
                 label  createdAt
                 }

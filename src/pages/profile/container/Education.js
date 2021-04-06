@@ -1,61 +1,31 @@
 import React from 'react';
-import { Container, Form, Checkbox, Button , Grid } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
+import MasterModal from '../modal/MasterModal';
 
-const Education = () => {
-    
-    const currentYear = new Date();
-    let year = currentYear.getFullYear() + 5;
-    let YearArray = [];
-    let i = 0
-    while (i < 60) {
-        YearArray.push({key: year, text: year, value: year});
-        year--;
-        i++;
-    }
+const Education = ({info,code}) => {
+    const {id, school, degree ,field, description, startYear, endYear
+    } = info || {};
 
     return (
-
-        <Container>
-            <Form>
-                <Form.Field>
-                    <label>School</label>
-                    <input placeholder='EX: NorthEastern University' />
-                </Form.Field>
-                <Form.Field>
-                    <label>Degree</label>
-                    <input placeholder="Ex: Bachelor's" />
-                </Form.Field>
-                <Form.Field>
-                    <label>Field Of study</label>
-                    <input placeholder="Ex: Economy" />
-                </Form.Field>
-                <Form.Field>
-                </Form.Field>
-         
-                <Form.Field>
-                <br></br>
-                    <Grid>
-                    
-                        <Form.Select
-                            options={YearArray}
-                            placeholder='Year'
-                            label="Start Year"
-                        />
-                        <Form.Select
-                            options={YearArray}
-                            placeholder='Year'
-                            label="End Year (Expected)"
-                        />
-                    </Grid>
-                </Form.Field>
-
-                <Form.TextArea label='Description' placeholder='Tell us more about you Education' />
-    
-
-
-                {/* <Button type='submit'>Submit</Button> */}
-            </Form>   
-        </Container>
+        <MasterModal code={code} info={info}>
+        <Card link  fluid className="profileoptionContainer"> 
+            <Card.Content>
+                <Card.Header>
+                    {degree}
+                </Card.Header>
+                    <p>{school}</p>
+                <Card.Meta>
+                    <small className='date'>{startYear} - {endYear}</small>
+                    <br></br>
+                    <small>{field}</small>
+                </Card.Meta>
+                <Card.Description className="whitespace-pre-wrap">
+                {description}
+                </Card.Description>
+            </Card.Content>  
+        
+        </Card>
+        </MasterModal>
 
     )
 }

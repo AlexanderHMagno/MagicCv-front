@@ -1,109 +1,40 @@
 import React from 'react';
-import { Container, Form, Checkbox, Button , Grid } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
+import Moment from 'moment';
+import MasterModal from '../modal/MasterModal';
 
-const Experience = () => {
-    
-    const options = [
-        { key: 'employmentType:1', text: 'Self-employed', value: 'self-employed' },
-        { key: 'employmentType:2', text: 'Freelance', value: 'freelance' },
-        { key: 'employmentType:3', text: 'Internship', value: 'internship' },
-        { key: 'employmentType:4', text: 'Apprenticeship', value: 'apprenticeship' },
-        { key: 'employmentType:5', text: 'Permanent Full-time', value: 'PFT' },
-        { key: 'employmentType:6', text: 'Permanent Part-time', value: 'PPT' },
-        { key: 'employmentType:7', text: 'Contract Full-time', value: 'CFT' },
-        { key: 'employmentType:8', text: 'Contract Part-time', value: 'CPT' },
-        { key: 'employmentType:9', text: 'Seasonal', value: 'Seasonal' },
-        { key: 'employmentType:10', text: 'Casual / On-call', value: 'Casual' },
-        { key: 'employmentType:11', text: 'Co-op', value: 'coop' },
-      ]
-    
-    const Months = [
-        { key: '1', text: 'January', value: '1' },
-        { key: '2', text: 'February', value: '2' },
-        { key: '3', text: 'March', value: '3' },
-        { key: '4', text: 'April', value: '4' },
-        { key: '5', text: 'May', value: '5' },
-        { key: '6', text: 'June', value: '6' },
-        { key: '7', text: 'July', value: '7' },
-        { key: '8', text: 'August', value: '8' },
-        { key: '9', text: 'Septiembre', value: '9' },
-        { key: '10', text: 'Octubre', value: '10' },
-        { key: '11', text: 'Noviembre', value: '11' },
-        { key: '12', text: 'Diciembre', value: '12' },
-    ];
+const Volunteer = ({info,code}) => {
+    const {id,organization,role,location, description, startMonth, startYear, current,
+        endYear, endMonth
+    } = info || {};
 
-    const currentYear = new Date();
-    let year = currentYear.getFullYear();
-    let YearArray = [];
-    let i = 0
-    while (i < 60) {
-        
-        YearArray.push({key: year, text: year, value: year});
-        year--;
-        i++;
-    }
+    const lastday = current ? Moment() : Moment(`${endYear}-${endMonth}-01`);
+    const difference = Moment(`${startYear}-${startMonth}-01`).from(lastday,true);
+    const currentJob = (current ? "Present" : `${endMonth}/${endYear}`) + " " + difference;
     
-    
-
     return (
-
-        <Container>
-            <Form>
-                <Form.Field>
-                    <label>Organization</label>
-                    <input placeholder='EX: Company' />
-                </Form.Field>
-                <Form.Field>
-                    <label>Role</label>
-                    <input placeholder='Ex: Volunteer' />
-                </Form.Field>
-                <Form.Field>
-                    <label>Location</label>
-                    <input placeholder='Ex: Vancouver, Canada' />
-                </Form.Field>
-                <Form.Field>
-                    <Checkbox label='I am currently volunteering in this role' />
-                </Form.Field>
-         
-                <Form.Field>
-                    <label>Start Date *</label>
+        <MasterModal code={code} info={info}>
+        <Card link  fluid className="profileoptionContainer"> 
+            <Card.Content>
+                <Card.Header>
+                    {role}
+                </Card.Header>
+                    <p>{organization}</p>
+                <Card.Meta>
+                    <small className='date'>{startMonth}/{startYear} - {currentJob}</small>
                     <br></br>
-                    <Grid>
-                        <Form.Select
-                            options={Months}
-                            placeholder='Month'
-                        />
-                        <Form.Select
-                            options={YearArray}
-                            placeholder='Year'
-                        />
-                    </Grid>
-                </Form.Field>
-                <Form.Field>
-                    <label>End Date *</label>
-                    <br></br>
-                    <Grid>
-                        <Form.Select
-                            options={Months}
-                            placeholder='Month'
-                        />
-                        <Form.Select
-                            options={YearArray}
-                            placeholder='Year'
-                        />
-                    </Grid>
-                </Form.Field>
-
-                <Form.TextArea label='Description' placeholder='Tell us more about...' />
-    
-
-
-                {/* <Button type='submit'>Submit</Button> */}
-            </Form>   
-        </Container>
+                    <small>{location}</small>
+                </Card.Meta>
+                <Card.Description className="whitespace-pre-wrap">
+                {description}
+                </Card.Description>
+            </Card.Content>  
+        
+        </Card>
+        </MasterModal>
 
     )
 }
 
 
-export default Experience;
+export default Volunteer;

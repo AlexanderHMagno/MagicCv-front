@@ -28,7 +28,7 @@ const DeleteOption = ({info, code, closeModal}) => {
         <>
         <Popup
             inverted
-            position ="center"
+            position ="bottom center"
             content = {`Delete ${code}`}
             trigger={ <Button onClick={()=> setConfirmated(true) } floated="right" icon="trash alternate"  color="red" inverted circular size="tiny"/>}
         />
@@ -52,6 +52,15 @@ const DELETE_MUTATION = gql`
         deleteOption(typeDelete:$typeDelete, id:$id){
             id
             experience {
+                id
+            }
+            education {
+                id
+            }
+            volunteer {
+                id
+            }
+            skills {
                 id
             }
         }
