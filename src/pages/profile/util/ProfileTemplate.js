@@ -4,6 +4,20 @@ import MasterModal from '../modal/MasterModal';
 import MasterContainer from '../container/MasterContainer';
 
 const ProfileTemplate = ({code, information}) => {
+
+    //sort
+    if (information.length) {
+        if (code === 'Skills') {
+            information = [...information].sort(function(a, b) {
+                return  b.rate - a.rate;
+              });
+        } else  {
+            information = [...information].sort(function(a, b) {
+                return  b.startYear - a.startYear;
+              });
+        }
+    }
+
     return (
 
         <Container className="profileContainer">

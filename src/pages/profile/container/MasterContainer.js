@@ -18,9 +18,9 @@ function CONTAINERINFO({children, code, info, none}) {
         case 'Volunteer':
             display = <Volunteer code={code} info={info}/>
             break;
-        // case 'Skills':
-            // display = <Skills/>
-            // break;
+        case 'Skills':
+            display = <Skills code={code} info={info}/>
+            break;
         default:
             display = <Blank code={none}/>
             break;

@@ -26,9 +26,9 @@ function MODALINFO({children, code, info}) {
             display = <Volunteer info={info} closeModal={setOpen}/>
             break;
         case 'Skills':
-            basic = true;
+            // basic = true;
             size = "mini";
-            display = <Skills/>
+            display = <Skills info={info} closeModal={setOpen}/>
             break;
         default:
             display = <h1>{code}</h1>

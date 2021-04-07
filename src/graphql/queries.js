@@ -35,7 +35,7 @@ export const GET_PROFILE = gql`
                 order  createdAt
                 }
             skills  {
-                label  createdAt
+                id label rate
                 }
     }
     }
