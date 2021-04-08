@@ -6,6 +6,7 @@ import Education from './Education';
 import Experience from './Experience';
 import Volunteer from './Volunteer';
 import Skills from './Skills';
+import Basic from './Basic';
 import Delete from '../util/deleteOption';
 
 
@@ -13,7 +14,7 @@ function MODALINFO({children, code, info}) {
   const [open, setOpen] = React.useState(false)
   let size = 'small';
   let basic = false;
-  
+  let displayDelete = true;
   let display;
     switch (code) {
         case 'Education':
@@ -30,6 +31,11 @@ function MODALINFO({children, code, info}) {
             size = "mini";
             display = <Skills info={info} closeModal={setOpen}/>
             break;
+        case 'Bio':
+          displayDelete = false;
+          size = "mini";
+          display = <Basic info={info} closeModal={setOpen}/>
+          break;
         default:
             display = <h1>{code}</h1>
             break;
@@ -56,7 +62,7 @@ function MODALINFO({children, code, info}) {
             trigger={ <Button onClick={()=>  setOpen(false)} floated="right" icon="remove"  color="red" inverted circular size="tiny"/>}
           />
           
-          {info? <Delete info={info} code={code} closeModal={setOpen}/>: ''}
+          {info && displayDelete? <Delete info={info} code={code} closeModal={setOpen}/>: ''}
       </Modal.Header>
       <Modal.Content scrolling>
         <Modal.Description>

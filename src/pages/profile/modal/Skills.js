@@ -36,7 +36,7 @@ const Skills = ({info, closeModal}) => {
                     onChange={onChange}
                     label="Skill"
                     name="label"
-                    placeholder="Ex: Manager"
+                    placeholder="Ex: Managment"
                     defaultValue={values.label}   
                 />
 

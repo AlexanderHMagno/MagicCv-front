@@ -17,8 +17,14 @@ export const GET_PROFILE = gql`
     query getProfile ($userId:ID!) { 
         getProfile (userId:$userId) {
             id
-            bio  location picture_url 
-            number address email
+            first
+            last
+            bio  
+            city
+            country 
+            picture_url 
+            phone 
+            address 
             experience {
                 id title typeExp company location current
                 startMonth startYear endMonth endYear
