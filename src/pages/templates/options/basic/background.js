@@ -14,7 +14,7 @@ export const defaultOption = `<svg xmlns="http://www.w3.org/2000/svg" version="1
 </svg>`;
 
 
-export const Drastical = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="600" height="1300" preserveAspectRatio="none" viewBox="0 0 600 1300">
+export const Drastical = `
 <g mask="url(&quot;#SvgjsMask1049&quot;)" fill="none">
 	<rect width="600" height="1300" x="0" y="0" fill="#0e2a47"></rect>
 	<use xlink:href="#SvgjsSymbol1056" x="0" y="0"></use>
@@ -153,7 +153,7 @@ export const Drastical = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" 
 	<use xlink:href="#SvgjsPath1055" x="570" y="630" stroke="rgba(20, 159, 30, 1)"></use>
 	<use xlink:href="#SvgjsPath1050" x="570" y="690" stroke="rgba(20, 159, 30, 1)"></use>
 </symbol>
-</svg>`;
+`;
 
 
 export const Polygon = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="600" height="1300" preserveAspectRatio="none" viewBox="0 0 600 1300">

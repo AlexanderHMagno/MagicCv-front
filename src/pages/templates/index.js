@@ -5,7 +5,7 @@ import {useQuery} from '@apollo/client';
 
 
 import {AuthContext} from '../../context/AuthContext';
-import {basicBlue} from './options/basic';
+import PDFVIEW from './options/basic';
 import {GET_PROFILE} from '../../graphql/queries';
 import Loader from '../../util/loader';
 import Gravatar from 'react-gravatar';
@@ -73,11 +73,13 @@ const Templates = () => {
                     </Card>
                 </Segment>  
             </Grid.Column>
-            <Grid.Column width={2}>
+            <Grid.Column width={1}>
 
             </Grid.Column>
             <Grid.Column width={8}>
-                {imageHV && 
+
+                <PDFVIEW info={data.getProfile}/>
+                {/* {imageHV && 
                     <Segment vertical className="max-h-screen">
                         <Card fluid onClick={()=>downloadPdf()}>
                             <Card.Content>
@@ -87,7 +89,7 @@ const Templates = () => {
                             </Card.Content>
                         </Card>
                     </Segment>
-                }      
+                }       */}
             </Grid.Column>             
         </Grid>
      );
