@@ -4,12 +4,12 @@ import { Grid, Card, Icon, Image, Button } from 'semantic-ui-react';
 import {useQuery} from '@apollo/client';
 
 
-import ProfileTemplate from './profile/util/ProfileTemplate';
-import ChangePicture from './profile/modal/Picture';
-import MasterModal from './profile/modal/MasterModal';
-import {AuthContext} from '../context/AuthContext';
-import {GET_PROFILE} from '../graphql/queries';
-import Loader from '../util/loader';
+import ProfileTemplate from './util/ProfileTemplate';
+import ChangePicture from './modal/Picture';
+import MasterModal from './modal/MasterModal';
+import {AuthContext} from '../../context/AuthContext';
+import {GET_PROFILE} from '../../graphql/queries';
+import Loader from '../../util/loader';
 import Gravatar from 'react-gravatar';
 
 

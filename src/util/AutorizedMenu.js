@@ -10,8 +10,8 @@ import { Container } from 'semantic-ui-react';
 //pages 
 import Posts from '../pages/Home';
 import Settings from '../pages/Settings';
-import Profile from '../pages/Profile';
-import Templates from '../pages/Templates';
+import Profile from '../pages/profile';
+import Templates from '../pages/templates';
 import Latest from '../pages/Latest';
 
 import Login from '../pages/Login';
