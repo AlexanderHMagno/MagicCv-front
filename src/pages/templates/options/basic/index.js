@@ -4,19 +4,29 @@ import {defaultOption, Drastical} from './background';
 import Loader from '../../../../util/loader';
 
 
-import { Page, Text, View, Document, StyleSheet, PDFViewer, Image, Svg, Polygon, G} from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet,PDFViewer, Image, Svg, Ellipse, G, Circle, Rect, Path, RadialGradient, Mask, Stop} from '@react-pdf/renderer';
 
 // Create styles
 const styles = StyleSheet.create({
   page: {
 	backgroundColor: 'white',
+	minHeight: '100%'
   },
   svgBack: { 
-	  width: 400, 
-	  height: 400,
+
 	  position:"absolute",
-	  top: 200,
-	  left: -20
+	  top: 0,
+	  left: -50,
+	},
+	banner2:{
+		position:'absolute',
+		top: 190,
+	},
+	banner3:{
+		position:'absolute',
+		bottom: 100,
+		right:0
+		
 	},
   avatar : {
 	  borderRadius : '50%',
@@ -25,14 +35,22 @@ const styles = StyleSheet.create({
 	  marginBottom: 20
   },
   leftTitle: {
-	  margin: '30 0 10 0',
-	 fontSize: '15px'
+	margin: '30 0 10 0',
+	fontSize: '18px',
+	color: 'white'
+  },
+  leftExtra: {
+	opacity: '0.7',
+	lineHeight: 1,
+	marginTop:	5,
+	fontSize: 15,
+	color: 'white'
   },
   name: {
 	  marginTop: 30,
 	  fontSize: 35,
-	  fontWeight: 'bold',
-	  color: 'orange',
+	  fontWeight: 'extrabold',
+	  color: 'hsl(9,82%,66%)',
   },
   position: {
 	marginBottom: 50
@@ -60,12 +78,12 @@ const styles = StyleSheet.create({
 	  marginTop: '20px'
   },
   group: {
-	color: 'orange',
+	color: 'hsl(9,82%,66%)',
 	fontSize: 20,
 	margin: "5 0"
   },
   title :{ 
-		color: 'green',
+		color: 'hsl(169,60%,61%)',
 		fontSize: 15,
 		margin: '5 0'
 	},
@@ -90,9 +108,42 @@ const {address, first, last, bio, city, country,phone,picture_url,experience,edu
 return (
   <Document>
     <Page size="A4" style={styles.page}>
-		<Svg style={styles.svgBack} >
-		
+		{/* <Svg style={styles.svgBack} > */}
+		<Svg style={styles.banner3} width="300">
+			<Circle fillOpacity="0.5" fill="rgb(252,234,143)" cx="350" cy="150" r="150" />
+			<Circle fill="white" cx="350" cy="150" r="100" />
 		</Svg>
+		<Svg  style={styles.banner2} width="400" height="100%"  viewBox="0 0 400 650">
+		<G  stroke-width="5">
+			<Circle fill="hsl(169,60%,61%)" cx="110" cy="100" r="100" />
+			<Rect
+				style={styles.banner2} 
+				x="10"
+				y="100"
+				width="200"
+				height="100%"
+				fill="hsl(169,60%,61%)"
+			/>
+
+			</G>
+		</Svg>
+
+		<Svg style={styles.svgBack} width="400" height="100%"  viewBox="0 0 400 600">
+			<G stroke-width="5">
+			<Ellipse
+				cx="162"
+				cy="95"
+				rx="85"
+				ry="85"
+				fill="hsl(9,82%,66%)"
+				/>
+			<Circle fillOpacity="0.5" fill="rgb(252,234,143)" cx="20" cy="150" r="180" />
+			<Circle fill="white" cx="15" cy="150" r="70" />
+
+			
+			</G>
+		</Svg>
+
 
 		<View style={styles.flexColumns}>
 			
@@ -100,16 +151,16 @@ return (
 			<View style={styles.leftColumn}>
 				{picture_url && <Image src={picture_url} style={styles.avatar}/>}
 				<Text style={styles.leftTitle}>About Me</Text>
-				<Text style={styles.bio}>{bio}</Text>
+				<Text style={styles.leftExtra}>{bio}</Text>
 
 				<Text style={styles.leftTitle}>Skills</Text>
 				{skills && skills.map((skill, index) => {
-					return <Text style={styles.bio} key={index}>{skill.label}</Text>
+					return <Text style={styles.leftExtra} key={index}>{skill.label}</Text>
 				})}
 
 				<Text style={styles.leftTitle}>Contact Me At:</Text>
-				<Text style={styles.bio}>Phone: {phone}</Text>
-				<Text style={styles.bio}>Email: ...</Text>
+				<Text style={styles.leftExtra}>Phone: {phone}</Text>
+				<Text style={styles.leftExtra}>Email: ...</Text>
 				
 			</View>
 			
@@ -165,37 +216,3 @@ const DOMRENDER = (info) => {
 
 export default DOMRENDER;
 
-
-// export const basicBlue = ({data, option}) => {
-
-//     let svg = defaultOption;
-
-//     if (option === 'Drastical') svg = Drastical;
-// 	if (option === 'Polygon') svg = Polygon;
-	
-// 	const {address, first, last, bio, city, country,phone,picture_url,experience,education,volunteer,skills} = data.getProfile || {};
-//     console.log({data});
-//     return {background: function(currentPage, pageSize) {
-//         return {svg}
-		
-//         // return `page ${currentPage} with size ${pageSize.width} x ${pageSize.height}`
-//     },
-// 	content: [
-// 	    {image: 'profile'},
-// 		{text: first , style: 'header'},
-// 		{text: last, style:'header2', alignment:'right'},
-// 		{text: bio},
-		
-// 	    { qr: `Name: ${first} ${last} \nNumber:7787518081\nResume:"www.magiccv.com/${first}"`, fit:"100" },	
-// 	],
-// 	images : 
-// 	{
-// 		profile:picture_url
-// 	},
-// 	watermark: { text: 'Magic Cv', color: 'blue', opacity: 0.3, bold: true, italics: false },
-// 	styles,
-// 	defaultStyle: {
-// 		// alignment: 'justify'
-//     }
-// }
-// }
