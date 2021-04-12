@@ -71,10 +71,10 @@ const optionImages = [
   "https://react.semantic-ui.com/images/avatar/large/daniel.jpg",
   "https://react.semantic-ui.com/images/avatar/large/molly.png",
   "https://react.semantic-ui.com/images/avatar/large/jenny.jpg",
-  "https://cdn.pixabay.com/photo/2021/01/17/09/11/woman-5924366_960_720.jpg",
-  "https://cdn.pixabay.com/photo/2021/02/25/10/04/woman-6048696_960_720.jpg",
-  "https://cdn.pixabay.com/photo/2021/02/15/08/17/woman-6016988_960_720.jpg",
-  "https://cdn.pixabay.com/photo/2021/01/09/15/04/harry-potter-5902545_960_720.png",
+  "/images/woman1.jpeg",
+  "/images/woman2.jpeg",
+  "/images/woman3.jpeg",
+  "/images/man1.png",
   ""
 ]
 
