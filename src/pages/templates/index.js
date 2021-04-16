@@ -1,7 +1,9 @@
 import React, {useState, useContext} from 'react';
 
-import { Grid, Card, Icon, Image, Button, Segment } from 'semantic-ui-react';
+import { Grid, Card, Icon, Image, Button, Segment, Input, Header, Transition } from 'semantic-ui-react';
 import {useQuery} from '@apollo/client';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 
 import {AuthContext} from '../../context/AuthContext';
@@ -12,12 +14,12 @@ import Gravatar from 'react-gravatar';
 
 
 
-
-
 const Templates = () => {
 
     const [imageHV, setImageHv] = useState("");
-    const [option, setOption] = useState("");
+    const [option, setOption] = useState(true);
+    const [template, setTemplate] = useState('back1');
+    const [color, setColor] = useState("#3941E4");
 
     const {user:{username, id, email,createdAt}} = useContext(AuthContext);
     const {loading, data} = useQuery(GET_PROFILE, {
@@ -43,42 +45,43 @@ const Templates = () => {
 
         <Grid stackable>
             <Grid.Column width={4}  >  
-                <Segment vertical className="max-h-screen overflow-auto">
-                    <Card fluid onClick={()=>{setImageHv('images/cv1.png');setOption("")}}>
-                        <Card.Content>
-                        <Card.Header>Template 1</Card.Header>
-                            <Card.Description>
-                                <Image className="cursor-pointer" src='images/cv1.png' wrapped ui={false} />
-                                Person looking for a job
-                            </Card.Description>
-                        </Card.Content>
-                    </Card>
-                    <Card fluid onClick={()=>{setImageHv('images/cv2.png');setOption("Drastical")}}>
-                        <Card.Content>
-                        <Card.Header>Template 2</Card.Header>
-                            <Card.Description>
-                                <Image className="cursor-pointer" src='images/cv2.png' wrapped ui={false} />
-                                Person looking for a job
-                            </Card.Description>
-                        </Card.Content>
-                    </Card>
-                    <Card fluid onClick={()=>{setImageHv('images/cv3.png');setOption("Polygon")}}>
-                        <Card.Content>
-                        <Card.Header>Template 3</Card.Header>
-                            <Card.Description>
-                                <Image className="cursor-pointer" src='images/cv3.png' wrapped ui={false} />
-                                Person looking for a job
-                            </Card.Description>
-                        </Card.Content>
-                    </Card>
-                </Segment>  
+                <Card fluid>
+                    <Card.Content>
+                    <Card.Header onClick={()=>setOption(!option)}>Options</Card.Header>
+                        <Card.Description>
+                        <label htmlFor="background" className="mr-10">Background</label>
+                        <input onChange={(e)=>setColor(e.target.value)} type="color" id="background" name="background" defaultValue={color}/>
+                        </Card.Description>
+                    </Card.Content>
+                </Card>
+
+
+                <Card fluid >
+                    <Card.Content>
+                        <Card.Header>Templates</Card.Header>
+                    </Card.Content>
+                    <Card.Description >
+                    <Carousel infiniteLoop={true}>
+                            <div  className="cursor-pointer" onClick={()=>setTemplate('back1')}>
+                                <Image onClick={()=> console.log('al') } src='images/cv1.png'  />
+                            </div>
+                            <div  className="cursor-pointer" onClick={()=>setTemplate('back2')}>
+                                <Image minwidht="200" className="cursor-pointer" src='images/cv2.png'  />
+                            </div>
+
+                    </Carousel>
+                        
+                      
+                    </Card.Description>
+                    
+                </Card>
             </Grid.Column>
             <Grid.Column width={1}>
 
             </Grid.Column>
-            <Grid.Column width={8}>
+            <Grid.Column width={8} className="h-screen">
 
-                <PDFVIEW info={data.getProfile}/>
+                <PDFVIEW info={data.getProfile} options={{color,template}}/>
                 {/* {imageHV && 
                     <Segment vertical className="max-h-screen">
                         <Card fluid onClick={()=>downloadPdf()}>

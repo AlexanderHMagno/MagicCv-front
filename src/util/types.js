@@ -75,6 +75,7 @@ const optionImages = [
   "/images/woman2.jpeg",
   "/images/woman3.jpeg",
   "/images/man1.png",
+  "/images/man2.png",
   ""
 ]
 
