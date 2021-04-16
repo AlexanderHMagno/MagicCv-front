@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 
-import { Grid, Card, Icon, Image, Button, Segment, Input, Header, Transition } from 'semantic-ui-react';
+import { Grid, Card,Select, Icon, Image, Button, Segment, Input, Header, Transition } from 'semantic-ui-react';
 import {useQuery} from '@apollo/client';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -20,6 +20,7 @@ const Templates = () => {
     const [option, setOption] = useState(true);
     const [template, setTemplate] = useState('back1');
     const [color, setColor] = useState("#3941E4");
+    const [picture, setPicture] = useState("photo");
 
     const {user:{username, id, email,createdAt}} = useContext(AuthContext);
     const {loading, data} = useQuery(GET_PROFILE, {
@@ -51,6 +52,10 @@ const Templates = () => {
                         <Card.Description>
                         <label htmlFor="background" className="mr-10">Background</label>
                         <input onChange={(e)=>setColor(e.target.value)} type="color" id="background" name="background" defaultValue={color}/>
+                        <br></br>
+                        <label>Display Picture</label>
+                        <Select   onChange={(e,{name, value})=> setPicture(value)}  placeholder='Picture' defaultValue="photo" options={
+                            [{key:'1',value: 'photo', text:'Photo'},{key:'2',value: 'acronym', text:'Acronym'}]} />
                         </Card.Description>
                     </Card.Content>
                 </Card>
@@ -81,7 +86,7 @@ const Templates = () => {
             </Grid.Column>
             <Grid.Column width={8} className="h-screen">
 
-                <PDFVIEW info={data.getProfile} options={{color,template}}/>
+                <PDFVIEW info={data.getProfile} options={{color,template,picture}}/>
                 {/* {imageHV && 
                     <Segment vertical className="max-h-screen">
                         <Card fluid onClick={()=>downloadPdf()}>

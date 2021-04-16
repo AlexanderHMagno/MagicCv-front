@@ -8,10 +8,11 @@ import Loader from '../../../../util/loader';
 import { Page, Text, View, Document, StyleSheet,PDFViewer, Image, Svg, Ellipse, G, Circle, Rect, Path, RadialGradient, Mask, Stop} from '@react-pdf/renderer';
 
 
+
 // Create Document Component
 const MyDocument = ({info}) => {
 
-	const {color = 'hsl(9,82%,66%)', template} = info.options  ;
+	const {color = 'hsl(9,82%,66%)', picture, template} = info.options  ;
 	let backgroundElected = <Background1 color={color}/>;
 	
 	switch (template) {
@@ -38,6 +39,14 @@ const styles = StyleSheet.create({
 		marginLeft: 0,
 		marginBottom: 20
 	},
+	textAvatar: {
+		fontSize: '75',
+		paddingTop: '35',
+		color: 'white',
+		opacity:0.2,
+		marginBottom:75
+	}
+	,
 	leftTitle: {
 	  margin: '30 0 10 0',
 	  fontSize: '18px',
@@ -120,7 +129,11 @@ return (
 			{/* Left Column */}
 			<View  style={styles.leftColumn}>
 				
-				{picture_url && <Image fixed src={picture_url} style={styles.avatar}/>}
+				{(picture ==='photo') && picture_url  ?
+					<Image fixed src={picture_url} style={styles.avatar}/>
+					:<Text fixed style={styles.textAvatar}>{first[0]}{last[0]}</Text>
+				}	
+				
 				<Text style={styles.leftTitle}>About Me</Text>
 				<Text style={styles.leftExtra}>{bio}</Text>
 
