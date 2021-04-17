@@ -1,121 +1,32 @@
 import React, {useState, useEffect} from 'react';
-import Background1 from './background1';
-import Background2 from './background2';
-// import {styles} from '../../styles';
-import Loader from '../../../../util/loader';
+import Background1 from '../../backgrounds/background1';
+import Background2 from '../../backgrounds/background2';
+import Background3 from '../../backgrounds/background3';
+import {createStyle} from './styles';
+import Loader from '../../../../../util/loader';
 
 
-import { Page, Text, View, Document, StyleSheet,PDFViewer, Image, Svg, Ellipse, G, Circle, Rect, Path, RadialGradient, Mask, Stop} from '@react-pdf/renderer';
+import { Page, Text, View, Document,PDFViewer, Image} from '@react-pdf/renderer';
 
 
+const Template = ({color, template}) => {
+	switch (template) {
+		case 'triwave':
+			return <Background1 color={color}/>
+		case 'bluewave':
+			return <Background2 color={color}/>
+		case 'topwave':
+			return <Background3 color={color}/>
+		default:
+			break;
+	}
+}  
 
 // Create Document Component
 const MyDocument = ({info}) => {
 
-	const {color = 'hsl(9,82%,66%)', picture, template} = info.options  ;
-	let backgroundElected = <Background1 color={color}/>;
-	
-	switch (template) {
-		case 'back2':
-			backgroundElected = <Background2 color={color}/>
-			break;
-		default:
-			break;
-	}
-	
-
-// Create styles
-const styles = StyleSheet.create({
-	page: {
-	  paddingTop: 20,
-	  backgroundColor: 'white',
-	  minHeight: '100%'
-	},
-	avatar : {
-
-		borderRadius : '50%',
-		width:150,
-		height:150,
-		marginLeft: 0,
-		marginBottom: 20
-	},
-	textAvatar: {
-		fontSize: '75',
-		paddingTop: '35',
-		color: 'white',
-		opacity:0.2,
-		marginBottom:75
-	}
-	,
-	leftTitle: {
-	  margin: '30 0 10 0',
-	  fontSize: '18px',
-	  color: 'white'
-	},
-	leftExtra: {
-	  opacity: '0.7',
-	  lineHeight: 1,
-	  marginTop:	5,
-	  fontSize: 15,
-	  color: 'white'
-	},
-	name: {
-		marginTop: 30,
-		fontSize: 35,
-		fontWeight: 'extrabold',
-		color: color,
-	},
-	position: {
-	  marginBottom: 50
-	},
-	bio: {
-	  fontStyle: 'italic',
-	  color:'grey',
-	  opacity: '0.5',
-	  lineHeight: 1,
-	  marginTop:	5,
-	  fontSize: 15,
-	},
-	leftColumn :{
-	  maxWidth: "30%",
-	  minWidth: "30%",
-	  marginLeft: '4%',
-	  flexDirection: 'column',
-	  alignItems: 'center',
-	  
-	  },
-	rightColumn :{
-		maxWidth: "55%",
-		minWidth: "55%",
-		marginLeft: '4%',
-		marginTop: '20px',
-	},
-	group: {
-		color: color,
-	  fontSize: 20,
-	  margin: "5 0"
-	},
-	title :{ 
-		  color: 'hsl(169,60%,61%)',
-		  fontSize: 15,
-		  margin: '5 0'
-	  },
-	  extra : {
-		  fontWeight: 'bold',
-		  fontSize: 12,
-		  margin: '5 0'
-	  },
-	  description : {
-		  fontSize: 10,
-		  opacity:0.7,
-		  paddingLeft: 10
-	  },
-	  flexColumns : {
-		  flexDirection: 'row'
-	  }
-  });
-  
-
+const {color = 'hsl(9,82%,66%)', picture, template} = info.option  ;	
+const styles = createStyle(color,template);
 
 const {address, first, last, bio, city, country,phone,picture_url,experience,education,volunteer,skills} = info.info || {};
 	
@@ -123,7 +34,7 @@ return (
   <Document>
     <Page size="A4" style={styles.page}>
 		{/* <Svg style={styles.svgBack} > */}
-		{backgroundElected}
+		<Template color={color} template={template}/>
 		<View style={styles.flexColumns}>
 			
 			{/* Left Column */}
@@ -190,11 +101,24 @@ return (
 
 
 const DOMRENDER = (info) => {
+	
+	const [loading, setLoading] = useState(true);
+	
+	useEffect(()=> {
+		setLoading(true);
+		setTimeout(() => {
+			setLoading(false);
+		}, 1200);
+	}, [info]);
 
+	
 	return (
-		<PDFViewer height="100%" width="100%">
+		<>
+		{loading && <Loader/>}
+		<PDFViewer  height="100%" width="100%">
 			<MyDocument info={info} name={"alex"}/>
 		</PDFViewer>
+		</>
 	)
 }
 

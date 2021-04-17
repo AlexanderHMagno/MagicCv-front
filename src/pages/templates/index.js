@@ -7,7 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 
 import {AuthContext} from '../../context/AuthContext';
-import PDFVIEW from './options/basic';
+import PDFVIEW from './options/templates';
 import {GET_PROFILE} from '../../graphql/queries';
 import Loader from '../../util/loader';
 import Gravatar from 'react-gravatar';
@@ -16,10 +16,9 @@ import Gravatar from 'react-gravatar';
 
 const Templates = () => {
 
-    const [imageHV, setImageHv] = useState("");
     const [option, setOption] = useState(true);
-    const [template, setTemplate] = useState('back1');
-    const [color, setColor] = useState("#3941E4");
+    const [template, setTemplate] = useState('bluewave');
+    const [color, setColor] = useState("#010332");
     const [picture, setPicture] = useState("photo");
 
     const {user:{username, id, email,createdAt}} = useContext(AuthContext);
@@ -30,18 +29,6 @@ const Templates = () => {
     })
     
     if (loading) return <Loader/>;
-    const {address, first, last, bio, city, country,phone,picture_url,experience,education,volunteer,skills} = data.getProfile || {};
-
-
-
-    const downloadPdf  = () => {
-
-
-        // playground requires you to assign document definition to a variable called dd
-
-    
-    }
-
     return ( 
 
         <Grid stackable>
@@ -66,38 +53,25 @@ const Templates = () => {
                         <Card.Header>Templates</Card.Header>
                     </Card.Content>
                     <Card.Description >
-                    <Carousel infiniteLoop={true}>
-                            <div  className="cursor-pointer" onClick={()=>setTemplate('back1')}>
-                                <Image onClick={()=> console.log('al') } src='images/cv1.png'  />
-                            </div>
-                            <div  className="cursor-pointer" onClick={()=>setTemplate('back2')}>
-                                <Image minwidht="200" className="cursor-pointer" src='images/cv2.png'  />
-                            </div>
-
-                    </Carousel>
-                        
-                      
+                        <Carousel showThumbs={false} infiniteLoop={true}>
+                                <div  className="cursor-pointer" onClick={(e)=>setTemplate('bluewave')}>
+                                    <Image src='images/cv2.png'  />
+                                </div>
+                                <div  className="cursor-pointer" onClick={()=>setTemplate('triwave')}>
+                                    <Image src='images/cv1.png'  />
+                                </div>
+                                <div  className="cursor-pointer" onClick={()=>setTemplate('topwave')}>
+                                    <Image src='images/cv3.png'  />
+                                </div>
+                        </Carousel>
                     </Card.Description>
-                    
                 </Card>
             </Grid.Column>
             <Grid.Column width={1}>
 
             </Grid.Column>
             <Grid.Column width={8} className="h-screen">
-
                 <PDFVIEW info={data.getProfile} options={{color,template,picture}}/>
-                {/* {imageHV && 
-                    <Segment vertical className="max-h-screen">
-                        <Card fluid onClick={()=>downloadPdf()}>
-                            <Card.Content>
-                                <Card.Description>
-                                    <Image className="cursor-pointer" src={imageHV} wrapped ui={false} />
-                                </Card.Description>
-                            </Card.Content>
-                        </Card>
-                    </Segment>
-                }       */}
             </Grid.Column>             
         </Grid>
      );

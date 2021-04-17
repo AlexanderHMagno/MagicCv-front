@@ -25,8 +25,23 @@ const Background2 = ({color}) => {
     
     return (
         <>
-        <Svg fixed style={styles.banner2} width="250" height="841"  >
-            <G  stroke-width="5">
+        <Svg style={styles.banner2} width="800" height="841"  >
+            <G>
+                <Rect
+                    
+                    x="0"
+                    y="0"
+                    width="800"
+                    height="150"
+                    fill={color}
+                />
+                <Circle fillOpacity="1" fill={color} cx="210" cy="150" r="50" />
+                <Circle fillOpacity="1" fill='white' cx="261" cy="200" r="50" />
+            </G>
+
+        </Svg>
+        <Svg fixed style={styles.banner2} width="800" height="841"  >
+            <G >
                 <Rect
                     
                     x="0"
@@ -37,15 +52,6 @@ const Background2 = ({color}) => {
                     fill={color}
                 />
             </G>
-        </Svg>
-
-        <Svg fixed style={styles.banner3} width="300">
-            <Circle fillOpacity="0.5" fill={color} cx="350" cy="150" r="150" />
-            <Circle fill="white" cx="350" cy="150" r="100" />
-        </Svg>
-        <Svg fixed style={styles.banner4} width="300">
-            <Circle fillOpacity="0.1" fill={color} cx="350" cy="150" r="150" />
-            <Circle fill="white" cx="350" cy="150" r="100" />
         </Svg>
 
     </>
