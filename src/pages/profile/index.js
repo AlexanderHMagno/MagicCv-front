@@ -22,7 +22,7 @@ const PROFILE = () => {
     })
     
     if (loading) return <Loader/>;
-    const {address, first, last, bio, city, country,phone,picture_url,experience,education,volunteer,skills} = data.getProfile || {};
+    const {address, first, last, bio, role, city, country,phone,picture_url,experience,education,volunteer,skills} = data.getProfile || {};
 
     const CardName = (!first && !last) ? username : `${first} ${last}`;
 
@@ -46,6 +46,8 @@ const PROFILE = () => {
                     <Card.Header>{CardName}</Card.Header>
                     <Card.Meta>Joined in {Moment(createdAt).year()}</Card.Meta>
                     <Card.Meta>{`${city||"City"}, ${country||"Country"}`}</Card.Meta>
+                    {console.log(role)}
+                    <Card.Meta>{role}</Card.Meta>
                     <Card.Description className="whitespace-pre-wrap">
                         <p className="italic text-gray-500">{bio || 'About'}</p>
                     </Card.Description>

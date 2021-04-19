@@ -71,7 +71,7 @@ const Templates = () => {
 
             </Grid.Column>
             <Grid.Column width={8} className="h-screen">
-                <PDFVIEW info={data.getProfile} options={{color,template,picture}}/>
+                <PDFVIEW info={{...data.getProfile,email}} options={{color,template,picture}}/>
             </Grid.Column>             
         </Grid>
      );

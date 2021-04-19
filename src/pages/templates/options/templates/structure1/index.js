@@ -4,6 +4,7 @@ import Background2 from '../../backgrounds/background2';
 import Background3 from '../../backgrounds/background3';
 import {createStyle} from './styles';
 import Loader from '../../../../../util/loader';
+import {dateFormatter} from '../../../../../util/types';
 
 
 import { Page, Text, View, Document,PDFViewer, Image} from '@react-pdf/renderer';
@@ -28,7 +29,7 @@ const MyDocument = ({info}) => {
 const {color = 'hsl(9,82%,66%)', picture, template} = info.option  ;	
 const styles = createStyle(color,template);
 
-const {address, first, last, bio, city, country,phone,picture_url,experience,education,volunteer,skills} = info.info || {};
+const {address, first, last, bio,role, city, email, country,phone,picture_url,experience,education,volunteer,skills} = info.info || {};
 	
 return (
   <Document>
@@ -55,7 +56,9 @@ return (
 
 				<Text style={styles.leftTitle}>Contact Me At:</Text>
 				<Text style={styles.leftExtra}>Phone: {phone}</Text>
-				<Text style={styles.leftExtra}>Email: ...</Text>
+				<Text style={styles.leftExtra}>Email: {email}</Text>
+				{address && <Text style={styles.leftExtra}>{address}</Text>}
+				{city && <Text style={styles.leftExtra}>{city},{country}</Text>}
 				
 			</View>
 			
@@ -63,17 +66,22 @@ return (
 			<View style={styles.rightColumn}>
 
 			<Text style={styles.name}>{first} {last}</Text>
-			<Text style={styles.position}>Software Developer</Text>
+			<Text style={styles.position}>{role}</Text>
 
 
 
 			{/* Experience */}
 				{experience && <Text style={styles.group}>Experience</Text>}
 				{experience && experience.map((exp, ind) => {
+					const endDate = dateFormatter(exp.endMonth,exp.endYear);
+					const dates = `${dateFormatter(exp.startMonth,exp.startYear)} -  ${exp.current? 'Present' : endDate}`;
 					return (
 					<View key={ind}>
 							<Text style={styles.title}>{exp.title}</Text>
-							<Text style={styles.extra}>{exp.company}</Text>
+							<View style={styles.jobInfo}>
+								<Text style={styles.extra}>{exp.company}</Text>
+								<Text style={styles.jobDates}>{dates}</Text>
+							</View>
 							<Text style={styles.description}>{exp.description}</Text>
 					</View>
 					)

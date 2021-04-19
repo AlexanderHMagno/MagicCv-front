@@ -81,6 +81,16 @@ const Basic = ({info, closeModal}) => {
                     defaultValue={values.phone}   
                 />
 
+                <Form.Input
+                    type="text"
+                    error= { errors && errors.role ? {  content: errors.role , pointing: 'below' } :false}
+                    onChange={onChange}
+                    label="Principal Role"
+                    placeholder="Accountant"
+                    name="role"
+                    defaultValue={values.role}   
+                />
+
                 <Form.TextArea 
                     onChange={onChange} 
                     name="bio" 
@@ -109,6 +119,7 @@ mutation basicInformation
         $bio: String
         $first: String
         $last: String
+        $role: String
         $city: String
         $country: String
         $address: String
@@ -119,6 +130,7 @@ mutation basicInformation
             first: $first
             last: $last
             bio: $bio
+            role: $role
             city: $city
             country: $country
             phone: $phone
@@ -128,6 +140,7 @@ mutation basicInformation
             first
             last
             bio
+            role
             country
             phone
             address

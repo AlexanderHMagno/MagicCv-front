@@ -19,7 +19,8 @@ export const GET_PROFILE = gql`
             id
             first
             last
-            bio  
+            bio
+            role  
             city
             country 
             picture_url 

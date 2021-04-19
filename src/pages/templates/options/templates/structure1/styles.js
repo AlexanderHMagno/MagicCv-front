@@ -29,14 +29,14 @@ export const createStyle = (color,template) => {
 	,
 	leftTitle: {
 	  margin: '30 0 10 0',
-	  fontSize: '18px',
+	  fontSize: 14,
 	  color: 'white'
 	},
 	leftExtra: {
 	  opacity: '0.7',
 	  lineHeight: 1,
 	  marginTop:	5,
-	  fontSize: 15,
+	  fontSize: 12,
 	  color: 'white'
 	},
 	name: {
@@ -72,19 +72,32 @@ export const createStyle = (color,template) => {
 		marginTop: '20px',
 	},
 	group: {
-		color: color,
-	  fontSize: 20,
+	  color: color,
+	  fontSize: 18,
 	  margin: "5 0"
 	},
 	title :{ 
 		  color: 'hsl(169,60%,61%)',
 		  fontSize: 15,
-		  margin: '5 0'
+		  marginTop: 10,
+		  marginBottom:4
 	  },
+	jobInfo: {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'flex-end',
+		justifyContent: 'flex-start',
+		marginBottom: 5		
+	},
+	jobDates: {
+		fontSize: 10,
+		opacity: 0.5,
+		marginLeft: 5,	
+	},
 	  extra : {
 		  fontWeight: 'bold',
 		  fontSize: 12,
-		  margin: '5 0'
+		  
 	  },
 	  description : {
 		  fontSize: 10,
