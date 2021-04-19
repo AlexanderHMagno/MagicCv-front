@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 })
 
 
-const Background2 = ({color}) => {
+const Background2 = ({color,backgroundColor}) => {
     
     return (
         <>
@@ -41,11 +41,11 @@ const Background2 = ({color}) => {
 
         <Svg fixed style={styles.banner3} width="300">
             <Circle fillOpacity="0.5" fill={color} cx="350" cy="150" r="150" />
-            <Circle fill="white" cx="350" cy="150" r="100" />
+            <Circle fill={backgroundColor} cx="350" cy="150" r="100" />
         </Svg>
         <Svg fixed style={styles.banner4} width="300">
             <Circle fillOpacity="0.1" fill={color} cx="350" cy="150" r="150" />
-            <Circle fill="white" cx="350" cy="150" r="100" />
+            <Circle fill={backgroundColor} cx="350" cy="150" r="100" />
         </Svg>
 
     </>

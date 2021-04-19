@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 })
 
 
-const Background2 = ({color}) => {
+const Background2 = ({color, backgroundColor}) => {
     
     return (
         <>

@@ -10,14 +10,14 @@ import {dateFormatter} from '../../../../../util/types';
 import { Page, Text, View, Document,PDFViewer, Image} from '@react-pdf/renderer';
 
 
-const Template = ({color, template}) => {
+const Template = ({color,backgroundColor, template}) => {
 	switch (template) {
 		case 'triwave':
-			return <Background1 color={color}/>
+			return <Background1 color={color} backgroundColor={backgroundColor}/>
 		case 'bluewave':
-			return <Background2 color={color}/>
+			return <Background2 color={color} backgroundColor={backgroundColor}/>
 		case 'topwave':
-			return <Background3 color={color}/>
+			return <Background3 color={color} backgroundColor={backgroundColor}/>
 		default:
 			break;
 	}
@@ -26,8 +26,8 @@ const Template = ({color, template}) => {
 // Create Document Component
 const MyDocument = ({info}) => {
 
-const {color = 'hsl(9,82%,66%)', picture, template} = info.option  ;	
-const styles = createStyle(color,template);
+const {color,backgroundColor, picture, template} = info.option  ;	
+const styles = createStyle(color,backgroundColor,template);
 
 const {address, first, last, bio,role, city, email, country,phone,picture_url,experience,education,volunteer,skills} = info.info || {};
 	
@@ -35,7 +35,7 @@ return (
   <Document>
     <Page size="A4" style={styles.page}>
 		{/* <Svg style={styles.svgBack} > */}
-		<Template color={color} template={template}/>
+		<Template color={color} backgroundColor={backgroundColor} template={template}/>
 		<View style={styles.flexColumns}>
 			
 			{/* Left Column */}

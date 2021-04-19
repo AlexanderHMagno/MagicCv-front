@@ -7,9 +7,9 @@ const PDFFactory = ({info, options}) => {
         triwave :  Structure1,
         topwave :  Structure1,
     }
-    console.log(options.template);
+
     const OptionPicked = structure[options.template] || Structure1;
-    
+
     return <>{<OptionPicked info={info} option={options} />}</>
 
 }

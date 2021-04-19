@@ -19,6 +19,7 @@ const Templates = () => {
     const [option, setOption] = useState(true);
     const [template, setTemplate] = useState('bluewave');
     const [color, setColor] = useState("#010332");
+    const [backgroundColor, setBackground] = useState("#FFFFFF");
     const [picture, setPicture] = useState("photo");
 
     const {user:{username, id, email,createdAt}} = useContext(AuthContext);
@@ -37,9 +38,14 @@ const Templates = () => {
                     <Card.Content>
                     <Card.Header onClick={()=>setOption(!option)}>Options</Card.Header>
                         <Card.Description>
-                        <label htmlFor="background" className="mr-10">Background</label>
-                        <input onChange={(e)=>setColor(e.target.value)} type="color" id="background" name="background" defaultValue={color}/>
+                        {/* <label htmlFor="background" className="mr-10">Background</label>
+                        <input onChange={(e)=>setBackground(e.target.value)} type="color" id="background" name="background" defaultValue={backgroundColor}/>
+                        <br></br> */}
+
+                        <label htmlFor="Main Color" className="mr-10">Main  Color </label>
+                        <input onChange={(e)=>setColor(e.target.value)} type="color" id="Main Color" name="Main Color" defaultValue={color}/>
                         <br></br>
+
                         <label>Display Picture</label>
                         <Select   onChange={(e,{name, value})=> setPicture(value)}  placeholder='Picture' defaultValue="photo" options={
                             [{key:'1',value: 'photo', text:'Photo'},{key:'2',value: 'acronym', text:'Acronym'}]} />
@@ -71,7 +77,7 @@ const Templates = () => {
 
             </Grid.Column>
             <Grid.Column width={8} className="h-screen">
-                <PDFVIEW info={{...data.getProfile,email}} options={{color,template,picture}}/>
+                <PDFVIEW info={{...data.getProfile,email}} options={{color,template,picture,backgroundColor}}/>
             </Grid.Column>             
         </Grid>
      );

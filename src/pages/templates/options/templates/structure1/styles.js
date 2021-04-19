@@ -1,14 +1,14 @@
 
 import {  StyleSheet} from '@react-pdf/renderer';
 
-export const createStyle = (color,template) => {
+export const createStyle = (color,backgroundColor,template) => {
 	
 	const titleColor = template === 'topwave' ? 'white' : color;
 	
 	return StyleSheet.create({
 	page: {
 	  paddingTop: 20,
-	  backgroundColor: 'white',
+	  backgroundColor: backgroundColor,
 	  minHeight: '100%',
 	},
 	avatar : {
