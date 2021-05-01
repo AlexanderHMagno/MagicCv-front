@@ -1,4 +1,8 @@
 /* THEME COLOR */
+body {
+    background-color: white !important;
+}
+
 .primary-color {
     background-color: rgba(79, 70, 229, 1)!important;
     color: white !important;

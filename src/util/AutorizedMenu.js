@@ -17,7 +17,7 @@ import Latest from '../pages/Latest';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import IndividualPost from '../pages/IndividualPost';
-import Presentation from '../pages/Presentation';
+import Presentation from '../pages/landing';
 
 const AuthorizedMenu = () => {
 
