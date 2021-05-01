@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import {Header, Button, Container, Icon} from 'semantic-ui-react';
+import React  from 'react';
+
 
 const Presentation = () => {
 

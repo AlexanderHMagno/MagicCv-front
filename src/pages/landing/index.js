@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import Presentation from './Presentation';
 import ContainerWrapper from './Container';
 
