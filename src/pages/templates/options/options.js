@@ -193,8 +193,11 @@ const Options = (({handleOption, options, setOptions}) => {
                                     setting:'picture',
                                     value:e.target.value})}  
                             >
-                                {
-                                    [{key:'1',value: 'photo', text:'Photo'},{key:'2',value: 'acronym', text:'Acronym'}].map((item) => 
+                                {   
+                                    [{key:'1',value: 'acronym', text:'Acronym'},
+                                    {key:'2',value: 'round', text:'Rounded'},
+                                    {key:'3',value: 'square', text:'Squared'},
+                                   ].map((item) => 
                                         <MenuItem 
                                             key={item.key} 
                                             value={item.value}>

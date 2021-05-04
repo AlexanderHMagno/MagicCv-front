@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Background1 from '../../backgrounds/background1';
 import Background2 from '../../backgrounds/background2';
 import Background3 from '../../backgrounds/background3';
+import Background4 from '../../backgrounds/background4';
 import {createStyle} from './styles';
 import Loader from '../../../../../util/loader';
 import {dateFormatter} from '../../../../../util/types';
@@ -19,6 +20,8 @@ const Template = ({options:{settings, template}}) => {
 			return <Background2 options={settings}/>
 		case 'topwave':
 			return <Background3 options={settings}/>
+		case 'doublering':
+			return <Background4 options={settings}/>
 		default:
 			return <Background3/>
 			break;
@@ -41,7 +44,7 @@ return (
 			{/* Left Column */}
 			<View  style={styles.leftColumn}>
 				
-				{(info.options.display.Avatar.picture ==='photo') && picture_url  ?
+				{(info.options.display.Avatar.picture !== 'acronym') && picture_url  ?
 					<Image fixed src={picture_url} style={styles.avatar}/>
 					:<Text fixed style={styles.textAvatar}>{first[0]}{last[0]}</Text>
 				}	

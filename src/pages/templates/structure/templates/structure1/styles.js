@@ -2,7 +2,11 @@
 import StyleSheet from '../../../fonts';
 
 export const createStyle = (options) => {
-	const {settings} = options || {};
+	const {settings,display} = options || {};
+	const photo = {
+		round: "50%",
+		square: "5%"
+	}
 
 
 	return StyleSheet.create({
@@ -14,12 +18,11 @@ export const createStyle = (options) => {
 	  backgroundColor: settings.Background.color
 	},
 	avatar : {
-
-		borderRadius : '50%',
+		borderRadius : photo[display.Avatar.picture] ?? 0,
 		width:150,
+		marginLeft: -5,
 		height:150,
-		marginLeft: 0,
-		marginBottom: 20
+		marginBottom: 20,
 	},
 	textAvatar: {
 		fontSize: '75',
