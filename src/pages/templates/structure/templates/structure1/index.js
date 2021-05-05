@@ -3,6 +3,7 @@ import Background1 from '../../backgrounds/background1';
 import Background2 from '../../backgrounds/background2';
 import Background3 from '../../backgrounds/background3';
 import Background4 from '../../backgrounds/background4';
+import Background5 from '../../backgrounds/background5';
 import {createStyle} from './styles';
 import Loader from '../../../../../util/loader';
 import {dateFormatter} from '../../../../../util/types';
@@ -22,6 +23,8 @@ const Template = ({options:{settings, template}}) => {
 			return <Background3 options={settings}/>
 		case 'doublering':
 			return <Background4 options={settings}/>
+		case 'square':
+			return <Background5 options={settings}/>
 		default:
 			return <Background3/>
 			break;

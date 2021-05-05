@@ -34,15 +34,17 @@ export const createStyle = (options) => {
 	,
 	leftTitle: {
 	  margin: '30 0 10 0',
-	  fontSize: 14,
-	  color: 'white'
+	  fontSize: settings.LeftText.size,
+	  color: settings.LeftText.color,
+	  fontFamily: settings.LeftText.font
 	},
 	leftExtra: {
 	  opacity: '0.7',
 	  lineHeight: 1,
 	  marginTop:	5,
-	  fontSize: 12,
-	  color: 'white'
+	  fontSize: settings.LeftText.size - 2,
+	  color: settings.LeftText.color,
+	  fontFamily: settings.LeftText.font
 	},
 	name: {
 		marginTop: 30,

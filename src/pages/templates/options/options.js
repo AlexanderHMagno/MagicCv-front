@@ -95,7 +95,7 @@ const Options = (({handleOption, options, setOptions}) => {
             <Card.Description> 
             { Loading ? <Loader/> :<Table>
                     <TableBody>
-                        {COLOROPTIONS.map((item,index) => {
+                        {COLOROPTIONS.filter((item)=> item.value !== "").map((item,index) => {
                             return (
                                 <TableRow hover={true} key={index}>
                                     <TableCell style={{borderBottom:"none"}}>
