@@ -7,9 +7,12 @@ import Background5 from '../../backgrounds/background5';
 import {createStyle} from './styles';
 import Loader from '../../../../../util/loader';
 import {dateFormatter} from '../../../../../util/types';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import ErrorIcon from '@material-ui/icons/Error';
 
 
-import { Page, Text, View, Document,PDFViewer, Image} from '@react-pdf/renderer';
+import { Page, Text, View, Document,PDFViewer, Image, PDFDownloadLink} from '@react-pdf/renderer';
 
 
 const Template = ({options:{settings, template}}) => {
@@ -117,6 +120,8 @@ return (
 const DOMRENDER = (info) => {
 	
 	const [loading, setLoading] = useState(true);
+	const {first ="document", last} = info.info || {};
+	const documentFile = `${first}_${last}_cv`;
 	
 	useEffect(()=> {
 		setLoading(true);
@@ -129,9 +134,26 @@ const DOMRENDER = (info) => {
 	return (
 		<>
 		{loading && <Loader/>}
-		<PDFViewer  height="100%" width="100%">
-			<MyDocument info={info} name={"alex"}/>
-		</PDFViewer>
+		
+		<PDFDownloadLink fileName={documentFile} document={<MyDocument info={info} agua={false}/>}>
+			<Button variant="contained" color="primary" component="span" style={{margin:20}}>
+				Dowload Your Cv
+			</Button>
+		</PDFDownloadLink>
+		
+		<div className="h-0 hidden sm:block sm:h-full">
+			<PDFViewer  height="100%" width="100%">
+				<MyDocument info={info} agua={true}/>
+			</PDFViewer>
+		</div>
+		<div className="sm:hidden">
+			<Typography variant="h6" component="h2" gutterBottom color="primary" align="center"> 
+				<ErrorIcon/> To preview your Cv, we recommend to use a computer.
+			</Typography>
+		</div>
+		
+
+		
 		</>
 	)
 }
