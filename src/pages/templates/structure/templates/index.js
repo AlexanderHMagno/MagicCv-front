@@ -8,7 +8,8 @@ const PDFFactory = ({info, options}) => {
         topwave :  Structure1,
     }
 
-    const OptionPicked = structure[options.template] || Structure1;
+    // const OptionPicked = structure[options.template] || Structure1;
+    const OptionPicked = Structure1;
 
     return <>{<OptionPicked info={info} options={options} />}</>
 

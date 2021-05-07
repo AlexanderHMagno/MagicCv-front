@@ -4,6 +4,8 @@ import Background2 from '../../backgrounds/background2';
 import Background3 from '../../backgrounds/background3';
 import Background4 from '../../backgrounds/background4';
 import Background5 from '../../backgrounds/background5';
+import Background6 from '../../backgrounds/background6';
+
 import {createStyle} from './styles';
 import Loader from '../../../../../util/loader';
 import {dateFormatter} from '../../../../../util/types';
@@ -28,6 +30,8 @@ const Template = ({options:{settings, template}}) => {
 			return <Background4 options={settings}/>
 		case 'square':
 			return <Background5 options={settings}/>
+		case 'gastown':
+			return <Background6 options={settings}/>
 		default:
 			return <Background3/>
 			break;
@@ -135,11 +139,11 @@ const DOMRENDER = (info) => {
 		<>
 		{loading && <Loader/>}
 		
-		<PDFDownloadLink fileName={documentFile} document={<MyDocument info={info} agua={false}/>}>
-			<Button variant="contained" color="primary" component="span" style={{margin:20}}>
+		{/* <Button  info={info} variant="contained" color="primary" component="span" style={{margin:20}}>
+			<PDFDownloadLink fileName={documentFile} document={<MyDocument info={info} agua={false}/>}>
 				Dowload Your Cv
-			</Button>
-		</PDFDownloadLink>
+			</PDFDownloadLink>
+		</Button> */}
 		
 		<div className="h-0 hidden sm:block sm:h-full">
 			<PDFViewer  height="100%" width="100%">

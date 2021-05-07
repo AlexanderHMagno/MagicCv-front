@@ -54,7 +54,6 @@ export const TEMPLATEOPTIONS = [
             },
         }
     },
-
     {label: "triwave" ,image:"images/cv4.png",
         config: {
             display: {Avatar: {picture: "acronym"}},
@@ -129,5 +128,23 @@ export const TEMPLATEOPTIONS = [
         },
     }
     },
- 
+    {label: "gastown" ,image:"images/cv10.png",
+    config: {
+        display: {Avatar: {picture: "acronym"}},
+        template:{Principal: {template: "gastown"}},
+        settings: {
+            Background: {color: "#ffffff", font: "", size: 0},
+            Back1: {color: "#5f27cd", font: "Rubik", size: 0},
+            Back2: {color: "#5f27cd", font: "Rubik", size: 0},
+            Back3: {color: "#feca57", font: "Rubik", size: 0},
+            Main: {color: "", font: "Rubik", size: 0},
+            LeftText: {color: "#ffffff", font: "Rubik", size: 14},
+            Name: {color: "#ffffff", font: "Arbutus", size: 40},
+            Title: {color: "#000000", font: "Rubik", size: 20},
+            Subtitle: {color: "#5f27cd", font: "Rubik", size: 15},
+            Text: {color: "#000000", font: "Rubik", size: 10},
+            Extra: {color: "#000000", font: "Rubik", size: 18},
+        },
+    }
+    },
 ];
