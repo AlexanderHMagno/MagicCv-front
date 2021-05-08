@@ -42,7 +42,7 @@ const Template = ({options:{settings, template}}) => {
 const MyDocument = ({info}) => {
 const styles = createStyle(info.options);
 const {address, first, last, bio,role, city, email, country,phone,picture_url,experience,education,volunteer,skills} = info.info || {};
-	
+const acronyms = ['acronym','acronym2'];
 return (
   <Document>
     <Page size="A4" style={styles.page}>
@@ -54,9 +54,9 @@ return (
 			{/* Left Column */}
 			<View  style={styles.leftColumn}>
 				
-				{(info.options.display.Avatar.picture !== 'acronym') && picture_url  ?
+				{(!acronyms.includes(info.options.display.Avatar.picture)) && picture_url  ?
 					<Image fixed src={picture_url} style={styles.avatar}/>
-					:<Text fixed style={styles.textAvatar}>{first[0]}{last[0]}</Text>
+					:<View fixed style={styles.backAvatar}><Text style={styles.textAvatar}>{first[0]}{last[0]}</Text></View>
 				}	
 				
 				<Text style={styles.leftTitle}>About Me</Text>

@@ -22,7 +22,7 @@ export const TEMPLATEOPTIONS = [
     {label: "bluewave" ,image:"images/cv2.png",config: DEFAULTCONFIG},
     {label: "bluewave" ,image:"images/cv11.png",
         config: {   
-            display: {Avatar: {picture: 'acronym'}},
+            display: {Avatar: {picture: 'acronym2'}},
             template: {Principal: { template: "bluewave" }},
             settings: {
                 Main: {color:"#393939",font:"Rubik",size:20},

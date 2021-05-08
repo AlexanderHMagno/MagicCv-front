@@ -222,8 +222,10 @@ const Options = (({handleOption, options, setOptions}) => {
                             >
                                 {   
                                     [{key:'1',value: 'acronym', text:'Acronym'},
-                                    {key:'2',value: 'round', text:'Rounded'},
-                                    {key:'3',value: 'square', text:'Squared'},
+                                    {key:'2',value: 'acronym2', text:'Acronym 2'},
+                                    {key:'3',value: 'round', text:'Rounded'},
+                                    {key:'4',value: 'square', text:'Squared'},
+                                    
                                    ].map((item) => 
                                         <MenuItem 
                                             key={item.key} 
