@@ -23,3 +23,10 @@ export const FONTS =     [
     {key:'25',value: 'Roboto', text:'Roboto'},
     {key:'26',value: 'Rubik', text:'Rubik'},
 ];
+
+
+export const POSITIONS = [
+    {key:'1',value: 'flex-start', text:'Left'},
+    {key:'2',value: 'center', text:'Center'},
+    {key:'3',value: 'flex-end', text:'Right'},
+];

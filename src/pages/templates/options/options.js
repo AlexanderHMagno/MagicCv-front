@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 
 import {Table,TableRow,TableBody,TableCell, Typography,TextField } from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
+import Box from '@material-ui/core/Box';
 import { Carousel } from 'react-responsive-carousel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -14,7 +15,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 
 //internals
 import {TEMPLATEOPTIONS} from './templateOptions';
-import {FONTS} from './fontOptions';
+import {FONTS, POSITIONS} from './fontOptions';
+
 import Loader from '../../../util/loader';
 
 
@@ -44,7 +46,7 @@ const Options = (({handleOption, options, setOptions}) => {
 
     //Create font and Size array, size must be greater than zero
     const TEXTOPTIONS = Object.entries(settings).map((element => {
-        return {label:element[0],font:element[1].font,size: element[1].size }
+        return {label:element[0],font:element[1].font,size: element[1].size, position: element[1].position??"" }
     }))
     
 
@@ -130,35 +132,60 @@ const Options = (({handleOption, options, setOptions}) => {
                     <TableBody>
                         
                             {TEXTOPTIONS.filter((item)=> item.size > 0).map((item,index) => {
-                            return (
-                                <TableRow hover={true} key={index}>
-                                    <TableCell style={{borderBottom:"none"}}>
-                                        <label>{item.label}</label>
-                                    </TableCell>
-                                    <TableCell  style={{borderBottom:"none"}}>
-                                        <TextField  margin="none" size="small" label="Size"  onChange={(e)=>handleOption({group:"settings",subGroup:item.label,setting:'size',value:e.target.value})} type="number" value={item.size}/>
-                                    </TableCell>
-                                    <TableCell style={{borderBottom:"none"}}>
-                                        <Select   
-                                            value={item.font}
-                                            onChange={(e)=> 
-                                                handleOption(
-                                                    {group:"settings",
-                                                    subGroup:item.label,
-                                                    setting:'font',
-                                                    value:e.target.value})}  
-                                            >
-                                            {
-                                                FONTS.map((item) => 
-                                                    <MenuItem key={item.key} value={item.value}>
-                                                        {item.text}
-                                                    </MenuItem> )
-                                            } 
-                                        </Select>
-                                    </TableCell>
-                                
-                                </TableRow>
-                                )
+                                return (
+                                    <Fragment key={index}>
+                                    <TableRow style={{background:"lightgray"}}>
+                                        <TableCell size="small" colSpan="3" style={{textAlign:"center",borderBottom:"none"}}>
+                                            <label>{item.label}</label>
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow hover={true}  >
+                                        
+                                        <TableCell style={{borderBottom:"none"}}>
+                                            <Select   
+                                                value={item.font}
+                                                onChange={(e)=> 
+                                                    handleOption(
+                                                        {group:"settings",
+                                                        subGroup:item.label,
+                                                        setting:'font',
+                                                        value:e.target.value})}  
+                                                >
+                                                {
+                                                    FONTS.map((item) => 
+                                                        <MenuItem key={item.key} value={item.value}>
+                                                            {item.text}
+                                                        </MenuItem> )
+                                                } 
+                                            </Select>
+                                        </TableCell>
+                                        <TableCell style={{borderBottom:"none"}}>
+                                            <TextField  margin="none" size="small"  onChange={(e)=>handleOption({group:"settings",subGroup:item.label,setting:'size',value:e.target.value})} type="number" value={item.size}/>
+                                        </TableCell>
+                                        
+                                            <TableCell  style={{borderBottom:"none"}}>
+                                            {item.position && 
+                                            <Select   
+                                                    value={item.position}
+                                                    onChange={(e)=> 
+                                                        handleOption(
+                                                            {group:"settings",
+                                                            subGroup:item.label,
+                                                            setting:'position',
+                                                            value:e.target.value})}  
+                                                    >
+                                                    {
+                                                        POSITIONS.map((item) => 
+                                                            <MenuItem key={item.key} value={item.value}>
+                                                                {item.text}
+                                                            </MenuItem> )
+                                                    } 
+                                                </Select>
+                                        }
+                                            </TableCell>
+                                    </TableRow>
+                                </Fragment>
+                                    )
                         })}
                     </TableBody>
                 </Table>

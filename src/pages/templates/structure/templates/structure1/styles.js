@@ -23,6 +23,7 @@ export const createStyle = (options) => {
 		marginLeft: -5,
 		height:150,
 		marginBottom: 20,
+		backgroundColor: 'red',
 	},
 	textAvatar: {
 		fontSize: '75',
@@ -34,9 +35,10 @@ export const createStyle = (options) => {
 	,
 	leftTitle: {
 	  margin: '30 0 10 0',
-	  fontSize: settings.LeftText.size,
-	  color: settings.LeftText.color,
-	  fontFamily: settings.LeftText.font
+	  fontSize: settings.LeftTitle.size,
+	  color: settings.LeftTitle.color,
+	  fontFamily: settings.LeftTitle.font,
+	  alignSelf: settings.LeftTitle.position
 	},
 	leftExtra: {
 	  opacity: '0.7',
@@ -44,7 +46,8 @@ export const createStyle = (options) => {
 	  marginTop:	5,
 	  fontSize: settings.LeftText.size - 2,
 	  color: settings.LeftText.color,
-	  fontFamily: settings.LeftText.font
+	  fontFamily: settings.LeftText.font,
+	  alignSelf: settings.LeftText.position
 	},
 	name: {
 		marginTop: 30,
