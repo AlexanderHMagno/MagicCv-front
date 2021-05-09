@@ -19,8 +19,8 @@ export const DEFAULTCONFIG =         {
 
 
 export const TEMPLATEOPTIONS = [
-    {label: "bluewave" ,image:"images/cv2.png",config: DEFAULTCONFIG},
-    {label: "bluewave" ,image:"images/cv11.png",
+    {label: "bluewave" ,image:"images/cvs/cv2.png",config: DEFAULTCONFIG},
+    {label: "bluewave" ,image:"images/cvs/cv11.png",
         config: {   
             display: {Avatar: {picture: 'acronym2'}},
             template: {Principal: { template: "bluewave" }},
@@ -37,16 +37,16 @@ export const TEMPLATEOPTIONS = [
             },
         }
     },
-    {label: "doublering" ,image:"images/cv8.png",
+    {label: "doublering" ,image:"images/cvs/cv8.png",
     config: {
         display: {Avatar: {picture: "acronym"}},
         template:{Principal: {template: "doublering"}},
         settings: {
-            Main: {color: "#3d62b7", font: "Rubik", size: 20},
+            Main: {color: "", font: "Rubik", size: 0},
             Background: {color: "#5a5a58", font: "", size: 0},
             Back1: {color: "#e9e90c", font: "Rubik", size: 0},
             Back2: {color: "#0b0b0a", font: "Rubik", size: 0},
-            LeftTitle: {color: "#ffffff", font: "Rubik", size: 16, position: 'center'},
+            LeftTitle: {color: "#e9e90c", font: "Rubik", size: 16, position: 'center'},
             LeftText: {color: "#ffffff", font: "Rubik", size: 14, position: 'center'},
             Name: {color: "#fcfcfc", font: "Orbitron", size: 30},
             Title: {color: "#fcfcfc", font: "Rubik", size: 20},
@@ -57,7 +57,27 @@ export const TEMPLATEOPTIONS = [
         
     }
     },
-    {label: "topwave" ,image:"images/cv3.png",
+    {label: "doublering" ,image:"images/cvs/cv12.png",
+    config: {
+        display: {Avatar: {picture: "acronym2"}},
+        template:{Principal: {template: "doublering"}},
+        settings: {
+            Main: {color: "", font: "Rubik", size: 0},
+            Background: {color: "#5a5a58", font: "", size: 0},
+            Back1: {color: "3a3a38", font: "Rubik", size: 0},
+            Back2: {color: "#0b0b0a", font: "Rubik", size: 0},
+            LeftTitle: {color: "#ffffff", font: "Rubik", size: 16, position: 'center'},
+            LeftText: {color: "#ffffff", font: "Rubik", size: 14, position: 'center'},
+            Name: {color: "#8a66df", font: "Orbitron", size: 30},
+            Title: {color: "#fcfcfc", font: "Rubik", size: 20},
+            Subtitle: {color: "#a6a6a6", font: "Rubik", size: 15},
+            Text: {color: "#ffffff", font: "Rubik", size: 10},
+            Extra: {color: "#f2f2f2", font: "Rubik", size: 18},
+        },
+        
+    }
+    },
+    {label: "topwave" ,image:"images/cvs/cv3.png",
         config: {
             display: {Avatar: {picture: "round"}},   
             template: {Principal: {template: "topwave"}},     
@@ -74,7 +94,7 @@ export const TEMPLATEOPTIONS = [
             },
         }
     },
-    {label: "triwave" ,image:"images/cv4.png",
+    {label: "triwave" ,image:"images/cvs/cv4.png",
         config: {
             display: {Avatar: {picture: "acronym"}},
             template:{Principal: {template: "triwave"}},
@@ -93,7 +113,7 @@ export const TEMPLATEOPTIONS = [
             },  
         }
     },
-    {label: "triwave" ,image:"images/cv5.png",
+    {label: "triwave" ,image:"images/cvs/cv5.png",
     config: {
         display: {Avatar: {picture: "round"}},
         template:{Principal: {template: "triwave"}},
@@ -112,7 +132,7 @@ export const TEMPLATEOPTIONS = [
         },
         }
     },
-    {label: "doublering" ,image:"images/cv7.png",
+    {label: "doublering" ,image:"images/cvs/cv7.png",
     config: {
         display: {Avatar: {picture: "acronym"}},
         template:{Principal: {template: "doublering"}},
@@ -122,7 +142,7 @@ export const TEMPLATEOPTIONS = [
             Back2: {color: "#a39f9f", font: "Rubik", size: 0},
             LeftTitle: {color: "#ffffff", font: "Rubik", size: 16, position: 'center'},
             LeftText: {color: "#ffffff", font: "Rubik", size: 14, position: 'center'},
-            Main: {color: "#3d62b7", font: "Rubik", size: 20},
+            Main: {color: "", font: "Rubik", size: 20},
             Name: {color: "#fcfcfc", font: "Orbitron", size: 30},
             Title: {color: "#fcfcfc", font: "Rubik", size: 20},
             Subtitle: {color: "#a6a6a6", font: "Rubik", size: 15},
@@ -131,7 +151,7 @@ export const TEMPLATEOPTIONS = [
         },
     }
     },
-    {label: "square" ,image:"images/cv9.png",
+    {label: "square" ,image:"images/cvs/cv9.png",
     config: {
         display: {Avatar: {picture: "acronym"}},
         template:{Principal: {template: "square"}},
@@ -152,7 +172,7 @@ export const TEMPLATEOPTIONS = [
         },
     }
     },
-    {label: "gastown" ,image:"images/cv10.png",
+    {label: "gastown" ,image:"images/cvs/cv10.png",
     config: {
         display: {Avatar: {picture: "acronym"}},
         template:{Principal: {template: "gastown"}},
