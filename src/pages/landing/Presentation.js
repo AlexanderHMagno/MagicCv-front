@@ -43,6 +43,9 @@ const Presentation = () => {
                                 <p className="mt-3  text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl ">
                                     Write your resume once, then you can pick any of our multiple templates. You wont need to start from scratch everytime. 
                                 </p>
+                                <a href="/login" className="hidden sm:block text-center w-full mt-10 flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+                                    Select your Template
+                                </a>
                             </div>
                             <div className="sm:p-14 flex justify-center flex-g"> 
                                 {/* <img className="w-4/5 sm:w-2/3 lg:w-3/5 mx-auto" src="images/presentation/group.png" alt="people working"/> */}
