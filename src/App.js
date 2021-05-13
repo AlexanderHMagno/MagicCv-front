@@ -15,7 +15,7 @@ function App() {
           <Switch>   
               <AuthorizedMenu/>
           </Switch>
-        {/* </Container> */}
+
       </Router>
       </AuthProvider>
   );

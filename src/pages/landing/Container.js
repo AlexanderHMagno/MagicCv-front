@@ -8,7 +8,7 @@ export default function ContainerWrapper({children}) {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container  disableGutters={true} style={{height: '100vh' }}>
+      <Container maxWidth="lg" disableGutters={true} style={{height: '100vh',minWidth:"100%" }}>
           {children}
       </Container>
     </React.Fragment>

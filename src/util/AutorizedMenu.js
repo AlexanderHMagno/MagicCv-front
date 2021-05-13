@@ -42,7 +42,7 @@ const AuthorizedMenu = () => {
         }
 
         {!user && 
-            <Container >
+            <Container fluid>
                 <MenuNavOut/>   
                 <Switch>
                     <Route exact path="/login" component={Login}/>
