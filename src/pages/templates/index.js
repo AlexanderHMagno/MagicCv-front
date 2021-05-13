@@ -9,20 +9,13 @@ import Loader from '../../util/loader';
 import Options from './options/options';
 
 import {DEFAULTCONFIG} from './options/templateOptions';
+import {OrganizeTemplateData} from '../../util/organizeCandidateData';
 
 
 
 
 
 const Templates = () => {
-
-    
-    const [template, setTemplate] = useState('bluewave');
-    const [color, setColor] = useState("#010332");
-    const [backgroundColor, setBackground] = useState("#FFFFFF");
-    const [picture, setPicture] = useState("photo");
-    const [titleFont, setTitleFont] = useState("Roboto");
-    const [nameSize, setNameSize] = useState(35);
     
     const [options, setOptions] = useState(DEFAULTCONFIG);
 
@@ -37,11 +30,10 @@ const Templates = () => {
 
     // TODO: Query should come from the same place that setting the CV
     const {user:{username, id, email,createdAt}} = useContext(AuthContext);
-    const {loading, data} = useQuery(GET_PROFILE, { variables :{userId:id}})
+    let {loading, data} = useQuery(GET_PROFILE, { variables :{userId:id}})
 
-
-    
     if (loading) return <Loader/>;
+    data = OrganizeTemplateData(data);
     return ( 
 
         <Grid stackable>

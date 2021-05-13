@@ -2,21 +2,12 @@ import React from 'react';
 import { Container, Grid , Icon, Header, Transition } from 'semantic-ui-react';
 import MasterModal from '../modal/MasterModal';
 import MasterContainer from '../container/MasterContainer';
+import {OrganizeCandidateData} from '../../../util/organizeCandidateData'
 
 const ProfileTemplate = ({code, information}) => {
 
     //sort
-    if (information.length) {
-        if (code === 'Skills') {
-            information = [...information].sort(function(a, b) {
-                return  b.rate - a.rate;
-              });
-        } else  {
-            information = [...information].sort(function(a, b) {
-                return  b.startYear - a.startYear;
-              });
-        }
-    }
+    information = OrganizeCandidateData(code,information);
 
     return (
 
