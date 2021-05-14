@@ -22,6 +22,24 @@ export const createStyle = (options) => {
 	  fontSize: settings.Main.size,
 	  backgroundColor: settings.Background.color
 	},
+	agua: {
+		position: "absolute",
+		top : "300",
+		left: "100",
+		fontSize: 100,
+		color: settings.Name.color,
+		opacity: 0.2,
+		transform: "rotate(-45deg)",
+	},
+	brand: {
+		position: "absolute",
+		bottom : "10",
+		left: "10",
+		fontSize: 15,
+		fontFamily: "Monofett", 
+		color: settings.Name.color,
+		opacity: 0.3,
+	},
 	avatar : {
 		borderRadius : photo[display.Avatar.picture] ?? 0,
 		width:150,

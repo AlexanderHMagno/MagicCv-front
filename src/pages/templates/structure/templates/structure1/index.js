@@ -39,14 +39,16 @@ const Template = ({options:{settings, template}}) => {
 }  
 
 // Create Document Component
-const MyDocument = ({info}) => {
+const MyDocument = ({info, agua}) => {
 const styles = createStyle(info.options);
 const {address, first, last, bio,role, city, email, country,phone,picture_url,experience,education,volunteer,skills} = info.info || {};
 const acronyms = ['acronym','acronym2'];
+
+console.log(info, agua);
 return (
   <Document>
     <Page size="A4" style={styles.page}>
-		
+	 
 		{/* Backgrounds */}
 		<Template options={info.options}/>
 		{/* Structure */}
@@ -114,7 +116,10 @@ return (
 			</View>
 	
 		</View>
-	  
+		{/* Agua */}
+		{agua && <Text fixed style={styles.agua}>Magic Cv</Text>}
+		{/* Brand */}
+		<Text fixed style={styles.brand}>Made by Magic Cv</Text>
     </Page>
   </Document>
 )
@@ -139,21 +144,30 @@ const DOMRENDER = (info) => {
 		<>
 		{loading && <Loader/>}
 		
-		{/* <Button  info={info} variant="contained" color="primary" component="span" style={{margin:20}}>
-			<PDFDownloadLink fileName={documentFile} document={<MyDocument info={info} agua={false}/>}>
-				Dowload Your Cv
-			</PDFDownloadLink>
-		</Button> */}
-		
-		<div className="h-0 hidden sm:block sm:h-full">
-			<PDFViewer  height="100%" width="100%">
-				<MyDocument info={info} agua={true}/>
-			</PDFViewer>
-		</div>
-		<div className="sm:hidden">
-			<Typography variant="h6" component="h2" gutterBottom color="primary" align="center"> 
-				<ErrorIcon/> To preview your Cv, we recommend to use a computer.
-			</Typography>
+		<div className="h-full flex flex-col-reverse">
+			<div className="h-0 hidden sm:block sm:h-full">
+				<PDFViewer  height="100%" width="100%">
+					<MyDocument info={info} agua={true}/>
+				</PDFViewer>
+			</div>
+			<div>
+				<PDFDownloadLink fileName={`preview_${documentFile}`} document={<MyDocument info={info} agua={true}/>}>
+					{<Button info={info} variant="contained" color="secondary" component="span" style={{margin:20}}>
+						Preview Your Cv
+					</Button>}
+				</PDFDownloadLink>
+				<PDFDownloadLink fileName={documentFile} document={<MyDocument info={info} agua={false}/>}>
+					<Button  info={info} variant="contained" color="primary" component="span" style={{margin:20}}>
+						Dowload Your Cv
+					</Button>
+				</PDFDownloadLink>
+				
+			</div>
+			<div className="sm:hidden">
+				<Typography variant="h6" component="h2" gutterBottom color="primary" align="center"> 
+					<ErrorIcon/> To preview your Cv, we recommend to use a computer.
+				</Typography>
+			</div>
 		</div>
 		
 
