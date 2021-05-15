@@ -40,7 +40,7 @@ const Templates = () => {
             <Grid.Column width={5}  >  
                 <Card fluid>
                     <Card.Content>
-                        <Card.Header>Options</Card.Header>
+                        <Card.Header>Templates</Card.Header>
                             <Options handleOption={handleOptions} setOptions={setOptions} options={options}/>
                         <br></br>
                     </Card.Content>

@@ -11,6 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Card,Image } from 'semantic-ui-react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import LateralOption from './lateralOptionNav';
 
 
 //internals
@@ -58,17 +59,169 @@ const Options = (({handleOption, options, setOptions}) => {
 
     return (
         <>
+        { Loading && <Loader/>}
+        
+        <LateralOption>
+            <Accordion expanded={expanded === 'colors'} onChange={handleAccordion('colors')}>
+                <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1bh-content"
+                id="panel1bh-header"
+                >
+                <Typography >Colors</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                <Card.Description> 
+                { Loading ? <Loader/> :<Table>
+                        <TableBody>
+                            {COLOROPTIONS.filter((item)=> item.value !== "").map((item,index) => {
+                                return (
+                                    <TableRow hover={true} key={index}>
+                                        <TableCell style={{borderBottom:"none"}}>
+                                            <label>{item.label}</label>
+                                        </TableCell>
+                                        <TableCell align="left" style={{borderBottom:"none"}}>
+                                            <input onChange={(e)=>handleOption({group:"settings",subGroup:item.label,setting:'color',value:e.target.value})} type="color" defaultValue={item.value}/>
+                                        </TableCell>
+                                    </TableRow>
+                                    )
+                            })}
+                        </TableBody>
+                    </Table>
+                }
+                </Card.Description> 
+            
+                </AccordionDetails>
+            </Accordion>
+            
+            {/* Fonts */}
+            <Accordion expanded={expanded === 'Fonts'} onChange={handleAccordion('Fonts')}>
+                <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1bh-content"
+                id="panel1bh-header"
+                >
+                <Typography >Fonts</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                
+                {   Loading ? <Loader/> : <Table>
+                        <TableBody>
+                            
+                                {TEXTOPTIONS.filter((item)=> item.size > 0).map((item,index) => {
+                                    return (
+                                        <Fragment key={index}>
+                                        <TableRow style={{background:"lightgray"}}>
+                                            <TableCell size="small" colSpan="3" style={{textAlign:"center",borderBottom:"none"}}>
+                                                <label>{item.label}</label>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow hover={true}  >
+                                            
+                                            <TableCell style={{borderBottom:"none"}}>
+                                                <Select   
+                                                    value={item.font}
+                                                    onChange={(e)=> 
+                                                        handleOption(
+                                                            {group:"settings",
+                                                            subGroup:item.label,
+                                                            setting:'font',
+                                                            value:e.target.value})}  
+                                                    >
+                                                    {
+                                                        FONTS.map((item) => 
+                                                            <MenuItem key={item.key} value={item.value}>
+                                                                {item.text}
+                                                            </MenuItem> )
+                                                    } 
+                                                </Select>
+                                            </TableCell>
+                                            <TableCell style={{borderBottom:"none"}}>
+                                                <TextField  margin="none" size="small"  onChange={(e)=>handleOption({group:"settings",subGroup:item.label,setting:'size',value:e.target.value})} type="number" value={item.size}/>
+                                            </TableCell>
+                                            
+                                                <TableCell  style={{borderBottom:"none"}}>
+                                                {item.position && 
+                                                <Select   
+                                                        value={item.position}
+                                                        onChange={(e)=> 
+                                                            handleOption(
+                                                                {group:"settings",
+                                                                subGroup:item.label,
+                                                                setting:'position',
+                                                                value:e.target.value})}  
+                                                        >
+                                                        {
+                                                            POSITIONS.map((item) => 
+                                                                <MenuItem key={item.key} value={item.value}>
+                                                                    {item.text}
+                                                                </MenuItem> )
+                                                        } 
+                                                    </Select>
+                                            }
+                                                </TableCell>
+                                        </TableRow>
+                                    </Fragment>
+                                        )
+                            })}
+                        </TableBody>
+                    </Table>
+                }
+            
+                </AccordionDetails>
+            </Accordion>
+            
+            {/* Display */}
+            <Accordion expanded={expanded === 'Display'} onChange={handleAccordion('Display')}>
+                <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel4bh-content"
+                id="panel4bh-header"
+                >
+                <Typography >Display</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                <Table>
+                        <TableBody>
+                            <TableRow hover={true}>
+                                <TableCell style={{borderBottom:"none"}}>
+                                    <label>Picture</label>
+                                </TableCell>
+                                <TableCell style={{borderBottom:"none"}}>
+                                <Select  
+                                    labelId="name-font-selection" 
+                                    value={display.Avatar.picture}
+                                    onChange={e =>  handleOption(
+                                        {group:"display",
+                                        subGroup:'Avatar',
+                                        setting:'picture',
+                                        value:e.target.value})}  
+                                >
+                                    {   
+                                        [{key:'1',value: 'acronym', text:'Acronym'},
+                                        {key:'2',value: 'acronym2', text:'Acronym 2'},
+                                        {key:'3',value: 'round', text:'Rounded'},
+                                        {key:'4',value: 'square', text:'Squared'},
+                                        
+                                    ].map((item) => 
+                                            <MenuItem 
+                                                key={item.key} 
+                                                value={item.value}>
+                                                    {item.text}
+                                            </MenuItem> )
+                                    } 
+                                </Select>
+                                </TableCell>
+                            
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </AccordionDetails>
+            </Accordion> 
+        </LateralOption>
+
         {/* Templates */}
-        <Accordion expanded={expanded === 'template'} onChange={handleAccordion('template')}>
-            <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2bh-content"
-            id="panel2bh-header"
-            >
-            <Typography >Templates</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-            { Loading && <Loader/>}
+        <div className=" pt-5">
             <Carousel showThumbs={false} infiniteLoop={true}>
 
                 {TEMPLATEOPTIONS.map((element,index) => {
@@ -81,167 +234,9 @@ const Options = (({handleOption, options, setOptions}) => {
                             <Image src={element.image}  />
                     </div>
                 })}
-                </Carousel>     
-            </AccordionDetails>
-        </Accordion>
-
+            </Carousel>     
+        </div>
         {/* Colors */}
-        <Accordion expanded={expanded === 'colors'} onChange={handleAccordion('colors')}>
-            <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1bh-content"
-            id="panel1bh-header"
-            >
-            <Typography >Colors</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-            <Card.Description> 
-            { Loading ? <Loader/> :<Table>
-                    <TableBody>
-                        {COLOROPTIONS.filter((item)=> item.value !== "").map((item,index) => {
-                            return (
-                                <TableRow hover={true} key={index}>
-                                    <TableCell style={{borderBottom:"none"}}>
-                                        <label>{item.label}</label>
-                                    </TableCell>
-                                    <TableCell align="left" style={{borderBottom:"none"}}>
-                                        <input onChange={(e)=>handleOption({group:"settings",subGroup:item.label,setting:'color',value:e.target.value})} type="color" defaultValue={item.value}/>
-                                    </TableCell>
-                                </TableRow>
-                                )
-                        })}
-                    </TableBody>
-                </Table>
-            }
-            </Card.Description> 
-        
-            </AccordionDetails>
-        </Accordion>
-        
-        {/* Fonts */}
-        <Accordion expanded={expanded === 'Fonts'} onChange={handleAccordion('Fonts')}>
-            <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1bh-content"
-            id="panel1bh-header"
-            >
-            <Typography >Fonts</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-            
-            {   Loading ? <Loader/> : <Table>
-                    <TableBody>
-                        
-                            {TEXTOPTIONS.filter((item)=> item.size > 0).map((item,index) => {
-                                return (
-                                    <Fragment key={index}>
-                                    <TableRow style={{background:"lightgray"}}>
-                                        <TableCell size="small" colSpan="3" style={{textAlign:"center",borderBottom:"none"}}>
-                                            <label>{item.label}</label>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow hover={true}  >
-                                        
-                                        <TableCell style={{borderBottom:"none"}}>
-                                            <Select   
-                                                value={item.font}
-                                                onChange={(e)=> 
-                                                    handleOption(
-                                                        {group:"settings",
-                                                        subGroup:item.label,
-                                                        setting:'font',
-                                                        value:e.target.value})}  
-                                                >
-                                                {
-                                                    FONTS.map((item) => 
-                                                        <MenuItem key={item.key} value={item.value}>
-                                                            {item.text}
-                                                        </MenuItem> )
-                                                } 
-                                            </Select>
-                                        </TableCell>
-                                        <TableCell style={{borderBottom:"none"}}>
-                                            <TextField  margin="none" size="small"  onChange={(e)=>handleOption({group:"settings",subGroup:item.label,setting:'size',value:e.target.value})} type="number" value={item.size}/>
-                                        </TableCell>
-                                        
-                                            <TableCell  style={{borderBottom:"none"}}>
-                                            {item.position && 
-                                            <Select   
-                                                    value={item.position}
-                                                    onChange={(e)=> 
-                                                        handleOption(
-                                                            {group:"settings",
-                                                            subGroup:item.label,
-                                                            setting:'position',
-                                                            value:e.target.value})}  
-                                                    >
-                                                    {
-                                                        POSITIONS.map((item) => 
-                                                            <MenuItem key={item.key} value={item.value}>
-                                                                {item.text}
-                                                            </MenuItem> )
-                                                    } 
-                                                </Select>
-                                        }
-                                            </TableCell>
-                                    </TableRow>
-                                </Fragment>
-                                    )
-                        })}
-                    </TableBody>
-                </Table>
-            }
-        
-            </AccordionDetails>
-        </Accordion>
-        
-        {/* Display */}
-        <Accordion expanded={expanded === 'Display'} onChange={handleAccordion('Display')}>
-            <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel4bh-content"
-            id="panel4bh-header"
-            >
-            <Typography >Display</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-            <Table>
-                    <TableBody>
-                        <TableRow hover={true}>
-                            <TableCell style={{borderBottom:"none"}}>
-                                <label>Picture</label>
-                            </TableCell>
-                            <TableCell style={{borderBottom:"none"}}>
-                            <Select  
-                                labelId="name-font-selection" 
-                                value={display.Avatar.picture}
-                                onChange={e =>  handleOption(
-                                    {group:"display",
-                                    subGroup:'Avatar',
-                                    setting:'picture',
-                                    value:e.target.value})}  
-                            >
-                                {   
-                                    [{key:'1',value: 'acronym', text:'Acronym'},
-                                    {key:'2',value: 'acronym2', text:'Acronym 2'},
-                                    {key:'3',value: 'round', text:'Rounded'},
-                                    {key:'4',value: 'square', text:'Squared'},
-                                    
-                                   ].map((item) => 
-                                        <MenuItem 
-                                            key={item.key} 
-                                            value={item.value}>
-                                                {item.text}
-                                        </MenuItem> )
-                                } 
-                            </Select>
-                            </TableCell>
-                        
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            </AccordionDetails>
-        </Accordion> 
     </>)
 });
 
