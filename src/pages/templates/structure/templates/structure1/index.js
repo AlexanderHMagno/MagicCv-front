@@ -44,7 +44,6 @@ const styles = createStyle(info.options);
 const {address, first, last, bio,role, city, email, country,phone,picture_url,experience,education,volunteer,skills} = info.info || {};
 const acronyms = ['acronym','acronym2'];
 
-console.log(info, agua);
 return (
   <Document>
     <Page size="A4" style={styles.page}>
@@ -144,13 +143,13 @@ const DOMRENDER = (info) => {
 		<>
 		{loading && <Loader/>}
 		
-		<div className="h-full flex flex-col-reverse">
+		<div className="sm:h-full flex flex-col-reverse">
 			<div className="h-0 hidden sm:block sm:h-full">
 				<PDFViewer  height="100%" width="100%">
 					<MyDocument info={info} agua={true}/>
 				</PDFViewer>
 			</div>
-			<div>
+			<div className="flex justify-evenly">
 				<PDFDownloadLink fileName={`preview_${documentFile}`} document={<MyDocument info={info} agua={true}/>}>
 					{<Button info={info} variant="contained" color="secondary" component="span" style={{margin:20}}>
 						Preview Your Cv

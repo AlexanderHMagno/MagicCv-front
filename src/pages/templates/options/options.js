@@ -68,7 +68,8 @@ const Options = (({handleOption, options, setOptions}) => {
             <Typography >Templates</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <Carousel showThumbs={false} infiniteLoop={true}>
+            { Loading && <Loader/>}
+            <Carousel showThumbs={false} infiniteLoop={true}>
 
                 {TEMPLATEOPTIONS.map((element,index) => {
                     

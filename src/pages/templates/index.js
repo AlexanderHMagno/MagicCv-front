@@ -36,16 +36,17 @@ const Templates = () => {
     data = OrganizeTemplateData(data);
     return ( 
 
-        <Grid stackable>
+        <Grid stackable className="flex flex-col-reverse">
             <Grid.Column width={5}  >  
                 <Card fluid>
                     <Card.Content>
-                    <Card.Header>Options</Card.Header>
-                        <Options handleOption={handleOptions} setOptions={setOptions} options={options}/>
-                    <br></br></Card.Content>
+                        <Card.Header>Options</Card.Header>
+                            <Options handleOption={handleOptions} setOptions={setOptions} options={options}/>
+                        <br></br>
+                    </Card.Content>
                 </Card>
             </Grid.Column>
-            <Grid.Column width={8} className="h-screen">
+            <Grid.Column width={8} className="sm:h-screen">
                 <PDFVIEW info={{...data.getProfile,email}} options={options}/>
             </Grid.Column>             
         </Grid>
