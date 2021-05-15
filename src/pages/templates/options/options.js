@@ -75,7 +75,7 @@ const Options = (({handleOption, options, setOptions}) => {
                     
                     return <div 
                         key={index}
-                        className="cursor-pointer" 
+                        className="cursor-pointer m-auto w-9/12  md:w-full" 
                         onClick={()=> setOptions(element.config)}  
                             >
                             <Image src={element.image}  />
