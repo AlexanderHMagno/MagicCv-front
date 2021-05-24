@@ -57,7 +57,7 @@ return (
 			<View  style={styles.leftColumn}>
 				
 				{(!acronyms.includes(info.options.display.Avatar.picture)) && picture_url  ?
-					<Image fixed source={{uri:picture_url}} style={styles.avatar}/>
+					<Image fixed source={{uri:picture_url, headers:{'Access-Control-Request-Headers': 'Access-Control-Allow-Origin'}}} style={styles.avatar}/>
 					:<View fixed style={styles.backAvatar}><Text style={styles.textAvatar}>{first[0]}{last[0]}</Text></View>
 				}	
 				
