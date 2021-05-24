@@ -43,6 +43,7 @@ const MyDocument = ({info, agua}) => {
 const styles = createStyle(info.options);
 const {address, first, last, bio,role, city, email, country,phone,picture_url,experience,education,volunteer,skills} = info.info || {};
 const acronyms = ['acronym','acronym2'];
+console.log({picture_url});
 
 return (
   <Document>
@@ -56,7 +57,7 @@ return (
 			<View  style={styles.leftColumn}>
 				
 				{(!acronyms.includes(info.options.display.Avatar.picture)) && picture_url  ?
-					<Image fixed src={picture_url} style={styles.avatar}/>
+					<Image fixed source={{uri:picture_url}} style={styles.avatar}/>
 					:<View fixed style={styles.backAvatar}><Text style={styles.textAvatar}>{first[0]}{last[0]}</Text></View>
 				}	
 				
