@@ -1,12 +1,13 @@
 import React from 'react';
 import App from './App';
-import { ApolloClient, InMemoryCache,ApolloProvider, createHttpLink } from '@apollo/client';
+import { ApolloClient, InMemoryCache,ApolloProvider } from '@apollo/client';
+import {createUploadLink} from 'apollo-upload-client';
 import { setContext } from "apollo-link-context";
 
 
 const DEV = window.location.hostname === "localhost";
 
-const httpLink = createHttpLink({ 
+const httpLink = createUploadLink({ 
   uri: DEV ? "http://localhost:4000/graphql" : "https://magic-cv.herokuapp.com/graphql"
 });
 
