@@ -4,7 +4,7 @@ import {Table,TableRow,TableBody,TableCell, Typography,TextField } from '@materi
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
-import Box from '@material-ui/core/Box';
+import InputLabel from '@material-ui/core/InputLabel';
 import { Carousel } from 'react-responsive-carousel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -116,50 +116,59 @@ const Options = (({handleOption, options, setOptions}) => {
                                                 <label>{item.label}</label>
                                             </TableCell>
                                         </TableRow>
-                                        <TableRow hover={true}  >
+                                        <TableRow hover={true} style={{display:'flex',flexDirection:'column'}}>
                                             
                                             <TableCell style={{borderBottom:"none"}}>
-                                                <Select   
-                                                    value={item.font}
-                                                    onChange={(e)=> 
-                                                        handleOption(
-                                                            {group:"settings",
-                                                            subGroup:item.label,
-                                                            setting:'font',
-                                                            value:e.target.value})}  
-                                                    >
-                                                    {
-                                                        FONTS.map((item) => 
-                                                            <MenuItem key={item.key} value={item.value}>
-                                                                {item.text}
-                                                            </MenuItem> )
-                                                    } 
-                                                </Select>
+                                                <div className="flex justify-between">
+                                                    <div>
+                                                        <InputLabel>Font</InputLabel>
+                                                        <Select   
+                                                            value={item.font}
+                                                            onChange={(e)=> 
+                                                                handleOption(
+                                                                    {group:"settings",
+                                                                    subGroup:item.label,
+                                                                    setting:'font',
+                                                                    value:e.target.value})}  
+                                                            >
+                                                            {
+                                                                FONTS.map((item) => 
+                                                                    <MenuItem key={item.key} value={item.value}>
+                                                                        {item.text}
+                                                                    </MenuItem> )
+                                                            } 
+                                                        </Select>
+                                                    </div>
+
+                                                    
+                                                    {item.position && 
+                                                        <div>
+                                                        <InputLabel>Location</InputLabel>
+                                                        <Select   
+                                                                value={item.position}
+                                                                onChange={(e)=> 
+                                                                    handleOption(
+                                                                        {group:"settings",
+                                                                        subGroup:item.label,
+                                                                        setting:'position',
+                                                                        value:e.target.value})}  
+                                                                >
+                                                                {
+                                                                    POSITIONS.map((item) => 
+                                                                        <MenuItem key={item.key} value={item.value}>
+                                                                            {item.text}
+                                                                        </MenuItem> )
+                                                                } 
+                                                            </Select>
+                                                        </div>
+                                                    }   
+                                                </div>
+                                                <div className="mt-4">
+                                                    <InputLabel>Size</InputLabel>
+                                                    <TextField  style={{width:60}} margin="none" size="small"  onChange={(e)=>handleOption({group:"settings",subGroup:item.label,setting:'size',value:e.target.value})} type="number" value={item.size}/>
+                                                </div>
+                                                
                                             </TableCell>
-                                            <TableCell style={{borderBottom:"none"}}>
-                                                <TextField  margin="none" size="small"  onChange={(e)=>handleOption({group:"settings",subGroup:item.label,setting:'size',value:e.target.value})} type="number" value={item.size}/>
-                                            </TableCell>
-                                            
-                                                <TableCell  style={{borderBottom:"none"}}>
-                                                {item.position && 
-                                                <Select   
-                                                        value={item.position}
-                                                        onChange={(e)=> 
-                                                            handleOption(
-                                                                {group:"settings",
-                                                                subGroup:item.label,
-                                                                setting:'position',
-                                                                value:e.target.value})}  
-                                                        >
-                                                        {
-                                                            POSITIONS.map((item) => 
-                                                                <MenuItem key={item.key} value={item.value}>
-                                                                    {item.text}
-                                                                </MenuItem> )
-                                                        } 
-                                                    </Select>
-                                            }
-                                                </TableCell>
                                         </TableRow>
                                     </Fragment>
                                         )
