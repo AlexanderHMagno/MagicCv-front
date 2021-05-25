@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Moment from 'moment';
 import { Grid, Card, Icon, Image, Button } from 'semantic-ui-react';
 import {useQuery} from '@apollo/client';
@@ -15,6 +15,7 @@ import Gravatar from 'react-gravatar';
 
 const PROFILE = () => {
     const {user:{username, id, email,createdAt}} = useContext(AuthContext);
+    const [cachePic, setCachePic] = useState(1);
     const {loading, data} = useQuery(GET_PROFILE, {
         variables : {
             userId:id
@@ -32,9 +33,9 @@ const PROFILE = () => {
             {/* Profile image */}
             <Grid.Column width={4}  >    
                 <Card className="">
-                    <ChangePicture email={email} picture_url={picture_url} >
+                    <ChangePicture email={email} picture_url={picture_url}  setCachePic={setCachePic}>
                         {picture_url ? 
-                            <Image as="button" src={picture_url} wrapped ui={false}/>
+                            <Image as="button" src={`${picture_url}?${cachePic}`} wrapped ui={false}/>
                         :
                             <Image as="button"  size='medium'wrapped>
                                 <Gravatar email={email} size={500} rating="pg" default="identicon" className="CustomAvatar-image"/>

@@ -4,10 +4,9 @@ import ButtonM from '@material-ui/core/Button';
 import Gravatar from 'react-gravatar';
 import {gql, useMutation} from '@apollo/client';
 import Loader from '../../../util/loader';
-import {GET_POSTS} from '../../../graphql/queries';
 import {optionImages} from '../../../util/types';
 
-const ChangePicture = ({children, email, picture_url}) => {
+const ChangePicture = ({children, email, picture_url,setCachePic}) => {
   const [picture, setPicture] = useState({url:picture_url});
   const [open, setOpen] = useState(false)
   const is_upload = ("upload" in picture)
@@ -16,6 +15,9 @@ const ChangePicture = ({children, email, picture_url}) => {
   const [experience_changer, {loading}] = useMutation(USE_MUTATION, {
         update(proxy, newData,cache) {
             setOpen(false);
+            if (is_upload){
+              setCachePic(Math.floor(Math.random() * 500));
+            }
         },
         onError(err) {
           console.log(err);
