@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 
-import {Table,TableRow,TableBody,TableCell, Typography,TextField } from '@material-ui/core';
+import {Table,TableRow,TableBody,TableCell, Typography,TextField, Button } from '@material-ui/core';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -29,6 +29,7 @@ import Loader from '../../../util/loader';
 //Princpial Container
 const Options = (({handleOption, options, setOptions}) => {
     const [expanded, setExpanded] = useState('template');
+    const [tem, setTem] = useState(0);
     const {settings, display,template:{Principal}} = options || {};
     const [Loading, setLoading] = useState(true);
     
@@ -54,6 +55,11 @@ const Options = (({handleOption, options, setOptions}) => {
     
     const handleAccordion = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
+    }
+
+    const handleButton = (config, index) => {
+        setOptions(config);
+        setTem(index);
     }
 
 
@@ -231,16 +237,24 @@ const Options = (({handleOption, options, setOptions}) => {
 
         {/* Templates */}
         <div className=" pt-5">
-            <Carousel showThumbs={false} infiniteLoop={true}>
+            <Carousel showThumbs={false} infiniteLoop={true} autoPlay={false}>
 
                 {TEMPLATEOPTIONS.map((element,index) => {
-                    
+                    const selected = tem === index;
                     return <div 
                         key={index}
-                        className="cursor-pointer m-auto w-9/12  md:w-full" 
-                        onClick={()=> setOptions(element.config)}  
+                        className="m-auto w-9/12  md:w-full"  
                             >
                             <Image src={element.image}  />
+                            <Button 
+                            size="large"
+                            style={{position:'absolute', bottom: 50,left:0, right:0,margin:'auto'}}
+                            onClick={()=> handleButton(element.config, index)}
+                            variant="contained" color={selected ? 'primary' : 'disabled'}>
+                                {selected? 'Selected': 'select'}
+                            </Button>
+                             
+
                     </div>
                 })}
             </Carousel>     
