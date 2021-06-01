@@ -31,8 +31,8 @@ const PROFILE = () => {
 
         <Grid stackable>
             {/* Profile image */}
-            <Grid.Column width={4}  >    
-                <Card className="">
+            <Grid.Column width={4} >    
+                <Card style={{margin:'auto'}}>
                     <ChangePicture email={email} picture_url={picture_url}  setCachePic={setCachePic}>
                         {picture_url ? 
                             <Image as="button" src={`${picture_url}?${cachePic}`} wrapped ui={false}/>
@@ -61,7 +61,7 @@ const PROFILE = () => {
                     </Card.Content>
                 </Card>
 
-                <Card>
+                <Card style={{margin:'auto', marginTop:10}}>
                     <Card.Content>
                         <Card.Header>Contact Information</Card.Header>
                     </Card.Content>
