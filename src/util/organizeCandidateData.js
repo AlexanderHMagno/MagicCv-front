@@ -34,3 +34,32 @@ export const OrganizeTemplateData = (info) => {
 
     return {getProfile:formatedInfo};
 }
+
+export const checkMinimumData = (info) => {
+    const data = OrganizeTemplateData(info);
+    const {getProfile} = data;
+    
+    let valid = true;
+    let  missingData = [];
+
+    
+    missingData.push({'first':getProfile.first === null});
+    missingData.push({'last':getProfile.last === null});
+    missingData.push({'education':getProfile.education.length === 0});
+    missingData.push({'experience':getProfile.experience.length === 0});
+    
+
+    missingData.forEach(element => {
+        if (element[Object.keys(element)[0]]) {
+            valid = false;
+        }
+    });
+
+
+    return {
+        valid,
+        dataValidated: data,
+        missingData
+    }
+
+}

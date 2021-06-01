@@ -43,7 +43,7 @@ const MyDocument = ({info, agua}) => {
 const styles = createStyle(info.options);
 const {address, first, last, bio,role, city, email, country,phone,picture_url,experience,education,volunteer,skills} = info.info || {};
 const acronyms = ['acronym','acronym2'];
-console.log({picture_url});
+
 
 return (
   <Document>
