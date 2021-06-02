@@ -129,11 +129,12 @@ return (
 const DOMRENDER = (info) => {
 	
 	const [loading, setLoading] = useState(true);
+	const [download,setDownload] = useState(false);
 	const {first ="document", last} = info.info || {};
 	const documentFile = `${first}_${last}_cv`;
-	
 	useEffect(()=> {
 		setLoading(true);
+		setDownload(false);
 		setTimeout(() => {
 			setLoading(false);
 		}, 1200);
@@ -151,16 +152,23 @@ const DOMRENDER = (info) => {
 				</PDFViewer>
 			</div>
 			<div className="flex justify-evenly">
-				<PDFDownloadLink fileName={`preview_${documentFile}`} document={<MyDocument info={info} agua={true}/>}>
-					{<Button info={info} variant="contained" color="secondary" component="span" style={{margin:20}}>
-						Preview Your Cv
-					</Button>}
-				</PDFDownloadLink>
-				<PDFDownloadLink fileName={documentFile} document={<MyDocument info={info} agua={false}/>}>
-					<Button  info={info} variant="contained" color="primary" component="span" style={{margin:20}}>
-						Dowload Your Cv
-					</Button>
-				</PDFDownloadLink>
+				<Button onClick={() => setDownload(!download)}variant="contained" color="default" component="span" style={{margin:20}}>
+						Download
+				</Button>
+				{download &&
+				<>
+					<PDFDownloadLink fileName={`preview_${documentFile}`} document={<MyDocument info={info} agua={true}/>}>
+						{<Button variant="contained" color="secondary" component="span" style={{margin:20}}>
+							Preview Your Cv
+						</Button>}
+					</PDFDownloadLink>
+					<PDFDownloadLink fileName={documentFile} document={<MyDocument info={info} agua={false}/>}>
+						<Button  variant="contained" color="primary" component="span" style={{margin:20}}>
+							Dowload Your Cv
+						</Button>
+					</PDFDownloadLink>
+				</>
+				}
 				
 			</div>
 			<div className="sm:hidden">

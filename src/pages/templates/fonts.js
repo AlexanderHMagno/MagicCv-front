@@ -154,12 +154,6 @@ Font.register({
 	}]
 })
 
-Font.register({
-	family: 'Frijole',
-	fonts : [{
-		src: `/fonts/Frijole/Frijole-Regular.ttf`
-	}]
-})
 
 Font.register({
 	family: 'Monofett',

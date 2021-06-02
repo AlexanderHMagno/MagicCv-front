@@ -8,7 +8,6 @@ export const FONTS =     [
     {key:'8',value: 'Eater', text:'Eater'},
     {key:'9',value: 'Ewert', text:'Ewert'},
     {key:'10',value: 'FasterOne', text:'Faster One'},
-    {key:'11',value: 'Frijole', text:'Frijole'},
     {key:'12',value: 'FugazOne', text:'Fugaz One'},
     {key:'13',value: 'GreatVibes', text:'Great Vibes'},
     {key:'16',value: 'Monofett', text:'Monofett'},

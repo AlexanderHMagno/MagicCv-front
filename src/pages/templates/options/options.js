@@ -237,7 +237,7 @@ const Options = (({handleOption, options, setOptions}) => {
 
         {/* Templates */}
         <div className=" pt-5">
-            <Carousel showThumbs={false} infiniteLoop={true} autoPlay={false}>
+            <Carousel showThumbs={false} infiniteLoop={true} autoPlay={false} interval={100000}>
 
                 {TEMPLATEOPTIONS.map((element,index) => {
                     const selected = tem === index;
@@ -250,7 +250,7 @@ const Options = (({handleOption, options, setOptions}) => {
                             size="large"
                             style={{position:'absolute', bottom: 50,left:0, right:0,margin:'auto'}}
                             onClick={()=> handleButton(element.config, index)}
-                            variant="contained" color={selected ? 'primary' : 'disabled'}>
+                            variant="contained" color={selected ? 'primary' : 'default'}>
                                 {selected? 'Selected': 'select'}
                             </Button>
                              
