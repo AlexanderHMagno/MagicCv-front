@@ -8,7 +8,7 @@ import SpellcheckIcon from '@material-ui/icons/Spellcheck';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
 import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/opacity.css';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Presentation = () => {
 
@@ -16,13 +16,13 @@ const Presentation = () => {
         
             <div className="min-h-full">
                 <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-                        <div className="mx-auto sm:text-center lg:text-left">
+                        <div className="mx-auto sm:text-center lg:text-left" >
                             <h1 className="text-6xl tracking-tight font-extrabold text-center">
                                 <span className="inline xl:inline">Create your unique </span>
                                 <span className="inline text-indigo-600 xl:inline">CV</span>
                             </h1>
                             <p className="mt-3  text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl ">
-                                Not worry about the design we have you covered, we have ready to print templates for you
+                                Not worry about the design, we have ready to print templates for you
                             </p>
                             <div className="mx-auto mt-5 sm:mt-8 sm:flex sm:justify-center ">
                                 <div className="rounded-md shadow">
@@ -36,13 +36,13 @@ const Presentation = () => {
                                 </a>
                                 </div>
                             </div>
-                            <div>
+                            <div className="mt-28 -mb-20 md:mt-12 md:mb-10">
                             <LazyLoadImage
                                 className="w-4/5 sm:w-2/3 lg:w-3/5 mx-auto"
                                 alt={"people Working"}
-                                effect="opacity"
+                                effect="blur"
                                 delayMethod="debounce"
-                                height="75vh"
+                                height="55vh"
                                 src={"images/presentation/people.png"} // use normal <img> attributes as props
                                  />
         
@@ -53,10 +53,10 @@ const Presentation = () => {
                         <div className="mx-auto sm:text-center lg:text-left bg-gradient-to-r from-white via-indigo-100 to-white p-10  sm:flex">
                             <div className="py-14 lg:px-24"> 
                                 <h1 className="text-4xl lg:text-5xl tracking-tight font-extrabold text-center lg:mb-20">
-                                    <span className="inline xl:inline">Write once, Choose from multiple templates</span>
+                                    <span className="inline xl:inline">Write once, choose from multiple templates</span>
                                 </h1>
                                 <p className="mt-3  text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl ">
-                                    Write your resume once, then you can pick any of our multiple templates. You wont need to start from scratch everytime. 
+                                    Write your resume once, then you can choose any of our multiple templates. You wont need to start from scratch everytime. 
                                 </p>
                                 <a href="/login" className="hidden sm:block text-center w-full mt-10 flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
                                     Select your Template
@@ -122,8 +122,8 @@ const Presentation = () => {
                 {/* Base form */}
                 <LazyLoadComponent delayTime="1000">
                 <div className="w-screen bg-gradient-to-r bg-indigo-600 p-10">
-                    <div className=" flex justify-center sm:w-3/5  flex-g sm:pr-10"> 
-                        <img className="mx-auto" src="images/magicL.png" alt="process working"/>
+                    <div className=" flex  md:justify-center sm:w-3/5  flex-g sm:pr-10"> 
+                        <img className="mr-10 md:mx-auto" src="images/magicL.png" alt="process working"/>
                         
 
                         <Typography style={{color:"white", paddingTop: 20}}>Copyright © 2021 all rights reserved, Magic Cv Inc.</Typography>
