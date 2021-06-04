@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import SpellcheckIcon from '@material-ui/icons/Spellcheck';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
+import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 const Presentation = () => {
 
@@ -35,7 +37,15 @@ const Presentation = () => {
                                 </div>
                             </div>
                             <div>
-                                <img className="w-4/5 sm:w-2/3 lg:w-3/5 mx-auto" src="images/presentation/people.png" alt="people working"/>
+                            <LazyLoadImage
+                                className="w-4/5 sm:w-2/3 lg:w-3/5 mx-auto"
+                                alt={"people Working"}
+                                effect="opacity"
+                                delayMethod="debounce"
+                                height="75vh"
+                                src={"images/presentation/people.png"} // use normal <img> attributes as props
+                                 />
+        
                             </div>
                         </div>
 
@@ -106,9 +116,11 @@ const Presentation = () => {
                             </div>
 
                         </div>
+
                 </main>
 
                 {/* Base form */}
+                <LazyLoadComponent delayTime="1000">
                 <div className="w-screen bg-gradient-to-r bg-indigo-600 p-10">
                     <div className=" flex justify-center sm:w-3/5  flex-g sm:pr-10"> 
                         <img className="mx-auto" src="images/magicL.png" alt="process working"/>
@@ -118,7 +130,7 @@ const Presentation = () => {
 
                     </div>
                 </div>
-                
+                </LazyLoadComponent>
 
                 <div className="hidden">
 

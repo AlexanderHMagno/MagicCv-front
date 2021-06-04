@@ -5,6 +5,7 @@ import Gravatar from 'react-gravatar';
 import {gql, useMutation} from '@apollo/client';
 import Loader from '../../../util/loader';
 import {optionImages} from '../../../util/types';
+import Cropper from './cropper';
 
 const ChangePicture = ({children, email, picture_url,setCachePic}) => {
   const [picture, setPicture] = useState({url:picture_url});
@@ -81,6 +82,7 @@ const ChangePicture = ({children, email, picture_url,setCachePic}) => {
                     hidden
                   />
                 </ButtonM>
+                {/* <Cropper PL={PictureLoader}/> */}
               </div>
               <div className="flex">
                 {optionImages.map((url,index) => {
