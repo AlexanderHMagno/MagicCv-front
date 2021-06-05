@@ -9,6 +9,7 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
 import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import Typed from 'react-typed';
 
 const Presentation = () => {
 
@@ -19,10 +20,21 @@ const Presentation = () => {
                         <div className="mx-auto sm:text-center lg:text-left" >
                             <h1 className="text-6xl tracking-tight font-extrabold text-center">
                                 <span className="inline xl:inline">Create your unique </span>
-                                <span className="inline text-indigo-600 xl:inline">CV</span>
+                                <span className="block text-indigo-600 xl:inline">
+
+                                <Typed
+                                    strings={['CV', 'Resume']}
+                                    loop = {true}
+                                    typeSpeed={80}
+                                    backDelay ={4000}
+                                    backSpeed={50}
+                                />
+
+                                </span>
+                                
                             </h1>
-                            <p className="mt-3  text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl ">
-                                Not worry about the design, we have ready to print templates for you
+                            <p className="text-center mt-3  text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl ">
+                                Not worry about the design, we have ready to print templates
                             </p>
                             <div className="mx-auto mt-5 sm:mt-8 sm:flex sm:justify-center ">
                                 <div className="rounded-md shadow">
@@ -42,7 +54,7 @@ const Presentation = () => {
                                 alt={"people Working"}
                                 effect="blur"
                                 delayMethod="debounce"
-                                height="55vh"
+                                height="60vh"
                                 src={"images/presentation/people.png"} // use normal <img> attributes as props
                                  />
         
@@ -89,26 +101,26 @@ const Presentation = () => {
                                     <span className="inline xl:inline">How it works?</span>
                                 </h1>
                                 <div className="p-2 text-gray-500 text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl">
-                                    <Badge color="primary" variant="standard" style={{marginRight:10}}>
-                                        <SpellcheckIcon  color="primary"/>
+                                    <Badge  color="primary" variant="standard" style={{marginRight:10}}>
+                                        <Image style={{width:50}} src={"images/presentation/flaticon/letter.png"}  />
                                     </Badge>
                                     Write your Resume
                                 </div>
                                 <div className="p-2 text-gray-500 text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl">
                                     <Badge color="primary" variant="standard" style={{marginRight:10}}>
-                                        <FileCopyIcon  color="primary"/>
+                                        <Image style={{width:50}}  src={"images/presentation/flaticon/choose.png"}  />
                                     </Badge>
                                     Choose a template
                                 </div>
                                 <div className="p-2 text-gray-500 text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl">
                                     <Badge color="primary" variant="standard" style={{marginRight:10}}>
-                                        <SystemUpdateAltIcon  color="primary"/>
+                                        <Image style={{width:50}} src={"images/presentation/flaticon/download.png"}  />
                                     </Badge>
                                     Download Your Resume
                         
                                 </div>
 
-                                <div className="rounded-md shadow pt-10">
+                                <div className="rounded-md pt-10">
                                 <a href="/login" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
                                     Start Now
                                 </a>
@@ -143,6 +155,11 @@ const Presentation = () => {
                     <a href='https://pngtree.com/so/success-clipart'>success clipart png from pngtree.com</a>
                     <span>process image: </span>
                     <a href='https://pngtree.com/so/data'>data png from pngtree.com</a>
+
+                    Icons:
+
+                    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+                    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
                 </div>
             </div>
         
