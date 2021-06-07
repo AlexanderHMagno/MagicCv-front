@@ -24,10 +24,11 @@ const Presentation = () => {
 
                                 <Typed
                                     strings={['CV', 'Resume']}
-                                    loop = {true}
-                                    typeSpeed={80}
-                                    backDelay ={4000}
-                                    backSpeed={50}
+                                    loop
+                                    fadeOut
+                                    showCursor = {false} 
+                                    typeSpeed={50}
+                                    backDelay ={3000}
                                 />
 
                                 </span>
@@ -102,13 +103,13 @@ const Presentation = () => {
                                 </h1>
                                 <div className="p-2 text-gray-500 text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl">
                                     <Badge  color="primary" variant="standard" style={{marginRight:10}}>
-                                        <Image style={{width:50}} src={"images/presentation/flaticon/letter.png"}  />
+                                        <Image style={{width:50}} src={"images/presentation/flaticon/chat.png"}  />
                                     </Badge>
                                     Write your Resume
                                 </div>
                                 <div className="p-2 text-gray-500 text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl">
                                     <Badge color="primary" variant="standard" style={{marginRight:10}}>
-                                        <Image style={{width:50}}  src={"images/presentation/flaticon/choose.png"}  />
+                                        <Image style={{width:50}}  src={"images/presentation/flaticon/tasks.png"}  />
                                     </Badge>
                                     Choose a template
                                 </div>
