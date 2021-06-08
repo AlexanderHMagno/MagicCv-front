@@ -152,9 +152,10 @@ const DOMRENDER = (info) => {
 				</PDFViewer>
 			</div>
 			<div className="flex justify-evenly">
-				<Button onClick={() => setDownload(!download)}variant="contained" color="default" component="span" style={{margin:20}}>
+				{!download && <Button onClick={() => setDownload(!download)}variant="contained" color="default" component="span" style={{margin:20}}>
 						Download
-				</Button>
+					</Button>
+				}
 				{download &&
 				<>
 					<PDFDownloadLink fileName={`preview_${documentFile}`} document={<MyDocument info={info} agua={true}/>}>
