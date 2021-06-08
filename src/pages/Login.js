@@ -19,7 +19,6 @@ const Login = (props) => {
             props.history.push('./profile');
         },
         onError(err) {
-            console.log(err.graphQLErrors[0].extensions.errors);
             setErrors(err.graphQLErrors[0].extensions.errors);
         },
         variables : values
@@ -35,8 +34,8 @@ const Login = (props) => {
                 <h3>Login</h3>
             </div>
             <Form size="mini" onSubmit={handleSubmit} className = {loading? 'loading':''}> 
-                <Form.Input fluid name="username" label='Username or Email' placeholder='Username' type="text" onChange={onChange}  />
-                <Form.Input fluid name="password" label='Password' placeholder='Password' type="password" onChange={onChange} error={ errors.general ? {  content: 'The user name or password is incorrect' , pointing: 'above' } :false} />
+                <Form.Input required fluid name="username" label='Username or Email' placeholder='Username' type="text" onChange={onChange}  />
+                <Form.Input required fluid name="password" label='Password' placeholder='Password' type="password" onChange={onChange} error={ errors.general ? {  content: 'The user name or password is incorrect' , pointing: 'above' } :false} />
                 <Button type="submit" className="primary-color" fluid>
                     Login
                 </Button>

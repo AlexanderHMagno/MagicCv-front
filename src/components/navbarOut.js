@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import Submenu from '../util/BurguerMenu';
-
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import {Link} from 'react-router-dom';
 
 
 // Short menu options
@@ -30,7 +32,13 @@ const Menubar = () => {
                     <div className="flex items-center justify-between w-full md:w-auto">
                     <a href="/">
                         <span className="sr-only">Magic Cv</span>
-                        <img className="h-10  sm:h-10" src="/images/cv.png" alt="Logo"/>
+                        <LazyLoadImage
+                                className="h-10  sm:h-10"
+                                alt={"Logo"}
+                                effect="blur"
+                                delayMethod="debounce"
+                                src={"images/cv.png"} // use normal <img> attributes as props
+                                 />
                     </a>
                     <div className="-mr-2 flex items-center md:hidden">
                         <Submenu options={options}/>
@@ -38,16 +46,16 @@ const Menubar = () => {
                     </div>
                 </div>
                 <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-                    <a href="/" className={currentPath === 'Home' ? active : defaulty}>Product</a>
+                    <Link className={currentPath === 'Home' ? active : defaulty} to={'/'}>Product</Link>
+                
+                    <Link className={currentPath === 'feature' ? active : defaulty} to={'/feature'}>Feature</Link>
 
-                    <a href="#" className="font-medium text-gray-500 hover:text-gray-900">Features</a>
+                    <Link className={currentPath === 'company' ? active : defaulty} to={'/company'}>Company</Link>
 
+                    <Link className={currentPath === 'register' ? active : defaulty} to={'/register'}>Register</Link>
 
-                    <a href="#" className="font-medium text-gray-500 hover:text-gray-900">Company</a>
-
-                    <a href="/register" className={currentPath === 'register' ? active : defaulty}>Register</a>
-
-                    <a className="inline-block border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-2 md:text-lg md:px-10" href="/login" >Log in</a>
+                    <Link className="inline-block border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-2 md:text-lg md:px-10" to={'/login'}> Login</Link>
+            
                 </div>
             </nav>
         </div>

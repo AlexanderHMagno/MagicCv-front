@@ -23,9 +23,8 @@ const AuthorizedMenu = () => {
 
     const {user} = useContext(AuthContext);
 
-    return (
-    <>      
-        {user &&
+    if (user) {
+        return (
             <Container >
                 <MenuNav/> 
                 <Switch>
@@ -39,9 +38,9 @@ const AuthorizedMenu = () => {
                     <Route path="/latest" component={Latest}/>
                 </Switch>
             </Container>
-        }
-
-        {!user && 
+        )
+    } else {
+        return (
             <Container fluid>
                 <MenuNavOut/>   
                 <Switch>
@@ -50,9 +49,8 @@ const AuthorizedMenu = () => {
                     <Route path="/" component={Presentation}/>
                 </Switch>
             </Container >
-        }
-    </>
-    )
+        )
+    }
 }
 
 

@@ -1,15 +1,15 @@
 import React  from 'react';
-import {TEMPLATEOPTIONS} from '../templates/options/templateOptions';
+
+import {Link} from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import { Image } from 'semantic-ui-react';
 import Badge from '@material-ui/core/Badge';
 import Typography from '@material-ui/core/Typography';
-import SpellcheckIcon from '@material-ui/icons/Spellcheck';
-import FileCopyIcon from '@material-ui/icons/FileCopy';
-import SystemUpdateAltIcon from '@material-ui/icons/SystemUpdateAlt';
 import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Typed from 'react-typed';
+
+import {TEMPLATEOPTIONS} from '../templates/options/templateOptions';
 
 const Presentation = () => {
 
@@ -19,16 +19,16 @@ const Presentation = () => {
                 <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                         <div className="mx-auto sm:text-center lg:text-left" >
                             <h1 className="text-6xl tracking-tight font-extrabold text-center">
-                                <span className="inline xl:inline">Create your unique </span>
+                                <span className="inline xl:inline">Create your unique</span>
                                 <span className="block text-indigo-600 xl:inline">
-
+                                <span className="text-white -ml-1">-</span>
                                 <Typed
                                     strings={['CV', 'Resume']}
                                     loop
-                                    fadeOut
                                     showCursor = {false} 
                                     typeSpeed={50}
                                     backDelay ={3000}
+                                    backSpeed = {40}
                                 />
 
                                 </span>
@@ -39,14 +39,22 @@ const Presentation = () => {
                             </p>
                             <div className="mx-auto mt-5 sm:mt-8 sm:flex sm:justify-center ">
                                 <div className="rounded-md shadow">
-                                <a href="/register" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+
+                                <Link 
+                                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                                to={'/register'}>
                                     Register
-                                </a>
+                                </Link>
+                                
                                 </div>
                                 <div className="mt-3 sm:mt-0 sm:ml-3">
-                                <a href="/login" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+
+                                <Link 
+                                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
+                                to={'/login'}>
                                     Login
-                                </a>
+                                </Link>
+                            
                                 </div>
                             </div>
                             <div className="mt-28 -mb-20 md:mt-12 md:mb-10">
@@ -71,9 +79,12 @@ const Presentation = () => {
                                 <p className="mt-3  text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl ">
                                     Write your resume once, then you can choose any of our multiple templates. You wont need to start from scratch everytime. 
                                 </p>
-                                <a href="/login" className="hidden sm:block text-center w-full mt-10 flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+
+                                <Link 
+                                className="hidden sm:block text-center w-full mt-10 flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
+                                to={'/login'}>
                                     Select your Template
-                                </a>
+                                </Link>
                             </div>
                             <div className="sm:p-14 flex justify-center flex-g"> 
                                 {/* <img className="w-4/5 sm:w-2/3 lg:w-3/5 mx-auto" src="images/presentation/group.png" alt="people working"/> */}
@@ -122,9 +133,11 @@ const Presentation = () => {
                                 </div>
 
                                 <div className="rounded-md pt-10">
-                                <a href="/login" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                                    Start Now
-                                </a>
+                                    <Link 
+                                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                                    to={'/login'}>
+                                        Start Now
+                                    </Link>
                                 </div>
                             </div>
 

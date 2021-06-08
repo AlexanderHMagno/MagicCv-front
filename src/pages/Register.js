@@ -5,6 +5,7 @@ import {gql, useMutation} from '@apollo/client';
 import {useForm} from '../util/hooks';
 import {AuthContext} from '../context/AuthContext';
 
+
 const Register = (props) => {
     const [errors, setErrors] = useState({});
     const {values, handleSubmit, onChange} = useForm(registerUSer,{
@@ -36,10 +37,10 @@ const Register = (props) => {
                 <h3>Register</h3>
             </div>
             <Form size="mini" onSubmit={handleSubmit} className = {loading? 'loading':''}> 
-                <Form.Input fluid name="username" label='Username' placeholder='Username' type="text" onChange={onChange} error={ errors.username ? {  content: errors.username , pointing: 'above' } :false} />
-                <Form.Input fluid name="email" label='Email' placeholder='Email' type="email" onChange={onChange} error={ errors.email ? {  content: errors.email , pointing: 'above' } :false} />
-                <Form.Input fluid name="password" label='Password' placeholder='Password' type="password" onChange={onChange} error={ errors.password ? {  content: errors.password, pointing: 'above' } :false} />
-                <Form.Input fluid name="confirmPassword" label='Confirm Password' placeholder='Confirm Password' type="password" onChange={onChange} error={ errors.password ? {  content: errors.password, pointing: 'above' } :false} />
+                <Form.Input fluid required name="username" label='Username' placeholder='Username' type="text" onChange={onChange} error={ errors.username ? {  content: errors.username , pointing: 'above' } :false} />
+                <Form.Input fluid required name="email" label='Email' placeholder='Email' type="email" onChange={onChange} error={ errors.email ? {  content: errors.email , pointing: 'above' } :false} />
+                <Form.Input fluid required name="password" label='Password' placeholder='Password' type="password" onChange={onChange} error={ errors.password ? {  content: errors.password, pointing: 'above' } :false} />
+                <Form.Input fluid required name="confirmPassword" label='Confirm Password' placeholder='Confirm Password' type="password" onChange={onChange} error={ errors.password ? {  content: errors.password, pointing: 'above' } :false} />
                 <Button type="submit" className="primary-color" fluid>
                     Register
                 </Button>
