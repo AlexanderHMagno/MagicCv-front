@@ -4,11 +4,11 @@ import {Grid, Image, Card, Icon, Header,Button, Label, Divider, Segment,Feed, Dr
 import Moment from 'moment';
 import {Link} from 'react-router-dom';
 
-import {AuthContext} from '../context/AuthContext';
-import Loader from '../util/loader';
-import LikeButton from '../components/likeButton';
-import RemoveButton from '../components/removeButton';
-import CreateComment from '../components/comments/createComments';
+import {AuthContext} from '../../context/AuthContext';
+import Loader from '../../util/loader';
+import LikeButton from './util/likeButton';
+import RemoveButton from './util/removeButton';
+import CreateComment from '../../components/comments/createComments';
 
 const IndividualPost = (props) => {
 

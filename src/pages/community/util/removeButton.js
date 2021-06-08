@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {gql, useMutation} from '@apollo/client';
 import {Button, Confirm, Header} from 'semantic-ui-react';
 
-import {GET_POSTS} from '../graphql/queries';
+import {GET_POSTS} from '../../../graphql/queries';
 
 const RemoveButton = ({postId,commentId,callback,placeholder, ...rest},  ) =>{
     const [confirmModal, setConfirmModal] = useState(false);

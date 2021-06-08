@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import {Form, Button, TextArea} from 'semantic-ui-react';
 
 import {gql, useMutation} from '@apollo/client';
-import {useForm} from '../util/hooks';
-import {GET_POSTS} from '../graphql/queries';
+import {useForm} from '../../../util/hooks';
+import {GET_POSTS} from '../../../graphql/queries';
 
 const FormPost = () => {
     const {handleSubmit,onChange, values} = useForm(createPostCallback,{body: ""});

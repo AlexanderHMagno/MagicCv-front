@@ -8,7 +8,7 @@ import MenuNavOut from '../components/navbarOut';
 import { Container } from 'semantic-ui-react';
 
 //pages 
-import Posts from '../pages/Home';
+import Posts from '../pages/community/Home';
 import Settings from '../pages/Settings';
 import Profile from '../pages/profile';
 import Templates from '../pages/templates';
@@ -16,7 +16,7 @@ import Latest from '../pages/Latest';
 
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-import IndividualPost from '../pages/IndividualPost';
+import IndividualPost from '../pages/community/IndividualPost';
 import Presentation from '../pages/landing';
 
 const AuthorizedMenu = () => {

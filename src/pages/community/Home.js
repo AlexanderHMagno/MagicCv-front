@@ -1,12 +1,12 @@
 import React, {useContext} from 'react';
 import { useQuery } from '@apollo/client';
 import { Grid, Transition } from 'semantic-ui-react';
-import Loader from '../util/loader';
+import Loader from '../../util/loader';
 
-import PostCard from '../components/postCard';
-import PostForm from '../components/postForm';
-import {AuthContext} from '../context/AuthContext';
-import {GET_POSTS} from '../graphql/queries';
+import PostCard from './util/postCard';
+import PostForm from './util/postForm';
+import {AuthContext} from '../../context/AuthContext';
+import {GET_POSTS} from '../../graphql/queries';
 
 const HOME = () => {
     const {loading, data } = useQuery(GET_POSTS);
@@ -18,7 +18,7 @@ const HOME = () => {
      
             <Grid columns={3}>
                 <Grid.Row className="PostGroupTitle">
-                    <h1 >Recent Notes</h1>
+                    <h1 >Community</h1>
                     
                 </Grid.Row>
                 <Grid.Row>

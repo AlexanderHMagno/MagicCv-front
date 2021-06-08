@@ -3,9 +3,9 @@ import { Button, Card, Image, Icon, Label} from 'semantic-ui-react';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
 
-import {AuthContext} from '../context/AuthContext';
-import LikeButton from '../components/likeButton';
-import RemoveButton from '../components/removeButton';
+import {AuthContext} from '../../../context/AuthContext';
+import LikeButton from './likeButton';
+import RemoveButton from './removeButton';
 
 function PostCard ({post:{id,body,createdAt, username, user, countsComments,countsLikes, comments, likes}}) {
     const {user:userLogged} = useContext(AuthContext);
