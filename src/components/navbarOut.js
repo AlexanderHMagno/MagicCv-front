@@ -30,7 +30,7 @@ const Menubar = () => {
             <nav className="relative flex items-center justify-between sm:h-10 lg:justify-between" aria-label="Global">
                 <div className="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                     <div className="flex items-center justify-between w-full md:w-auto">
-                    <a href="/">
+                    <Link to={'/'}>
                         <span className="sr-only">Magic Cv</span>
                         <LazyLoadImage
                                 className="h-10  sm:h-10"
@@ -39,7 +39,7 @@ const Menubar = () => {
                                 delayMethod="debounce"
                                 src={"images/cv.png"} // use normal <img> attributes as props
                                  />
-                    </a>
+                    </Link>
                     <div className="-mr-2 flex items-center md:hidden">
                         <Submenu options={options}/>
                     </div>
