@@ -145,7 +145,7 @@ const Reset = (props) => {
                     {emailSent ?
                     <Paper variant="elevation"  elevation={3}>
                         <div className="bg-indigo-600">
-                            <Typography className="text-center p-10 text-white font-bold">Email was sent to the register email (if, the email is registered). Please, check your Spam folder.</Typography>
+                            <Typography className="text-center p-10 text-white font-bold">Email was sent to the registered email (if, the email is registered). Please, check your Spam folder.</Typography>
                         </div>
                     </Paper>
                     :
