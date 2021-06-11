@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
+import {Link} from 'react-router-dom';
 import {Form, Button, Image} from 'semantic-ui-react';
 import {gql, useMutation} from '@apollo/client';
+import Typography from '@material-ui/core/Typography';
 
-import {useForm} from '../util/hooks';
-import {AuthContext} from '../context/AuthContext';
+import {useForm} from '../../../util/hooks';
+import {AuthContext} from '../../../context/AuthContext';
 
 const Login = (props) => {
     const [errors, setErrors] = useState({});
@@ -39,6 +41,8 @@ const Login = (props) => {
                 <Button type="submit" className="primary-color" fluid>
                     Login
                 </Button>
+                <Typography className="text-indigo-600 text-center" ><Link to={'/reset_password'}>Forgot your username or password?</Link></Typography>
+                <Typography className="text-center">Don't have an account? <span className="text-indigo-600"><Link to={"/register"}>Sign up</Link></span></Typography>
             </Form>
         </div>
      );

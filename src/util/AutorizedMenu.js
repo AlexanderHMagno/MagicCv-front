@@ -12,10 +12,11 @@ import Posts from '../pages/community/Home';
 import Settings from '../pages/Settings';
 import Profile from '../pages/profile';
 import Templates from '../pages/templates';
-import Latest from '../pages/Latest';
+import Latest from '../pages/landing/features/Latest';
 
-import Login from '../pages/Login';
-import Register from '../pages/Register';
+import Login from '../pages/landing/features/Login';
+import Register from '../pages/landing/features/Register';
+import Reset from '../pages/landing/features/resetPassword';
 import IndividualPost from '../pages/community/IndividualPost';
 import Presentation from '../pages/landing';
 
@@ -46,6 +47,7 @@ const AuthorizedMenu = () => {
                 <Switch>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
+                    <Route exact path={["/reset_password/:Token", "/reset_password"]} component={Reset}/>
                     <Route path="/" component={Presentation}/>
                 </Switch>
             </Container >

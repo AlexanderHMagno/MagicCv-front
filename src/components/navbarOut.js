@@ -37,7 +37,7 @@ const Menubar = () => {
                                 alt={"Logo"}
                                 effect="blur"
                                 delayMethod="debounce"
-                                src={"images/cv.png"} // use normal <img> attributes as props
+                                src={"/images/cv.png"} // use normal <img> attributes as props
                                  />
                     </Link>
                     <div className="-mr-2 flex items-center md:hidden">

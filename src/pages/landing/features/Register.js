@@ -2,8 +2,8 @@ import React, { useState, useContext} from 'react';
 import {Form, Button,Image} from 'semantic-ui-react';
 import {gql, useMutation} from '@apollo/client';
 
-import {useForm} from '../util/hooks';
-import {AuthContext} from '../context/AuthContext';
+import {useForm} from '../../../util/hooks';
+import {AuthContext} from '../../../context/AuthContext';
 
 
 const Register = (props) => {
