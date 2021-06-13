@@ -118,7 +118,7 @@ const Reset = (props) => {
                     <Typography className="text-center">Reset passwor for Magic CV email <span className="text-indigo-600">{user.email}</span></Typography>
                 </div>
                 <Form size="mini" onSubmit={SubmitNewPassword} className = {loader? 'loading':''}> 
-                    
+                    <Form.Input disabled required fluid value={user.email} name="Email" label='Email' placeholder='Email' type="email" onChange={onChangePassword} error={ errors.email ? {  content: 'Please Provide a valid password' , pointing: 'above' } :false} />
                     <Form.Input required fluid name="password" label='New Password' placeholder='New Password' type="password" onChange={onChangePassword} error={ errors.password ? {  content: 'Please Provide a valid password' , pointing: 'above' } :false} />
                     <Form.Input required fluid name="confirmPassword" label='Confirm Password' placeholder='Confirm Password' type="password" onChange={onChangePassword} error={ errors.password ? {  content: 'Please Provide a valid password' , pointing: 'above' } :false} />
                     

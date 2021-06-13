@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import AuthRouter from '../security/AuthRouter';
 import {AuthContext} from '../context/AuthContext';
 import MenuNav from '../components/navbar';
@@ -13,12 +13,15 @@ import Settings from '../pages/Settings';
 import Profile from '../pages/profile';
 import Templates from '../pages/templates';
 import Latest from '../pages/landing/features/Latest';
+import Feature from '../pages/landing/features/Feature';
+import Company from '../pages/landing/features/Company';
 
 import Login from '../pages/landing/features/Login';
 import Register from '../pages/landing/features/Register';
 import Reset from '../pages/landing/features/resetPassword';
 import IndividualPost from '../pages/community/IndividualPost';
 import Presentation from '../pages/landing';
+
 
 const AuthorizedMenu = () => {
 
@@ -47,6 +50,8 @@ const AuthorizedMenu = () => {
                 <Switch>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
+                    <Route exact path="/feature" component={Feature}/>
+                    <Route exact path="/company" component={Company}/>
                     <Route exact path={["/reset_password/:Token", "/reset_password"]} component={Reset}/>
                     <Route path="/" component={Presentation}/>
                 </Switch>

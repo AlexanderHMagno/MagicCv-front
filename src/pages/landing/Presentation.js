@@ -10,6 +10,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import Typed from 'react-typed';
 
 import {TEMPLATEOPTIONS} from '../templates/options/templateOptions';
+import LATEST from './features/Latest';
 
 const Presentation = () => {
 
@@ -74,10 +75,10 @@ const Presentation = () => {
                         {/* Second Group */}
                         <div className="mx-auto sm:text-center lg:text-left bg-gradient-to-r from-white via-indigo-100 to-white p-10  sm:flex">
                             <div className="py-14 lg:px-24"> 
-                                <h1 className="text-4xl lg:text-5xl tracking-tight font-extrabold text-center lg:mb-20">
+                                <h1 className="text-4xl tracking-tight font-extrabold text-center lg:mb-20">
                                     <span className="inline xl:inline">Write once, choose from multiple templates</span>
                                 </h1>
-                                <p className="mt-3  text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl ">
+                                <p className="mt-3  text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl  ">
                                     Write your resume once, then you can choose any of our multiple templates. You wont need to start from scratch everytime. 
                                 </p>
 
@@ -110,22 +111,22 @@ const Presentation = () => {
                                 <img className="mx-auto" src="images/presentation/process.png" alt="process working"/>
                             </div>
                             <div className="py-14"> 
-                                <h1 className="text-4xl lg:text-5xl tracking-tight font-extrabold text-center mb-10 lg:mb-20">
+                                <h1 className="text-4xl tracking-tight font-extrabold text-center mb-10 lg:mb-20">
                                     <span className="inline xl:inline">How it works?</span>
                                 </h1>
-                                <div className="p-2 text-gray-500 text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl">
+                                <div className="p-2 text-gray-500 text-lg sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl ">
                                     <Badge  color="primary" variant="standard" style={{marginRight:10}}>
                                         <Image style={{width:50}} src={"images/presentation/flaticon/chat.png"}  />
                                     </Badge>
                                     Write your Resume
                                 </div>
-                                <div className="p-2 text-gray-500 text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl">
+                                <div className="p-2 text-gray-500 text-lg sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl ">
                                     <Badge color="primary" variant="standard" style={{marginRight:10}}>
                                         <Image style={{width:50}}  src={"images/presentation/flaticon/tasks.png"}  />
                                     </Badge>
                                     Choose a template
                                 </div>
-                                <div className="p-2 text-gray-500 text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl">
+                                <div className="p-2 text-gray-500 text-lg sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl ">
                                     <Badge color="primary" variant="standard" style={{marginRight:10}}>
                                         <Image style={{width:50}} src={"images/presentation/flaticon/download.png"}  />
                                     </Badge>
@@ -143,7 +144,8 @@ const Presentation = () => {
                             </div>
 
                         </div>
-
+                                    
+                        <LATEST/>
                 </main>
 
                 {/* Base form */}
