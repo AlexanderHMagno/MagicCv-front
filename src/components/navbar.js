@@ -6,6 +6,7 @@ import SettingsSharpIcon from '@material-ui/icons/SettingsSharp';
 import PowerSettingsNewSharpIcon from '@material-ui/icons/PowerSettingsNewSharp';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import AnnouncementIcon from '@material-ui/icons/Announcement';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
@@ -23,6 +24,7 @@ const Menubar = () => {
     const {user, logOut} = useContext(AuthContext);
 
     const options = [
+        {text:'What\'s new', path: "/latest", icon:AnnouncementIcon, front:false},
         {text:'Profile', path: "/profile", icon:AccountCircleSharpIcon, front:true},
         {text:'Templates', path: "/templates", icon: DashboardIcon, front:true},
         {text:'Community', path: "/posts",icon: SupervisedUserCircleIcon ,front:true},

@@ -17,7 +17,6 @@ const HOME = () => {
         }
     })
 
-    console.log(profile);
     if (loading) return <Loader/>;
     const Posts = data.getPosts;
 
