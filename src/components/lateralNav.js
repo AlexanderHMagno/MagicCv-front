@@ -9,6 +9,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import BlurOnSharpIcon from '@material-ui/icons/BlurOnSharp';
+import Badge from '@material-ui/core/Badge';
 import {Link} from 'react-router-dom';
 import {Image} from 'semantic-ui-react';
 
@@ -54,8 +55,15 @@ export default function TemporaryDrawer({options}) {
         {options.map((option, index) => (
             <Link to={option.path}  key={option.text} onClick={()=> option.action? option.action() : ""}>
                 <ListItem button >
-                <ListItemIcon>{<option.icon color="primary"/>}</ListItemIcon>
-                <ListItemText primary={option.text} />
+                  <ListItemIcon>
+                    {
+                      <Badge badgeContent={option.badge} color="secondary">
+                        <option.icon color="primary"/>
+                      </Badge>
+                      }
+                      </ListItemIcon>
+                  <ListItemText primary={option.text} />
+
                 </ListItem>
             </Link>
         ))}

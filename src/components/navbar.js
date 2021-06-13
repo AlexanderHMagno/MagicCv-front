@@ -24,7 +24,7 @@ const Menubar = () => {
     const {user, logOut} = useContext(AuthContext);
 
     const options = [
-        {text:'What\'s new', path: "/latest", icon:AnnouncementIcon, front:false},
+        {text:'What\'s new', path: "/latest", icon:AnnouncementIcon, front:false, badge :'New'},
         {text:'Profile', path: "/profile", icon:AccountCircleSharpIcon, front:true},
         {text:'Templates', path: "/templates", icon: DashboardIcon, front:true},
         {text:'Community', path: "/posts",icon: SupervisedUserCircleIcon ,front:true},
