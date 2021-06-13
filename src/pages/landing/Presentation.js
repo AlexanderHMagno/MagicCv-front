@@ -23,12 +23,13 @@ const Presentation = () => {
                                 <span className="block text-indigo-600 xl:inline">
                                 <span className="text-white -ml-1">-</span>
                                 <Typed
-                                    strings={['CV', 'Resume']}
+                                    strings={[ 'Resume', 'CV']}
                                     loop
                                     showCursor = {false} 
                                     typeSpeed={50}
                                     backDelay ={3000}
                                     backSpeed = {40}
+
                                 />
 
                                 </span>
@@ -57,16 +58,16 @@ const Presentation = () => {
                             
                                 </div>
                             </div>
-                            <div className="mt-28 -mb-20 md:mt-12 md:mb-10">
-                            <LazyLoadImage
-                                className="w-4/5 sm:w-2/3 lg:w-3/5 mx-auto"
-                                alt={"people Working"}
-                                effect="blur"
-                                delayMethod="debounce"
-                                height="60vh"
-                                src={"images/presentation/people.png"} // use normal <img> attributes as props
-                                 />
-        
+                            <div className="w-full sm:w-3/5 mx-auto">
+                                
+                                <LazyLoadImage
+                                    className="p-10"
+                                    alt={"people Working"}
+                                    effect="blur"
+                                    delayMethod="debounce"
+                                    src={"images/presentation/people.png"} // use normal <img> attributes as props
+                                    />
+    
                             </div>
                         </div>
 
