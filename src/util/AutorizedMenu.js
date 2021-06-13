@@ -35,8 +35,8 @@ const AuthorizedMenu = () => {
                     <Route exact path="/posts" component={Posts}/>
                     <Route exact path="/templates" component={Templates}/>
                     <Route exact path="/settings" component={Settings}/>
-                    <Route exact path="/profile" component={Profile}/>
-                    <Route path="/latest" component={Latest}/>
+                    <Route exact path="/latest" component={Latest}/>
+                    <Route path={["/profile","/"]} component={Profile}/>
                 </Switch>
             </Container>
         )

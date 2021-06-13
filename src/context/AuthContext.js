@@ -53,6 +53,7 @@ const AuthProvider = (props) => {
             type:"LOGIN",
             payload: userData
         })
+    // window.location.replace('/profile');
     }
 
     const logOut = () => {

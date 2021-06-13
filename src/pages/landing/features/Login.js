@@ -18,7 +18,6 @@ const Login = (props) => {
     const [userLoging, {loading}] = useMutation(LOGIN_MUTATION, {
         update(proxy, {data:{authentication}}) {
             containerContext.logIn(authentication);
-            props.history.push('./profile');
         },
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.errors);

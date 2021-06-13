@@ -55,8 +55,8 @@ const Reset = (props) => {
 
     //Restart this page with no paramenters 
     function restartPage () {
-        history.push("/reset_password")
-        window.location.reload();
+        history.push("/reset_password");
+        setUser(false);
     }
     
 
@@ -76,9 +76,8 @@ const Reset = (props) => {
     const containerContext = useContext(AuthContext);
     const [changePassword, {loading:loader}] = useMutation(UPDATE_PASSWORD, {
         update(proxy, {data:{updatePassword}}) {
-    
+
             containerContext.logIn(updatePassword);
-            props.history.push('./profile');
         },
         onError(err) {
             // setErrors(err.graphQLErrors[0].extensions.errors);
