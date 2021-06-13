@@ -10,6 +10,7 @@ import Card from '../../../util/Card';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    margin: 'auto'
   },
   paper: {
     padding: theme.spacing(2),

@@ -23,10 +23,10 @@ const Presentation = () => {
                                 <span className="block text-indigo-600 xl:inline">
                                 <span className="text-white -ml-1">-</span>
                                 <Typed
-                                    strings={[ 'Resume', 'CV']}
+                                    strings={[ 'Resume', 'CV',"Career"]}
                                     loop
                                     showCursor = {false} 
-                                    typeSpeed={50}
+                                    typeSpeed={60}
                                     backDelay ={3000}
                                     backSpeed = {40}
 
