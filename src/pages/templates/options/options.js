@@ -15,22 +15,14 @@ import LateralOption from './lateralOptionNav';
 
 
 //internals
-import {TEMPLATEOPTIONS} from './templateOptions';
 import {FONTS, POSITIONS} from './fontOptions';
-
 import Loader from '../../../util/loader';
 
-
-
-
-
-
-
 //Princpial Container
-const Options = (({handleOption, options, setOptions}) => {
+const Options = (({handleOption, options, setOptions, TemplateData}) => {
     const [expanded, setExpanded] = useState('template');
     const [tem, setTem] = useState(0);
-    const {settings, display,template:{Principal}} = options || {};
+    const {settings, avatar,template} = options || {};
     const [Loading, setLoading] = useState(true);
     
     // Load On Change
@@ -38,11 +30,11 @@ const Options = (({handleOption, options, setOptions}) => {
         setTimeout(() => {
             setLoading(false);    
         }, 200);
-    },[Principal])
+    },[template])
 
 
     //Create Color Array
-    const COLOROPTIONS = Object.entries(settings).map((element => {
+    const COLOROPTIONS = Object.entries(settings).filter(element => element[1].color).map((element => {
         return {label:element[0],value:element[1].color}
     }))
 
@@ -80,7 +72,7 @@ const Options = (({handleOption, options, setOptions}) => {
                 <Card.Description> 
                 { Loading ? <Loader/> :<Table>
                         <TableBody>
-                            {COLOROPTIONS.filter((item)=> item.value !== "").map((item,index) => {
+                            {COLOROPTIONS.filter((item)=> (item.value !== "")).map((item,index) => {
                                 return (
                                     <TableRow hover={true} key={index}>
                                         <TableCell style={{borderBottom:"none"}}>
@@ -205,11 +197,10 @@ const Options = (({handleOption, options, setOptions}) => {
                                 <TableCell style={{borderBottom:"none"}}>
                                 <Select  
                                     labelId="name-font-selection" 
-                                    value={display.Avatar.picture}
+                                    value={avatar}
                                     onChange={e =>  handleOption(
-                                        {group:"display",
-                                        subGroup:'Avatar',
-                                        setting:'picture',
+                                        {group:"avatar",
+                                        string: true,
                                         value:e.target.value})}  
                                 >
                                     {   
@@ -239,7 +230,7 @@ const Options = (({handleOption, options, setOptions}) => {
         <div className=" pt-5">
             <Carousel showThumbs={false} infiniteLoop={true} autoPlay={false} interval={100000}>
 
-                {TEMPLATEOPTIONS.map((element,index) => {
+                {TemplateData && TemplateData.map((element,index) => {
                     const selected = tem === index;
                     return <div 
                         key={index}

@@ -19,7 +19,7 @@ import { Page, Text, View, Document,PDFViewer, Image, PDFDownloadLink} from '@re
 
 const Template = ({options:{settings, template}}) => {
 	
-	switch (template.Principal.template) {
+	switch (template) {
 		case 'triwave':
 			return <Background1 options={settings}/>
 		case 'bluewave':
@@ -56,7 +56,7 @@ return (
 			{/* Left Column */}
 			<View  style={styles.leftColumn}>
 				
-				{(!acronyms.includes(info.options.display.Avatar.picture)) && picture_url  ?
+				{(!acronyms.includes(info.options.avatar)) && picture_url  ?
 					<Image fixed source={{uri:picture_url, headers:{'Access-Control-Expose-Headers':'Access-Control-Allow-Origin','Access-Control-Allow-Origin':'*'}}} style={styles.avatar}/>
 					:<View fixed style={styles.backAvatar}><Text style={styles.textAvatar}>{first[0]}{last[0]}</Text></View>
 				}	

@@ -2,7 +2,7 @@
 import StyleSheet from '../../../fonts';
 
 export const createStyle = (options) => {
-	const {settings,display} = options || {};
+	const {settings,avatar} = options || {};
 	const photo = {
 		round: "50%",
 		square: "5%"
@@ -12,7 +12,7 @@ export const createStyle = (options) => {
 		acronym2 : {color:'black',backgroundColor:settings.Name.color},
 	}
 	
-	const acronymSelected = acronym[display.Avatar.picture];
+	const acronymSelected = acronym[avatar];
 
 	return StyleSheet.create({
 	page: {
@@ -41,20 +41,20 @@ export const createStyle = (options) => {
 		opacity: 0.3,
 	},
 	avatar : {
-		borderRadius : photo[display.Avatar.picture] ?? 0,
+		borderRadius : photo[avatar] ?? 0,
 		width:150,
 		marginLeft: -5,
 		height:150,
 		marginBottom: 20,
 	},
 	backAvatar: {
-		backgroundColor: acronymSelected ? acronym[display.Avatar.picture].backgroundColor : "transparent",
+		backgroundColor: acronymSelected ? acronym[avatar].backgroundColor : "transparent",
 		borderRadius: "5%",
 		margin: "35 0 50 -15"
 	},
 	textAvatar: {
 		fontSize: '75',
-		color: acronymSelected ? acronym[display.Avatar.picture].color : "transparent",
+		color: acronymSelected ? acronym[avatar].color : "transparent",
 		opacity:0.5,
 		padding: 10
 

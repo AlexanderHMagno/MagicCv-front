@@ -47,3 +47,93 @@ export const GET_PROFILE = gql`
     }
     }
 `;
+
+export const GET_TEMPLATE = gql`
+query getTemplates ($userId:ID!) { 
+    getTemplates (userId:$userId) {
+        title
+        image
+        original
+        order
+        config	{
+            avatar
+            template
+            settings {
+                Background {
+                    color
+                    font
+                    size
+                    position
+                }
+                Back1 {
+                    color
+                    font
+                    size
+                    position
+                }
+                Back2 {
+                    color
+                    font
+                    size
+                    position
+                }
+                Back3 {
+                    color
+                    font
+                    size
+                    position
+                }
+                Main {
+                    color
+                    font
+                    size
+                    position
+                }
+                LeftTitle {
+                    color
+                    font
+                    size
+                    position
+                }
+                LeftText {
+                    color
+                    font
+                    size
+                    position
+                }
+                Name {
+                    color
+                    font
+                    size
+                    position
+                }
+                Title {
+                    color
+                    font
+                    size
+                    position
+                }
+                Subtitle {
+                    color
+                    font
+                    size
+                    position
+                }
+                Text {
+                    color
+                    font
+                    size
+                    position
+                }
+                Extra {
+                    color
+                    font
+                    size
+                    position
+                }
+
+            }
+        }
+    }
+}
+`

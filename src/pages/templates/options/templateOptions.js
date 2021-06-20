@@ -2,8 +2,11 @@
 // TODO: This should be saved in the database
 
 export const DEFAULTCONFIG =         {   
-    display: {Avatar: {picture: 'round'}},
-    template: {Principal: { template: "bluewave" }},
+    avatar: 'round',
+    template: "bluewave",
+    tags: ['traditional'],
+    order: 1,
+    original: true,
     settings: {
         Main: {color:"#010332",font:"Rubik",size:20},
         Background: {color:"#FFFFFF",font:"",size:0},
@@ -19,11 +22,11 @@ export const DEFAULTCONFIG =         {
 
 
 export const TEMPLATEOPTIONS = [
-    {label: "bluewave" ,image:"images/cvs/cv2.png",config: DEFAULTCONFIG},
-    {label: "bluewave" ,image:"images/cvs/cv11.png",
+    {title: "bluewave" ,image:"images/cvs/cv2.png",config: DEFAULTCONFIG},
+    {title: "bluewave" ,image:"images/cvs/cv11.png",
         config: {   
-            display: {Avatar: {picture: 'acronym2'}},
-            template: {Principal: { template: "bluewave" }},
+            avatar: 'acronym2',
+            template: "bluewave" ,
             settings: {
                 Main: {color:"#393939",font:"Rubik",size:20},
                 Background: {color:"#FFFFFF",font:"",size:0},
@@ -37,10 +40,10 @@ export const TEMPLATEOPTIONS = [
             },
         }
     },
-    {label: "doublering" ,image:"images/cvs/cv8.png",
+    {title: "doublering" ,image:"images/cvs/cv8.png",
     config: {
-        display: {Avatar: {picture: "acronym"}},
-        template:{Principal: {template: "doublering"}},
+        avatar: "acronym", 
+        template: "doublering", 
         settings: {
             Main: {color: "", font: "Rubik", size: 0},
             Background: {color: "#5a5a58", font: "", size: 0},
@@ -57,10 +60,10 @@ export const TEMPLATEOPTIONS = [
         
     }
     },
-    {label: "doublering" ,image:"images/cvs/cv12.png",
+    {title: "doublering" ,image:"images/cvs/cv12.png",
     config: {
-        display: {Avatar: {picture: "acronym2"}},
-        template:{Principal: {template: "doublering"}},
+        avatar: "acronym2", 
+        template: "doublering", 
         settings: {
             Main: {color: "", font: "Rubik", size: 0},
             Background: {color: "#5a5a58", font: "", size: 0},
@@ -77,10 +80,10 @@ export const TEMPLATEOPTIONS = [
         
     }
     },
-    {label: "topwave" ,image:"images/cvs/cv3.png",
+    {title: "topwave" ,image:"images/cvs/cv3.png",
         config: {
-            display: {Avatar: {picture: "round"}},   
-            template: {Principal: {template: "topwave"}},     
+            avatar: "round",    
+            template: "topwave",     
             settings: {
                 Background: {color: "#FFFFFF", font: "", size: 0},
                 Extra: {color: "#000000", font: "Bangers", size: "18"},
@@ -94,10 +97,10 @@ export const TEMPLATEOPTIONS = [
             },
         }
     },
-    {label: "triwave" ,image:"images/cvs/cv4.png",
+    {title: "triwave" ,image:"images/cvs/cv4.png",
         config: {
-            display: {Avatar: {picture: "acronym"}},
-            template:{Principal: {template: "triwave"}},
+            avatar: "acronym", 
+            template: "triwave", 
             settings: {
                 Main: {color: "#1b1818", font: "Rubik", size: 20},
                 Background: {color: "#000000", font: "", size: 0},
@@ -113,10 +116,10 @@ export const TEMPLATEOPTIONS = [
             },  
         }
     },
-    {label: "triwave" ,image:"images/cvs/cv5.png",
+    {title: "triwave" ,image:"images/cvs/cv5.png",
     config: {
-        display: {Avatar: {picture: "round"}},
-        template:{Principal: {template: "triwave"}},
+        avatar: "round", 
+        template: "triwave", 
         settings: {
             Background: {color: "#faf9f9", font: "", size: 0},
             Back1: {color: "#014bf9", font: "Rubik", size: 0},
@@ -132,10 +135,10 @@ export const TEMPLATEOPTIONS = [
         },
         }
     },
-    {label: "doublering" ,image:"images/cvs/cv7.png",
+    {title: "doublering" ,image:"images/cvs/cv7.png",
     config: {
-        display: {Avatar: {picture: "acronym"}},
-        template:{Principal: {template: "doublering"}},
+        avatar: "acronym", 
+        template: "doublering", 
         settings: {
             Background: {color: "#0b0b0a", font: "", size: 0},
             Back1: {color: "#01f9bb", font: "Rubik", size: 0},
@@ -151,10 +154,10 @@ export const TEMPLATEOPTIONS = [
         },
     }
     },
-    {label: "square" ,image:"images/cvs/cv9.png",
+    {title: "square" ,image:"images/cvs/cv9.png",
     config: {
-        display: {Avatar: {picture: "acronym"}},
-        template:{Principal: {template: "square"}},
+        avatar: "acronym", 
+        template: "square", 
         settings: {
             Background: {color: "", font: "", size: 0},
             Back1: {color: "#4ed3ff", font: "Rubik", size: 0},
@@ -172,10 +175,10 @@ export const TEMPLATEOPTIONS = [
         },
     }
     },
-    {label: "gastown" ,image:"images/cvs/cv10.png",
+    {title: "gastown" ,image:"images/cvs/cv10.png",
     config: {
-        display: {Avatar: {picture: "acronym"}},
-        template:{Principal: {template: "gastown"}},
+        avatar: "acronym", 
+        template: "gastown", 
         settings: {
             Background: {color: "#ffffff", font: "", size: 0},
             Back1: {color: "#5f27cd", font: "Rubik", size: 0},

@@ -1,0 +1,214 @@
+{"option1" : {
+    "title": "bluewave" ,
+    "image":"images/cvs/cv2.png",     
+    "tags": ["traditional"],
+    "order": 1,
+    "original": true,
+"config": {   
+    "avatar": "round",
+    "template": "bluewave",
+    "settings": {
+        "Main": {"color":"#010332","font":"Rubik","size":20},
+        "Background": {"color":"#FFFFFF","font":"","size":0},
+        "Name": {"color":"#010332","font":"Rubik","size":35},
+        "Title": {"color":"#010332","font":"Rubik","size":20},
+        "Subtitle": {"color":"#86D8CA","font":"Rubik","size":15},
+        "Text": {"color":"#000000","font":"Rubik","size":10},
+        "Extra": {"color":"#000000","font":"Rubik","size":18},
+        "LeftTitle": {"color": "#ffffff", "font": "Rubik", "size": 16, "position": "center"},
+        "LeftText": {"color": "#ffffff", "font": "Rubik", "size": 14, "position": "center"}
+    }
+
+},
+    "option2" : {"title": "bluewave" ,"image":"images/cvs/cv11.png",     "tags": ["traditional"],
+    "order": 2,
+    "original": true,
+        "config": {   
+            "avatar": "acronym2",
+            "template": "bluewave" ,
+            "settings": {
+                "Main": {"color":"#393939","font":"Rubik","size":20},
+                "Background": {"color":"#FFFFFF","font":"","size":0},
+                "Name": {"color":"#6cd1dc","font":"OdibeeSans","size":60},
+                "Title": {"color":"#010332","font":"Rubik","size":20},
+                "Subtitle": {"color":"#000000","font":"Rubik","size":15},
+                "Text": {"color":"#000000","font":"Rubik","size":10},
+                "Extra": {"color":"#6cd1dc","font":"Rubik","size":18},
+                "LeftTitle": {"color": "#6cd1dc", "font": "Rubik", "size": 16, "position": "flex-start"},
+                "LeftText": {"color": "#ffffff", "font": "Rubik", "size": 16, "position": "flex-start"}
+            }
+        }
+    },
+    "option3" : {"title": "doublering" ,"image":"images/cvs/cv8.png",     "tags": ["traditional"],
+    "order": 3,
+    "original": true,
+    "config": {
+        "avatar": "acronym", 
+        "template": "doublering", 
+        "settings": {
+            "Main": {"color": "", "font": "Rubik", "size": 0},
+            "Background": {"color": "#5a5a58", "font": "", "size": 0},
+            "Back1": {"color": "#e9e90c", "font": "Rubik", "size": 0},
+            "Back2": {"color": "#0b0b0a", "font": "Rubik", "size": 0},
+            "Name": {"color": "#fcfcfc", "font": "Orbitron", "size": 30},
+            "Title": {"color": "#fcfcfc", "font": "Rubik", "size": 20},
+            "Subtitle": {"color": "#a6a6a6", "font": "Rubik", "size": 15},
+            "Text": {"color": "#ffffff", "font": "Rubik", "size": 10},
+            "Extra": {"color": "#f2f2f2", "font": "Rubik", "size": 18},
+            "LeftTitle": {"color": "#e9e90c", "font": "Rubik", "size": 16, "position": "center"},
+            "LeftText": {"color": "#ffffff", "font": "Rubik", "size": 14, "position": "center"}
+        }
+        
+    }
+    },
+    "option4" : {"title": "doublering" ,"image":"images/cvs/cv12.png",     "tags": ["traditional"],
+    "order": 4,
+    "original": true,
+    "config": {
+        "avatar": "acronym2", 
+        "template": "doublering", 
+        "settings": {
+            "Main": {"color": "", "font": "Rubik", "size": 0},
+            "Background": {"color": "#5a5a58", "font": "", "size": 0},
+            "Back1": {"color": "3a3a38", "font": "Rubik", "size": 0},
+            "Back2": {"color": "#0b0b0a", "font": "Rubik", "size": 0},
+            "Name": {"color": "#8a66df", "font": "Orbitron", "size": 30},
+            "Title": {"color": "#fcfcfc", "font": "Rubik", "size": 20},
+            "Subtitle": {"color": "#a6a6a6", "font": "Rubik", "size": 15},
+            "Text": {"color": "#ffffff", "font": "Rubik", "size": 10},
+            "Extra": {"color": "#f2f2f2", "font": "Rubik", "size": 18},
+            "LeftTitle": {"color": "#ffffff", "font": "Rubik", "size": 16, "position": "center"},
+            "LeftText": {"color": "#ffffff", "font": "Rubik", "size": 14, "position": "center"}
+        }
+        
+    }
+    },
+    "option5" : {"title": "topwave" ,"image":"images/cvs/cv3.png",     "tags": ["traditional"],
+    "order": 5,
+    "original": true,
+        "config": {
+            "avatar": "round",    
+            "template": "topwave",     
+            "settings": {
+                "Main": {"color": "#050505", "font": "Rubik", "size": 20},
+                "Background": {"color": "#FFFFFF", "font": "", "size": 0},
+                "Name": {"color": "#ffffff", "font": "FugazOne", "size": 35},
+                "Title": {"color": "#d9d9d9", "font": "OpenSans", "size": "17"} ,  
+                "Subtitle": {"color": "#86D8CA", "font": "Rubik", "size": 15},
+                "Text": {"color": "#000000", "font": "OpenSans", "size": 10},
+                "Extra": {"color": "#000000", "font": "Bangers", "size": "18"},
+                "LeftTitle": {"color": "#ffffff", "font": "Rubik", "size": 16, "position": "center"},
+                "LeftText": {"color": "#ffffff", "font": "Rubik", "size": 14, "position": "center"}
+            }
+        }
+    },
+    "option6" : {"title": "triwave" ,"image":"images/cvs/cv4.png",     "tags": ["traditional"],
+    "order": 6,
+    "original": true,
+        "config": {
+            "avatar": "acronym", 
+            "template": "triwave", 
+            "settings": {
+                "Main": {"color": "#1b1818", "font": "Rubik", "size": 20},
+                "Background": {"color": "#000000", "font": "", "size": 0},
+                "Back1": {"color": "#7DF901", "font": "Rubik", "size": 0},
+                "Back2": {"color": "#000000", "font": "Rubik", "size": 0},
+                "Name": {"color": "#7DF901", "font": "Monoton", "size": 25},
+                "Title": {"color": "#484646", "font": "Rubik", "size": 20},
+                "Subtitle": {"color": "#fafafa", "font": "Rubik", "size": 15},
+                "Text": {"color": "#ffffff", "font": "Rubik", "size": 10},
+                "Extra": {"color": "#908e8e", "font": "Rubik", "size": 18},
+                "LeftTitle": {"color": "#7DF901", "font": "Rubik", "size": 16, "position": "center"},
+                "LeftText": {"color": "#ffffff", "font": "Rubik", "size": 14, "position": "center"}
+            }
+        }
+    },
+    "option7" : {"title": "triwave" ,"image":"images/cvs/cv5.png",     "tags": ["traditional"],
+    "order": 7,
+    "original": true,
+    "config": {
+        "avatar": "round", 
+        "template": "triwave", 
+        "settings": {
+            "Main": {"color": "#3d62b7", "font": "Orbitron", "size": 20},
+            "Background": {"color": "#faf9f9", "font": "", "size": 0},
+            "Back1": {"color": "#014bf9", "font": "Rubik", "size": 0},
+            "Back2": {"color": "#fafafa", "font": "Rubik", "size": 0},
+            "Name": {"color": "#234bf9", "font": "Orbitron", "size": "27"},
+            "Title": {"color": "#484646", "font": "Roboto", "size": 20},
+            "Subtitle": {"color": "#3d62b7", "font": "Roboto", "size": 15},
+            "Text": {"color": "#000000", "font": "Roboto", "size": 10},
+            "Extra": {"color": "#030303", "font": "Roboto", "size": 18},
+            "LeftTitle": {"color": "#ffffff", "font": "Rubik", "size": 16, "position": "center"},
+            "LeftText": {"color": "#ffffff", "font": "Rubik", "size": 14, "position": "center"}
+        }
+        }
+    },
+    "option8" : {"title": "doublering" ,"image":"images/cvs/cv7.png",     "tags": ["traditional"],
+    "order": 8,
+    "original": true,
+    "config": {
+        "avatar": "acronym", 
+        "template": "doublering", 
+        "settings": {
+            "Main": {"color": "", "font": "Rubik", "size": 20},
+            "Background": {"color": "#0b0b0a", "font": "", "size": 0},
+            "Back1": {"color": "#01f9bb", "font": "Rubik", "size": 0},
+            "Back2": {"color": "#a39f9f", "font": "Rubik", "size": 0},
+            "Name": {"color": "#fcfcfc", "font": "Orbitron", "size": 30},
+            "Title": {"color": "#fcfcfc", "font": "Rubik", "size": 20},
+            "Subtitle": {"color": "#a6a6a6", "font": "Rubik", "size": 15},
+            "Text": {"color": "#ffffff", "font": "Rubik", "size": 10},
+            "Extra": {"color": "#f2f2f2", "font": "Rubik", "size": 18},
+            "LeftTitle": {"color": "#ffffff", "font": "Rubik", "size": 16, "position": "center"},
+            "LeftText": {"color": "#ffffff", "font": "Rubik", "size": 14, "position": "center"}
+        }
+    }
+    },
+    "option9" : {"title": "square" ,"image":"images/cvs/cv9.png",     "tags": ["traditional"],
+    "order": 9,
+    "original": true,
+    "config": {
+        "avatar": "acronym", 
+        "template": "square", 
+        "settings": {
+            "Main": {"color": "", "font": "Rubik", "size": 0},
+            "Background": {"color": "", "font": "", "size": 0},
+            "Back1": {"color": "#4ed3ff", "font": "Rubik", "size": 0},
+            "Back2": {"color": "#00b3ff", "font": "Rubik", "size": 0},
+            "Back3": {"color": "#7a9bff", "font": "Rubik", "size": 0},
+            "Back4": {"color": "#3dedff", "font": "Rubik", "size": 0},
+            "Name": {"color": "#ffffff", "font": "Orbitron", "size": 30},
+            "Title": {"color": "#000000", "font": "Rubik", "size": 20},
+            "Subtitle": {"color": "#000000", "font": "Rubik", "size": 15},
+            "Text": {"color": "#000000", "font": "Rubik", "size": 10},
+            "Extra": {"color": "#000000", "font": "Rubik", "size": 18},
+            "LeftTitle": {"color": "#ffffff", "font": "Rubik", "size": 16, "position": "center"},
+            "LeftText": {"color": "#000000", "font": "Rubik", "size": 14, "position": "center"}
+        }
+    }
+    },
+    "option10" : {"title": "gastown" ,"image":"images/cvs/cv10.png",     "tags": ["traditional"],
+    "order": 10,
+    "original": true,
+    "config": {
+        "avatar": "acronym", 
+        "template": "gastown", 
+        "settings": {
+            "Main": {"color": "", "font": "Rubik", "size": 0},
+            "Background": {"color": "#ffffff", "font": "", "size": 0},
+            "Back1": {"color": "#5f27cd", "font": "Rubik", "size": 0},
+            "Back2": {"color": "#5f27cd", "font": "Rubik", "size": 0},
+            "Back3": {"color": "#feca57", "font": "Rubik", "size": 0},
+            "Name": {"color": "#ffffff", "font": "Arbutus", "size": 40},
+            "Title": {"color": "#000000", "font": "Rubik", "size": 20},
+            "Subtitle": {"color": "#5f27cd", "font": "Rubik", "size": 15},
+            "Text": {"color": "#000000", "font": "Rubik", "size": 10},
+            "Extra": {"color": "#000000", "font": "Rubik", "size": 18},
+            "LeftTitle": {"color": "#ffffff", "font": "Rubik", "size": 16, "position": "center"},
+            "LeftText": {"color": "#ffffff", "font": "Rubik", "size": 14, "position": "center"}
+        }
+    }
+    }
+}
+}

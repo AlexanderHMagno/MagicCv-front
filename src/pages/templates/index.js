@@ -10,7 +10,7 @@ import Container from '@material-ui/core/Container';
 
 import {AuthContext} from '../../context/AuthContext';
 import PDFVIEW from './structure/templates';
-import {GET_PROFILE} from '../../graphql/queries';
+import {GET_PROFILE, GET_TEMPLATE} from '../../graphql/queries';
 import Loader from '../../util/loader';
 import Options from './options/options';
 
@@ -30,18 +30,26 @@ const Templates = () => {
     
     const [options, setOptions] = useState(DEFAULTCONFIG);
 
-    const handleOptions = (({group,subGroup,setting,value}) => {
-        setOptions(
-            {...options,
-                [group]:{...options[group],
-                    [subGroup]: {...options[group][subGroup], [setting]: value}}
-            })
+    const handleOptions = (({group,subGroup,setting,value, string = false}) => {
+        if (string) {
+            setOptions({
+                ...options,
+                [group] : value
+            });
+        } else {
+            setOptions(
+                {...options,
+                    [group]:{...options[group],
+                        [subGroup]: {...options[group][subGroup], [setting]: value}}
+                })
+        }
     })
 
     // TODO: Query should come from the same place that setting the CV
     const {user:{username, id, email,createdAt}} = useContext(AuthContext);
-    const {loading, data} = useQuery(GET_PROFILE, { variables :{userId:id}})
-
+    const {loading, data} = useQuery(GET_PROFILE, { variables :{userId:id}});
+    const {loading:loadingTemplate, data :TemplateData} =  useQuery(GET_TEMPLATE, { variables :{userId:id}});
+    const {getTemplates} = TemplateData || {};
     if (loading) return <Loader/>;
     const {valid, dataValidated, missingData} = checkMinimumData(data);
     
@@ -54,7 +62,7 @@ const Templates = () => {
                 <Card fluid>
                     <Card.Content>
                         <Card.Header>Templates</Card.Header>
-                            <Options handleOption={handleOptions} setOptions={setOptions} options={options}/>
+                            <Options handleOption={handleOptions} setOptions={setOptions} options={options} TemplateData={getTemplates}/>
                         <br></br>
                     </Card.Content>
                 </Card>
