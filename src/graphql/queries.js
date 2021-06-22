@@ -83,6 +83,12 @@ query getTemplates ($userId:ID!) {
                     size
                     position
                 }
+                Back4 {
+                    color
+                    font
+                    size
+                    position
+                }
                 Main {
                     color
                     font
