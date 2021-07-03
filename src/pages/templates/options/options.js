@@ -19,7 +19,7 @@ import {FONTS, POSITIONS} from './fontOptions';
 import Loader from '../../../util/loader';
 
 //Princpial Container
-const Options = (({handleOption, options, setOptions, TemplateData}) => {
+const Options = (({handleOption, options, setOptions, TemplateData,setVisibilityButton}) => {
     const [expanded, setExpanded] = useState('template');
     const [tem, setTem] = useState(0);
     const {settings, avatar,template} = options || {};
@@ -240,7 +240,7 @@ const Options = (({handleOption, options, setOptions, TemplateData}) => {
                             <Button 
                             size="large"
                             style={{position:'absolute', bottom: 50,left:0, right:0,margin:'auto'}}
-                            onClick={()=> handleButton(element.config, index)}
+                            onClick={()=> {setVisibilityButton(false); handleButton(element.config, index)}}
                             variant="contained" color={selected ? 'primary' : 'default'}>
                                 {selected? 'Selected': 'select'}
                             </Button>

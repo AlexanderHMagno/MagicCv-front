@@ -5,6 +5,7 @@ import Background3 from '../../backgrounds/background3';
 import Background4 from '../../backgrounds/background4';
 import Background5 from '../../backgrounds/background5';
 import Background6 from '../../backgrounds/background6';
+import SaveTemplate from '../../../saveTemplate';
 
 import {createStyle} from './styles';
 import Loader from '../../../../../util/loader';
@@ -14,7 +15,8 @@ import Typography from '@material-ui/core/Typography';
 import ErrorIcon from '@material-ui/icons/Error';
 
 
-import { Page, Text, View, Document,PDFViewer, Image, PDFDownloadLink} from '@react-pdf/renderer';
+
+import { Page, Text, View,pdf, Document,PDFViewer, Image, PDFDownloadLink} from '@react-pdf/renderer';
 
 
 const Template = ({options:{settings, template}}) => {
@@ -43,7 +45,6 @@ const MyDocument = ({info, agua}) => {
 const styles = createStyle(info.options);
 const {address, first, last, bio,role, city, email, country,phone,picture_url,experience,education,volunteer,skills} = info.info || {};
 const acronyms = ['acronym','acronym2'];
-
 
 return (
   <Document>
@@ -132,6 +133,8 @@ const DOMRENDER = (info) => {
 	const [download,setDownload] = useState(false);
 	const {first ="document", last} = info.info || {};
 	const documentFile = `${first}_${last}_cv`;
+	const IMAGE = pdf(<MyDocument info={info} agua={true}/>).toBlob();
+	
 	useEffect(()=> {
 		setLoading(true);
 		setDownload(false);
@@ -144,7 +147,7 @@ const DOMRENDER = (info) => {
 	return (
 		<>
 		{loading && <Loader/>}
-		
+		{info.viewSaveButton && <SaveTemplate template={info.options} image={IMAGE}/>}
 		<div className="sm:h-full flex flex-col-reverse">
 			<div className="h-0 hidden sm:block sm:h-full">
 				<PDFViewer  height="100%" width="100%">

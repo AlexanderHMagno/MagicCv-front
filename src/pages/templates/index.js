@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
 
-
 import {AuthContext} from '../../context/AuthContext';
 import PDFVIEW from './structure/templates';
 import {GET_PROFILE, GET_TEMPLATE} from '../../graphql/queries';
@@ -16,6 +15,7 @@ import Options from './options/options';
 
 import {DEFAULTCONFIG} from './options/templateOptions';
 import {checkMinimumData} from '../../util/organizeCandidateData';
+
 
 
 const optionMissing = {
@@ -29,8 +29,11 @@ const optionMissing = {
 const Templates = () => {
     
     const [options, setOptions] = useState(DEFAULTCONFIG);
+    const [viewSaveButton, setVisibilityButton] = useState(false);
 
     const handleOptions = (({group,subGroup,setting,value, string = false}) => {
+
+        
         if (string) {
             setOptions({
                 ...options,
@@ -43,6 +46,8 @@ const Templates = () => {
                         [subGroup]: {...options[group][subGroup], [setting]: value}}
                 })
         }
+
+        setVisibilityButton(true);
     })
 
     // TODO: Query should come from the same place that setting the CV
@@ -53,6 +58,7 @@ const Templates = () => {
     if (loading) return <Loader/>;
     const {valid, dataValidated, missingData} = checkMinimumData(data);
     
+   
     
     return ( 
         <>
@@ -61,14 +67,19 @@ const Templates = () => {
             <Grid.Column width={5}  >  
                 <Card fluid>
                     <Card.Content>
-                        <Card.Header>Templates</Card.Header>
-                            <Options handleOption={handleOptions} setOptions={setOptions} options={options} TemplateData={getTemplates}/>
+                            <Card.Header>Templates</Card.Header>
+                            <Options 
+                                handleOption={handleOptions} 
+                                setOptions={setOptions} 
+                                options={options} 
+                                TemplateData={getTemplates} 
+                                setVisibilityButton={setVisibilityButton}/>
                         <br></br>
                     </Card.Content>
                 </Card>
             </Grid.Column>
             <Grid.Column width={8} className="sm:h-screen">
-                <PDFVIEW info={{...dataValidated.getProfile,email}} options={options}/>
+                <PDFVIEW info={{...dataValidated.getProfile,email}} options={options} viewSaveButton={viewSaveButton}/>
             </Grid.Column>             
         </Grid>
             

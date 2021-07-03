@@ -26,7 +26,9 @@ const setAuthorizationLink = setContext((request, previousContext) => {
 
 const client = new ApolloClient({
     link : setAuthorizationLink.concat(httpLink),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      addTypename: false
+    }),
     connectToDevTools: true
   });
 
