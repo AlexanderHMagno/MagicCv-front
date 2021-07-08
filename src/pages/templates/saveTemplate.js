@@ -12,6 +12,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import {GET_TEMPLATE, CREATE_TEMPLATE} from '../../graphql/queries';
 import {useMutation} from '@apollo/client';
 import {AuthContext} from '../../context/AuthContext';
+import Loader from '../../util/loader';
 
 
 function Alert(props) {
@@ -21,17 +22,21 @@ function Alert(props) {
 const SaveTemplate =  ({template,image}) => {
 
     const [openSnackBar, setOpenSnackBar] = useState(false);
+    const [imageFile, setImageFile] = useState('alex');
     const {user} = useContext(AuthContext);
 
-    let Blob;
-
-    image.then((blo)=> {
-      Blob = new File([blo], "test.pdf",{type:"application/pdf"})
-
-    })
+    const generateBlob = () => {
+      return image.then( (blo)=> {
+        return new File([blo], "test.pdf",{type:"application/pdf"})
+      })
+    }
 
     const updateData =  async () => {
+        const newData = await generateBlob();
+        setImageFile(newData);
+        // console.log(imageFile, newData);
         CREATENEWTEMPLATE();
+        
     }
 
     const [CREATENEWTEMPLATE, {loading}] = useMutation(CREATE_TEMPLATE, {
@@ -53,14 +58,22 @@ const SaveTemplate =  ({template,image}) => {
 
       },
       onError(err) {
-        // console.log(err)
+        console.log(err)
       },
       variables :  {
         title: "Alexander",
         category: "sebas",
-        image: Blob,
+        image: imageFile,
         config: JSON.stringify(template)},
   });
+
+    if (loading) {
+      return (
+        <Loader>
+          <h1 className="text-indigo-600">Creating</h1>
+        </Loader>
+      )
+    }
 
     return (
         <Fragment>
@@ -76,10 +89,7 @@ const SaveTemplate =  ({template,image}) => {
               </Alert>
             </Snackbar>
         </Fragment>
-    )
-    
-    
-    
+    )  
 }
 
 
