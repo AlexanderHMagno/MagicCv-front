@@ -133,7 +133,6 @@ const DOMRENDER = (info) => {
 	const [download,setDownload] = useState(false);
 	const {first ="document", last} = info.info || {};
 	const documentFile = `${first}_${last}_cv`;
-	const IMAGE = pdf(<MyDocument info={info} agua={true}/>).toBlob();
 	
 	useEffect(()=> {
 		setLoading(true);
@@ -147,7 +146,7 @@ const DOMRENDER = (info) => {
 	return (
 		<>
 		{loading && <Loader/>}
-		{info.viewSaveButton && <SaveTemplate template={info.options} image={IMAGE}/>}
+		{info.viewSaveButton.view && <SaveTemplate template={info.options} Document={MyDocument} info={info} />}
 		<div className="sm:h-full flex flex-col-reverse">
 			<div className="h-0 hidden sm:block sm:h-full">
 				<PDFViewer  height="100%" width="100%">

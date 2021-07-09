@@ -8,31 +8,39 @@ import ScreenShareIcon from '@material-ui/icons/ScreenShare';
 import Tooltip from '@material-ui/core/Tooltip';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import {pdf} from '@react-pdf/renderer';
 
 import {GET_TEMPLATE, CREATE_TEMPLATE} from '../../graphql/queries';
 import {useMutation} from '@apollo/client';
 import {AuthContext} from '../../context/AuthContext';
 import Loader from '../../util/loader';
+import {generalInformation} from '../../util/types';
 
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const SaveTemplate =  ({template,image}) => {
-
+const SaveTemplate =  ({template,Document, info}) => {
     const [openSnackBar, setOpenSnackBar] = useState(false);
     const [imageFile, setImageFile] = useState('alex');
     const {user} = useContext(AuthContext);
 
-    const generateBlob = () => {
-      return image.then( (blo)=> {
-        return new File([blo], "test.pdf",{type:"application/pdf"})
-      })
+    const generateBlob = async () => {
+      //Use Default data to create information
+      const defaultInfo = {...info,...{...generalInformation}};
+      
+      //Create the pdf documennt
+       return pdf(<Document info={defaultInfo}/>)
+        .toBlob()
+        .then( (blo)=> {
+          return new File([blo], "test.pdf",{type:"application/pdf"})
+        })
     }
 
     const updateData =  async () => {
         const newData = await generateBlob();
+        
         setImageFile(newData);
         // console.log(imageFile, newData);
         CREATENEWTEMPLATE();
@@ -52,6 +60,8 @@ const SaveTemplate =  ({template,image}) => {
             cache.writeQuery({query:GET_TEMPLATE, data:newData, variables: { userId:user.id }});
 
             setOpenSnackBar(true);
+            //hide the save button
+            info.viewSaveButton.action(false);
         } catch (error) {
           
         }

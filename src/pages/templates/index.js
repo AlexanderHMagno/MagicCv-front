@@ -79,7 +79,7 @@ const Templates = () => {
                 </Card>
             </Grid.Column>
             <Grid.Column width={8} className="sm:h-screen">
-                <PDFVIEW info={{...dataValidated.getProfile,email}} options={options} viewSaveButton={viewSaveButton}/>
+                <PDFVIEW info={{...dataValidated.getProfile,email}} options={options} viewSaveButton={{view:viewSaveButton,action:setVisibilityButton}}/>
             </Grid.Column>             
         </Grid>
             
