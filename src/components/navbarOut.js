@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import Submenu from '../util/BurguerMenu';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 import {Link} from 'react-router-dom';
+import { Image } from 'semantic-ui-react';
 
 
 // Short menu options
@@ -32,13 +31,7 @@ const Menubar = () => {
                     <div className="flex items-center justify-between w-full md:w-auto">
                     <Link to={'/'}>
                         <span className="sr-only">Magic Cv</span>
-                        <LazyLoadImage
-                                className="h-10  sm:h-10"
-                                alt={"Logo"}
-                                effect="blur"
-                                delayMethod="debounce"
-                                src={"/images/cv.png"} // use normal <img> attributes as props
-                                 />
+                        <Image className="h-10  sm:h-10" size="tiny" src={"/images/cv.png"} alt="logo"  />
                     </Link>
                     <div className="-mr-2 flex items-center md:hidden">
                         <Submenu options={options}/>

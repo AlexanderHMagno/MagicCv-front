@@ -60,12 +60,10 @@ const Presentation = () => {
                                 </div>
                             </div>
                             <div className="w-full sm:w-3/5 mx-auto">
-                                
                                 <LazyLoadImage
                                     className="p-10"
                                     alt={"people Working"}
-                                    effect="blur"
-                                    delayMethod="debounce"
+                                    effect="blur"                            
                                     src={"images/presentation/people.png"} // use normal <img> attributes as props
                                     />
     
