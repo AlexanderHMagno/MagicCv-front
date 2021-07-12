@@ -9,7 +9,7 @@ import Container from '@material-ui/core/Container';
 
 import {AuthContext} from '../../context/AuthContext';
 import PDFVIEW from './structure/templates';
-import {GET_PROFILE, GET_TEMPLATE} from '../../graphql/queries';
+import {GET_PROFILE, GET_TEMPLATES} from '../../graphql/queries';
 import Loader from '../../util/loader';
 import Options from './options/options';
 
@@ -53,7 +53,7 @@ const Templates = () => {
     // TODO: Query should come from the same place that setting the CV
     const {user:{username, id, email,createdAt}} = useContext(AuthContext);
     const {loading, data} = useQuery(GET_PROFILE, { variables :{userId:id}});
-    const {loading:loadingTemplate, data :TemplateData} =  useQuery(GET_TEMPLATE, { variables :{userId:id}});
+    const {loading:loadingTemplate, data :TemplateData} =  useQuery(GET_TEMPLATES, { variables :{userId:id}});
     const {getTemplates} = TemplateData || {};
     if (loading) return <Loader/>;
     const {valid, dataValidated, missingData} = checkMinimumData(data);

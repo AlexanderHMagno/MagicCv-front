@@ -10,7 +10,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import {pdf} from '@react-pdf/renderer';
 
-import {GET_TEMPLATE, CREATE_TEMPLATE} from '../../graphql/queries';
+import {GET_TEMPLATES, CREATE_TEMPLATE} from '../../graphql/queries';
 import {useMutation} from '@apollo/client';
 import {AuthContext} from '../../context/AuthContext';
 import Loader from '../../util/loader';
@@ -52,12 +52,12 @@ const SaveTemplate =  ({template,Document, info}) => {
         
         try {
           // Read what its the cache
-            const data = cache.readQuery({query:GET_TEMPLATE, variables: { userId: user.id }});
+            const data = cache.readQuery({query:GET_TEMPLATES, variables: { userId: user.id }});
             const newData = {getTemplates: [...data.getTemplates, result.data.templateCreateMutation ]};
             
             // // // Rewrite the cache adding the last post, that way we dont have to read from the server
             // // // Data must have the same structure;
-            cache.writeQuery({query:GET_TEMPLATE, data:newData, variables: { userId:user.id }});
+            cache.writeQuery({query:GET_TEMPLATES, data:newData, variables: { userId:user.id }});
 
             setOpenSnackBar(true);
             //hide the save button

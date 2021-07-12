@@ -9,6 +9,7 @@ import { Container } from 'semantic-ui-react';
 
 //pages 
 import Posts from '../pages/community/Home';
+import Ideas from '../pages/ideas';
 import Settings from '../pages/Settings';
 import Profile from '../pages/profile';
 import Templates from '../pages/templates';
@@ -36,6 +37,7 @@ const AuthorizedMenu = () => {
                     <AuthRouter exact path="/register" component={Register}/>
                     <Route exact path="/post/:postId" component={IndividualPost}/>
                     <Route exact path="/posts" component={Posts}/>
+                    <Route exact path={["/ideas","/ideas/:templateId"]} component={Ideas}/>
                     <Route exact path="/templates" component={Templates}/>
                     <Route exact path="/settings" component={Settings}/>
                     <Route exact path="/latest" component={Latest}/>

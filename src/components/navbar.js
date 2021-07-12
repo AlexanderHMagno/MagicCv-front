@@ -28,7 +28,7 @@ const Menubar = () => {
         {text:'Profile', path: "/profile", icon:AccountCircleSharpIcon, front:true},
         {text:'Templates', path: "/templates", icon: DashboardIcon, front:true},
         {text:'Community', path: "/posts",icon: SupervisedUserCircleIcon ,front:true},
-        {text:'Ideas', path: "/posts",icon: ImageSearchIcon ,front:true},
+        {text:'Ideas', path: "/ideas",icon: ImageSearchIcon ,front:true},
         {text:user.username, path: "/settings", icon: SettingsSharpIcon, front:false},
         {text:'Logout', path: "/", action: logOut, icon : PowerSettingsNewSharpIcon, front:false},
     ];

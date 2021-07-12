@@ -26,6 +26,7 @@ export const GET_PROFILE = gql`
             picture_url 
             phone 
             address 
+            templates 
             experience {
                 id title typeExp company location current
                 startMonth startYear endMonth endYear
@@ -44,12 +45,112 @@ export const GET_PROFILE = gql`
             skills  {
                 id label rate
                 }
+            
     }
     }
 `;
 
+
 export const GET_TEMPLATE = gql`
-query getTemplates ($userId:ID!) { 
+query getTemplate ($templateId:ID) { 
+    getTemplate (templateId:$templateId)  {
+        id
+        title
+        image
+        original
+        order
+        config	{
+            avatar
+            template
+            settings {
+                Background {
+                    color
+                    font
+                    size
+                    position
+                }
+                Back1 {
+                    color
+                    font
+                    size
+                    position
+                }
+                Back2 {
+                    color
+                    font
+                    size
+                    position
+                }
+                Back3 {
+                    color
+                    font
+                    size
+                    position
+                }
+                Back4 {
+                    color
+                    font
+                    size
+                    position
+                }
+                Main {
+                    color
+                    font
+                    size
+                    position
+                }
+                LeftTitle {
+                    color
+                    font
+                    size
+                    position
+                }
+                LeftText {
+                    color
+                    font
+                    size
+                    position
+                }
+                Name {
+                    color
+                    font
+                    size
+                    position
+                }
+                Title {
+                    color
+                    font
+                    size
+                    position
+                }
+                Subtitle {
+                    color
+                    font
+                    size
+                    position
+                }
+                Text {
+                    color
+                    font
+                    size
+                    position
+                }
+                Extra {
+                    color
+                    font
+                    size
+                    position
+                }
+
+            }
+        }
+    }
+}
+`
+
+
+export const GET_TEMPLATES = gql`
+query getTemplates ($userId:ID) { 
     getTemplates (userId:$userId) {
         id
         title
