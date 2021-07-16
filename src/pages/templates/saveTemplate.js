@@ -29,9 +29,8 @@ const SaveTemplate =  ({template,Document, info}) => {
     const generateBlob = async () => {
       //Use Default data to create information
       const defaultInfo = {...info,...{...generalInformation}};
-      
       //Create the pdf documennt
-       return pdf(<Document info={defaultInfo}/>)
+       return pdf(<Document info={defaultInfo} agua={true}/>)
         .toBlob()
         .then( (blo)=> {
           return new File([blo], "test.pdf",{type:"application/pdf"})
