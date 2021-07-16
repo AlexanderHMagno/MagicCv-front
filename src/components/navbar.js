@@ -6,6 +6,9 @@ import SettingsSharpIcon from '@material-ui/icons/SettingsSharp';
 import PowerSettingsNewSharpIcon from '@material-ui/icons/PowerSettingsNewSharp';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import StorefrontIcon from '@material-ui/icons/Storefront';
+import BrushIcon from '@material-ui/icons/Brush';
+
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -26,9 +29,10 @@ const Menubar = () => {
     const options = [
         {text:'What\'s new', path: "/latest", icon:AnnouncementIcon, front:false, badge :'New'},
         {text:'Profile', path: "/profile", icon:AccountCircleSharpIcon, front:true},
-        {text:'Templates', path: "/templates", icon: DashboardIcon, front:true},
+        {text:'My Templates', path: "/ideas", icon: DashboardIcon, front:true},
         {text:'Community', path: "/posts",icon: SupervisedUserCircleIcon ,front:true},
-        {text:'Ideas', path: "/ideas",icon: ImageSearchIcon ,front:true},
+        {text:'MarketPlace', path: "/ideas",icon: StorefrontIcon ,front:true},
+        {text:'Editor', path: "/templates", icon: BrushIcon, front:true},
         {text:user.username, path: "/settings", icon: SettingsSharpIcon, front:false},
         {text:'Logout', path: "/", action: logOut, icon : PowerSettingsNewSharpIcon, front:false},
     ];
