@@ -31,37 +31,32 @@ const PROFILE = () => {
 
         <Grid stackable>
             {/* Profile image */}
-            <Grid.Column width={4} >    
-                <Card style={{margin:'auto'}}>
-                    <ChangePicture email={email} picture_url={picture_url}  setCachePic={setCachePic}>
-                        {picture_url ? 
-                            <Image as="button" src={`${picture_url}?${cachePic}`} wrapped ui={false}/>
-                        :
-                            <Image as="button"  size='medium'wrapped>
-                                <Gravatar email={email} size={500} rating="pg" default="identicon" className="CustomAvatar-image"/>
-                            </Image> 
-                        }
-                    </ChangePicture>
-                    
-                    <Card.Content>
-                    <Card.Header>{CardName}</Card.Header>
-                    <Card.Meta>Joined in {Moment(createdAt).year()}</Card.Meta>
-                    <Card.Meta>{`${city||"City"}, ${country||"Country"}`}</Card.Meta>
-                    <Card.Meta>{role}</Card.Meta>
-                    <Card.Description className="whitespace-pre-wrap">
-                        <p className="italic text-gray-500">{bio || 'About'}</p>
-                    </Card.Description>
-                    </Card.Content>
-                    <Card.Content extra>
-                    <MasterModal code="Bio" info={{address, bio, first, last, city, country ,phone,picture_url}}>
-                        <Button className="primary-color" fluid>
-                            Edit Profile
-                        </Button>
-                    </MasterModal>
-                    </Card.Content>
-                </Card>
+            <Grid.Column width={4} >  
+                <div className="flex flex-row w-11/12 md:flex-col mx-auto">
 
-                <Card style={{margin:'auto', marginTop:10}}>
+                    <ChangePicture  email={email} picture_url={picture_url}  setCachePic={setCachePic}>
+                            {picture_url ?
+                                <Image className="mx-auto rounded shadow-2xl" as="button" src={`${picture_url}?${cachePic}`}/>
+                                :    
+                                <Gravatar email={email} size={250} rating="pg" default="identicon" className="CustomAvatar-image rounded shadow-2xl"/>
+                            }
+                    </ChangePicture>
+                   
+
+                    <Card style={{width:'100%'}}>
+                        <Card.Content>
+                        <Card.Header>{CardName}</Card.Header>
+                        <Card.Meta>Joined in {Moment(createdAt).year()}</Card.Meta>
+                        <Card.Meta>{`${city||"City"}, ${country||"Country"}`}</Card.Meta>
+                        <Card.Meta>{role}</Card.Meta>
+                        <Card.Description className="whitespace-pre-wrap">
+                            <p className="italic text-gray-500">{bio || 'About'}</p>
+                        </Card.Description>
+                        </Card.Content>
+
+                    </Card>
+                </div> 
+                <Card style={{width:'90%', margin:'auto', marginTop:10}}>
                     <Card.Content>
                         <Card.Header>Contact Information</Card.Header>
                     </Card.Content>
@@ -69,6 +64,13 @@ const PROFILE = () => {
                         <p> <Icon className="primary-font" name='phone' />{phone || "Add a number"}</p>
                         <p> <Icon className="primary-font" name='location arrow' />{address || "Add Address"}</p>
                         <p> <Icon className="primary-font email break-words" name='mail' />{email || "Add email"}</p>
+                    </Card.Content>
+                    <Card.Content extra>
+                    <MasterModal code="Bio" info={{address, bio, first, last, city, country ,phone,picture_url}}>
+                        <Button className="primary-color" fluid>
+                            Edit Profile
+                        </Button>
+                    </MasterModal>
                     </Card.Content>
                 </Card>
                 

@@ -32,7 +32,7 @@ const Menubar = () => {
         {text:'My Templates', path: "/ideas", icon: DashboardIcon, front:true},
         {text:'Community', path: "/posts",icon: SupervisedUserCircleIcon ,front:true},
         {text:'MarketPlace', path: "/ideas",icon: StorefrontIcon ,front:true},
-        {text:'Editor', path: "/templates", icon: BrushIcon, front:true},
+        {text:'Editor', path: "/templates", icon: BrushIcon, front:false},
         {text:user.username, path: "/settings", icon: SettingsSharpIcon, front:false},
         {text:'Logout', path: "/", action: logOut, icon : PowerSettingsNewSharpIcon, front:false},
     ];
