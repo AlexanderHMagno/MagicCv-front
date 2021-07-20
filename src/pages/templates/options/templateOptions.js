@@ -5,6 +5,7 @@ export const DEFAULTCONFIG =         {
     avatar: 'round',
     template: "bluewave",
     tags: ['traditional'],
+    image: "/images/cvs/cv2.png",
     order: 1,
     original: true,
     settings: {

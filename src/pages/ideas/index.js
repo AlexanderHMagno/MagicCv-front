@@ -8,7 +8,13 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ToggleTemplate from './util/toggleTemplate';
+import Factory from '../templates/factory';
 
 
 
@@ -21,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
-      cursor: 'pointer'
+      cursor: 'pointer',
+      marginBottom : 10
     },
     image: {
         width: 128,
@@ -34,7 +41,11 @@ const useStyles = makeStyles((theme) => ({
         marginTop: 10,
         display: 'flex',
         justifyContent: 'space-around'
-    }
+    },
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+        fontWeight: theme.typography.fontWeightRegular,
+      },
   }));
 
 
@@ -42,7 +53,7 @@ const Ideas = (props) => {
 
     
     const {templateId} = props.match.params || {};
-    
+    const [showEditor, setShowEditor] = useState(true);
     
     const classes = useStyles();
     const GETTEMPLATEQUERY = templateId? GET_TEMPLATE : GET_TEMPLATES;
@@ -78,19 +89,49 @@ const Ideas = (props) => {
                 templateId ? 
                 Templates.map((element, index) => {
                 return (
-                    // <Grid item xs={6} sm={4} md={3} key={index}>
-                        <Paper className={classes.paper}>
-                            <img 
-                                className={classes.image2} 
-                                alt={`Template ${element.title}`} 
-                                src={element.image} />
-                            <Link to={`/ideas`}>
-                                <Button variant="contained" color="primary">
-                                    Go Back
-                                </Button>
-                            </Link>
-                        </Paper>
-                    // </Grid>
+                    <Grid item xs={12} sm={8} md={12} key={index}>
+                        <Grid container>
+                            <Grid item xs={6}>
+                                    <Paper className={classes.paper}>
+                                        <img 
+                                            className={classes.image2} 
+                                            alt={`Template ${element.title}`} 
+                                            src={element.image} />
+                                    </Paper>
+                            </Grid>
+                            <Grid item xs={6}>
+                                     <Link to={`/ideas`}>
+                                        <Button variant="contained" color="primary">
+                                            Go Back
+                                        </Button>
+                                    </Link>
+
+                                    <Button  onClick={() => setShowEditor(!showEditor)} variant="contained" color="secondary">
+                                            Show editor
+                                    </Button>
+                            </Grid>
+                           
+                            
+                            <Grid item xs={12}>
+                                <Accordion>
+                                    <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1a-content"
+                                    id="panel1a-header"
+                                    >
+                                    <Typography className={classes.heading}>Editor</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        {/* <Paper className={classes.paper}> */}
+                                            <Factory DEFAULTCONFIG={element.config} FORCEDEFAULT={true}></Factory>
+                                        {/* </Paper> */}
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Grid>
+                            
+                        </Grid>
+         
+                    </Grid>
                 )}) :
              Templates.map((element, index) => {
                 return (
