@@ -40,7 +40,7 @@ const FormPost = () => {
           <Form.Field
             control={TextArea}
             label=''
-            placeholder='What are you thinking...'
+            placeholder='Ask question about your skills, CV, resume or just general topics. The community is here to help (Any offensive comment will be deleted)'
             size="massive"
             value ={values.body}
             name="body"

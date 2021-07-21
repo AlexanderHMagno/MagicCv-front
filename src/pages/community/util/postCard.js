@@ -9,6 +9,8 @@ import RemoveButton from './removeButton';
 
 function PostCard ({post:{id,body,createdAt, username, user, countsComments,countsLikes, comments, likes}}) {
     const {user:userLogged} = useContext(AuthContext);
+
+   
     return (
         <Card fluid style={{marginBottom: 20}}>
             <Card.Content>

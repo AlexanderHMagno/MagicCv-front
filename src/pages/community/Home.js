@@ -1,14 +1,36 @@
 import React, {useContext} from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { useQuery } from '@apollo/client';
-import { Grid, Transition } from 'semantic-ui-react';
-import Loader from '../../util/loader';
+import {Grid} from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
+
+import Loader from '../../util/loader';
 import PostCard from './util/postCard';
 import PostForm from './util/postForm';
+
 import {AuthContext} from '../../context/AuthContext';
 import {GET_POSTS, GET_PROFILE} from '../../graphql/queries';
 
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+      margin: theme.spacing(2)
+    },
+  }));
+
+
+
 const HOME = () => {
+    const classes = useStyles();
     const {loading, data } = useQuery(GET_POSTS);
     const {user} = useContext(AuthContext);
     const profile = useQuery(GET_PROFILE, {
@@ -21,33 +43,38 @@ const HOME = () => {
     const Posts = data.getPosts;
 
     return ( 
-     
-            <Grid columns={3}>
-                <Grid.Row className="PostGroupTitle">
-                    <h1 >Community</h1>
+
+            <Grid container spacing={3}>
+                <Grid item xs={12} >
+                    <Typography color="primary" variant="h4" align="center" className={classes.title}>Community</Typography>
+                </Grid>
+
+                <Grid item xs={12} sm={8}>
+                    <Paper className={classes.paper}>
+                        <PostForm/>
+                    </Paper>
                     
-                </Grid.Row>
-                <Grid.Row>
-                    {/* Add Post */}
-                    
-                        <Grid.Column>
-                            In Construction
-                        </Grid.Column>
-                        <Grid.Column >
-                            <PostForm/>
-                        </Grid.Column>
-                    
-                </Grid.Row>
-                <Grid.Row>
-                    <Transition.Group>
+    
                     {Posts && Posts.map( post => 
-                        <Grid.Column key={post.id}>
-                            <PostCard post={post}/>
-                        </Grid.Column>
+                    
+                    {
+                        console.log(post)
+                        return (
+                            <Paper key={post.id}>
+                                <PostCard post={post}/>
+                            </Paper>
+                        )
+                    }
+                       
                     )
-                    }                 
-                    </Transition.Group> 
-                </Grid.Row>
+                    }     
+                </Grid>
+
+                <Grid item xs={12} sm={4}>
+                    <Paper className={classes.paper}>Publicity</Paper>
+                </Grid>
+            
+    
 
             </Grid>
      );
