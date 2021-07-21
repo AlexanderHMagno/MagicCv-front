@@ -26,6 +26,16 @@ const SaveTemplate =  ({template,Document, info}) => {
     const [imageFile, setImageFile] = useState('alex');
     const {user} = useContext(AuthContext);
 
+    /**
+     * Hide SnackBar and save Button once it has been save succesfully 
+     */
+    const hideSnackBar = () => {
+      setOpenSnackBar(false);
+      //hide the save button
+      info.viewSaveButton.action(false); 
+
+    }
+
     const generateBlob = async () => {
       //Use Default data to create information
       const defaultInfo = {...info,...{...generalInformation}};
@@ -60,7 +70,6 @@ const SaveTemplate =  ({template,Document, info}) => {
 
             setOpenSnackBar(true);
             //hide the save button
-            info.viewSaveButton.action(false);
         } catch (error) {
           
         }
@@ -92,7 +101,7 @@ const SaveTemplate =  ({template,Document, info}) => {
                 </Tooltip>
             </AlertDialog>
 
-            <Snackbar open={openSnackBar} autoHideDuration={4000} onClose={() => setOpenSnackBar(false)}>
+            <Snackbar open={openSnackBar} autoHideDuration={4000} onClose={() => hideSnackBar()}>
               <Alert severity="success">
                 Your Template has been Saved
               </Alert>
