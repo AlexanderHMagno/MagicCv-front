@@ -3,11 +3,12 @@ import { useMutation, gql } from '@apollo/client';
 import Button from '@material-ui/core/Button';
 import {GET_PROFILE, GET_TEMPLATES} from '../../../graphql/queries';
 import {AuthContext} from '../../../context/AuthContext';
+import {Link} from 'react-router-dom';
 
 
 const ToggleTemplate = ({templateId, userLiked}) => {
 
-
+    const price = "4.99";
         //We need to get the other ideas, susbcribe and unsucbribe to this ideas
     const [inQueue, setInqueueu] = useState(userLiked);
     const {user} = useContext(AuthContext);
@@ -31,9 +32,21 @@ const ToggleTemplate = ({templateId, userLiked}) => {
 
 
 return (
-    <Button onClick={toggleTemplateMutation} variant="contained" color={inQueue? 'secondary':'default'}>
-        {inQueue ? 'Remove':'Add'}
-    </Button> 
+    <>
+    { (inQueue )  ?
+        <Button component={Link}  to={`/templates`} variant="contained" color="default">
+            Go to Editor
+        </Button>
+        :
+        <Button  onClick={() => toggleTemplateMutation()} variant="contained" color="secondary">
+            Buy Template (${price})
+        </Button>
+    }
+    </>
+
+    // <Button onClick={toggleTemplateMutation} variant="contained" color={inQueue? 'default':'secondary'}>
+    //     {inQueue ? 'Go to Editor':`Buy Template $${price}`}
+    // </Button> 
 )
 }
 

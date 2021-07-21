@@ -9,11 +9,8 @@ import Grid from '@material-ui/core/Grid';
 import Grow from '@material-ui/core/Grow';
 import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import BeenhereIcon from '@material-ui/icons/Beenhere';
 import ToggleTemplate from './util/toggleTemplate';
 import Factory from '../templates/factory';
 
@@ -24,12 +21,18 @@ const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
     },
-    paper: {
+    principalCard: {
+      position: "relative",
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
-      cursor: 'pointer',
       marginBottom : 10
+    },
+    ownership : {
+        position: "absolute",
+        top : 10,
+        right : 10,
+        color: 'green'
     },
     image: {
         width: 128,
@@ -52,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Ideas = (props) => {
 
-    
+    const price = "4.99";
     const {templateId} = props.match.params || {};
     const [showEditor, setShowEditor] = useState(true);
     
@@ -91,42 +94,26 @@ const Ideas = (props) => {
                 return (
                     <Grid item xs={12} sm={8} md={12} key={index}>
                         <Grid container>
-                            <Grid item xs={6}>
+                            <Grid item xs={12} sm={8} lg={6}>
                                     <Paper className={classes.paper}>
-                                        <img 
-                                            className={classes.image2} 
+                                    <Button component={Link}  to={`/ideas`} variant="contained" color="primary">
+                                        Go Back
+                                    </Button>
+                                        <img  
                                             alt={`Template ${element.title}`} 
                                             src={element.image} />
                                     </Paper>
                             </Grid>
-                            <Grid item xs={6}>
-                                     <Link to={`/ideas`}>
-                                        <Button variant="contained" color="primary">
-                                            Go Back
+                            <Grid item xs={12} sm={4} lg={6}>
+                                <div className="p-20">
+                                    <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
+                                        <ToggleTemplate templateId={element.id} userLiked={(getProfile && getProfile.templates.includes(element.id))}/>
+                                        <Button component={Link}  to={`/templates`} variant="contained" color="primary">
+                                            Preview Template
                                         </Button>
-                                    </Link>
-
-                                    <Button  onClick={() => setShowEditor(!showEditor)} variant="contained" color="secondary">
-                                            Show editor
-                                    </Button>
-                            </Grid>
-                           
-                            
-                            <Grid item xs={12}>
-                                <Accordion>
-                                    <AccordionSummary
-                                    expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel1a-content"
-                                    id="panel1a-header"
-                                    >
-                                    <Typography className={classes.heading}>Editor</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                        {/* <Paper className={classes.paper}> */}
-                                            <Factory DEFAULTCONFIG={element.config} FORCEDEFAULT={true}></Factory>
-                                        {/* </Paper> */}
-                                    </AccordionDetails>
-                                </Accordion>
+                                    </ButtonGroup>
+                                </div>
+                               
                             </Grid>
                             
                         </Grid>
@@ -134,11 +121,19 @@ const Ideas = (props) => {
                     </Grid>
                 )}) :
              Templates.map((element, index) => {
+
+                const isOwned = (getProfile && getProfile.templates.includes(element.id));
+
                 return (
                     <Grid item xs={6} sm={4} md={3} key={index}>
                         <Grow timeout={1000} in={true}>
-                            <Paper className={classes.paper}>
-                            
+                            <Paper className={classes.principalCard}>
+                                {isOwned &&
+                                    <BeenhereIcon 
+                                    fontSize="large"
+                                    className={classes.ownership} 
+                                    />
+                                }  
                                 <img 
                                     className={classes.img} 
                                     alt={`Template ${element.title}`} 
@@ -151,9 +146,7 @@ const Ideas = (props) => {
                                             View
                                         </Button>
                                     </Link>        
-
-                                    <ToggleTemplate templateId={element.id} userLiked={(getProfile && getProfile.templates.includes(element.id))}/>
-                                        
+    
                                 </Grid>
                             
                             </Paper>
