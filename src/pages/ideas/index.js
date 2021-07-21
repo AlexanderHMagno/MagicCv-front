@@ -6,6 +6,7 @@ import {GET_TEMPLATES, GET_TEMPLATE, GET_PROFILE} from '../../graphql/queries';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Grow from '@material-ui/core/Grow';
 import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Accordion from '@material-ui/core/Accordion';
@@ -74,7 +75,6 @@ const Ideas = (props) => {
     // We need to allow likes and dislikes
 
 
-
     if (loading) return <Loader/>;
     const Templates = templateId ? [data.getTemplate] : data.getTemplates;
     const {getProfile} = dataProfile || {};
@@ -136,25 +136,28 @@ const Ideas = (props) => {
              Templates.map((element, index) => {
                 return (
                     <Grid item xs={6} sm={4} md={3} key={index}>
-                        <Paper className={classes.paper}>
-                            <img 
-                                className={classes.img} 
-                                alt={`Template ${element.title}`} 
-                                src={element.image} />
-                        
-                            <Grid className={classes.buttons}>
-                                <Link to={`ideas/${element.id}`}>
-                                    <Button variant="contained" color="primary">
-                                        View
-                                    </Button>
-                                </Link>        
-
-                                <ToggleTemplate templateId={element.id} userLiked={(getProfile && getProfile.templates.includes(element.id))}/>
+                        <Grow timeout={1000} in={true}>
+                            <Paper className={classes.paper}>
+                            
+                                <img 
+                                    className={classes.img} 
+                                    alt={`Template ${element.title}`} 
+                                    src={element.image} />
+                            
+                                <Grid className={classes.buttons}>
                                     
-                            </Grid>
-                           
-                        </Paper>
+                                    <Link to={`ideas/${element.id}`}>
+                                        <Button variant="contained" color="primary">
+                                            View
+                                        </Button>
+                                    </Link>        
 
+                                    <ToggleTemplate templateId={element.id} userLiked={(getProfile && getProfile.templates.includes(element.id))}/>
+                                        
+                                </Grid>
+                            
+                            </Paper>
+                        </Grow >
                     </Grid>
                 )
                 })

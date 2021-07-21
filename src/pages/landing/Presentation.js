@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Typed from 'react-typed';
+import Grow from '@material-ui/core/Grow';
 
 import {TEMPLATEOPTIONS} from '../templates/options/templateOptions';
 import LATEST from './features/Latest';
@@ -59,14 +60,10 @@ const Presentation = () => {
                             
                                 </div>
                             </div>
-                            <div className="w-full sm:w-3/5 mx-auto">
-                                <LazyLoadImage
-                                    className="p-10"
-                                    alt={"people Working"}
-                                    effect="blur"                            
-                                    src={"images/presentation/people.png"} // use normal <img> attributes as props
-                                    />
-    
+                            <div className="h-3/4 min-h-full w-full sm:w-3/5 mx-auto">
+                                <Grow timeout={2000} in={true}>
+                                    <img alt={"People Working"} className="p-10" src={"images/presentation/people.png"}></img>
+                                </Grow>
                             </div>
                         </div>
 
