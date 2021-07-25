@@ -34,12 +34,8 @@ const PROFILE = () => {
             <Grid.Column width={4} >  
                 <div className="flex flex-row w-11/12 md:flex-col mx-auto">
 
-                    <ChangePicture  email={email} picture_url={picture_url}  setCachePic={setCachePic}>
-                            {picture_url ?
-                                <Image className="mx-auto rounded shadow-2xl" as="button" src={`${picture_url}?${cachePic}`}/>
-                                :    
-                                <Gravatar email={email} size={250} rating="pg" default="identicon" className="CustomAvatar-image rounded shadow-2xl"/>
-                            }
+                    <ChangePicture   email={email} picture_url={picture_url}  setCachePic={setCachePic}>    
+                        <Image className="w-9/12 sm:w-full mx-auto rounded shadow-2xl" as="button" src={`${picture_url}?${cachePic}`}/>
                     </ChangePicture>
                    
 
