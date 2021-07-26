@@ -1,17 +1,15 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useQuery } from '@apollo/client';
 import {Grid} from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-
 import Loader from '../../util/loader';
 import PostCard from './util/postCard';
 import PostForm from './util/postForm';
 
-import {AuthContext} from '../../context/AuthContext';
-import {GET_POSTS, GET_PROFILE} from '../../graphql/queries';
+import {GET_POSTS} from '../../graphql/queries';
 
 
 
@@ -32,12 +30,6 @@ const useStyles = makeStyles((theme) => ({
 const HOME = () => {
     const classes = useStyles();
     const {loading, data } = useQuery(GET_POSTS);
-    const {user} = useContext(AuthContext);
-    const profile = useQuery(GET_PROFILE, {
-        variables : {
-            userId:user.id
-        }
-    })
 
     if (loading) return <Loader/>;
     const Posts = data.getPosts;
@@ -58,7 +50,6 @@ const HOME = () => {
                     {Posts && Posts.map( post => 
                     
                     {
-                        console.log(post)
                         return (
                             <Paper key={post.id}>
                                 <PostCard post={post}/>

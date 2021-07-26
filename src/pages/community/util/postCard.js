@@ -7,9 +7,11 @@ import {AuthContext} from '../../../context/AuthContext';
 import LikeButton from './likeButton';
 import RemoveButton from './removeButton';
 
-function PostCard ({post:{id,body,createdAt, username, user, countsComments,countsLikes, comments, likes}}) {
+function PostCard ({post}) {
     const {user:userLogged} = useContext(AuthContext);
-
+    const {id,body,createdAt, username, user, countsComments,countsLikes, likes} = post || {};
+    const {id:profileId, first, last, picture_url} = user || {};
+    const officialName = `${first} ${last}` || username;
    
     return (
         <Card fluid style={{marginBottom: 20}}>
@@ -17,9 +19,9 @@ function PostCard ({post:{id,body,createdAt, username, user, countsComments,coun
                 <Image
                 floated='right'
                 size='mini'
-                src='https://react.semantic-ui.com/images/avatar/large/molly.png'
+                src= {picture_url}
                 />
-                <Card.Header>{username}</Card.Header>
+                <Card.Header>{officialName}</Card.Header>
                 <Card.Meta as={Link} to={`/posts/${id}`}>{moment(createdAt).fromNow(true)}</Card.Meta>
                 <Card.Description>
                     {body}
@@ -36,7 +38,7 @@ function PostCard ({post:{id,body,createdAt, username, user, countsComments,coun
                     </Label>
                 </Button>
 
-                {userLogged && (user === userLogged.id ) && (<RemoveButton postId={id} icon="delete" circular floated="right" size="mini" />)}
+                {userLogged && (profileId === userLogged.profileId ) && (<RemoveButton postId={id} icon="delete" circular floated="right" size="mini" />)}
             </Card.Content>
         </Card>
     )

@@ -26,8 +26,10 @@ const IndividualPost = (props) => {
 
     if (loading) return <Loader/>
     if (!data) props.history.push('/'); //If post dont exits redirect to home
-    const {body, countsComments,comments, countsLikes,likes, username, createdAt, id , user:owner} = data.getPost;
+    const {body, countsComments,comments, countsLikes,likes, username, createdAt, id , user:owner} = data.getPost || {};
+    const {id:ProfileId, first, last, picture_url} = owner || {};
     const newComments = [...comments].reverse();
+    const fullName = `${first} ${last}` || username; 
     
     const deletePostCallback = () => props.history.push('/posts');
 return  (
@@ -35,16 +37,16 @@ return  (
         {/* OWNER */}
         <Grid.Column width={4}>
             <Card>
-                <Image src='https://react.semantic-ui.com/images/avatar/large/molly.png' wrapped ui={false} />
+                <Image src={picture_url} wrapped ui={false} />
                 <Card.Content>
-                    <Card.Header>{username}</Card.Header>
+                    <Card.Header>{fullName}</Card.Header>
                     <Card.Meta>
                         <span className='date'>Posted: {Moment(createdAt).fromNow(true)}</span>
                     </Card.Meta>
                     <Divider horizontal></Divider>
                     <Card.Content>
-                    {user && (owner === user.id ) && (<RemoveButton postId={postId} fluid size="mini" callback={deletePostCallback}>Delete Post</RemoveButton>)}
-                    <Button className="mt-20 primary-color" as={Link} to="/"  fluid size="mini" >More Posts</Button>
+                    {user && (ProfileId === user.profileId ) && (<RemoveButton postId={postId} fluid size="mini" callback={deletePostCallback}>Delete Post</RemoveButton>)}
+                    <Button className="mt-20 primary-color" as={Link} to="/posts"  fluid size="mini" >More Posts</Button>
                     </Card.Content>
                 </Card.Content>
             </Card>    
@@ -130,7 +132,6 @@ const GETPOST = gql`
         getPost(postId:$postId) {
             username
             body
-            user 
             id
             countsComments
             countsLikes
@@ -144,6 +145,12 @@ const GETPOST = gql`
                 username
             }
             createdAt
+            user {
+                id
+                first
+                last
+                picture_url
+            }
         }
     }
 `;
