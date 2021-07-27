@@ -6,7 +6,7 @@ export const GET_POSTS = gql`
         query {
             getPosts {
                 id body createdAt username  countsComments countsLikes
-                comments { id body createdAt user}
+                comments { id body createdAt}
                 likes {username}
                 user {
                     id

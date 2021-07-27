@@ -45,7 +45,6 @@ const ADDCOMMENT = gql`
             comments {
                 id
                 body
-                user
                 createdAt
             }
         }

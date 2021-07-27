@@ -87,24 +87,31 @@ return  (
             <Segment>
                 {comments.length? 
                     newComments.map(comment => 
+                       
+                       { 
+                           const {id, createdAt,body, user:userP} = comment || {};
+                           const {picture_url, first, last, id:PID} = userP || {};
+                           const NameDisplay = `${first} ${last}`;
 
-                        <Feed key={comment.id}>
+                           console.log((comment));
+                           return (<Feed key={id}>
                             <Feed.Event>
-                            <Feed.Label image='https://react.semantic-ui.com/images/avatar/small/elliot.jpg' />    
+                            <Feed.Label image={picture_url} />    
                             <Feed.Content>
-                                <Feed.Date content={Moment(comment.createdAt).fromNow()} />
-                                <Feed.Summary>
-                                    {comment.body}
-                                </Feed.Summary>
+                                <Feed.Summary>{NameDisplay}</Feed.Summary>
+                                <Feed.Date content={Moment(createdAt).fromNow()} />
+                                <Feed>
+                                    {body}
+                                </Feed>
                             </Feed.Content>
-                            { (comment.user === user.id ) && 
+                            { (PID === user.profileId ) && 
                                 <Dropdown
                                     icon='bars'
                                     onChange = {(...props)=> RemoveComment(props)}
                                 >
                                     <Dropdown.Menu>
                                     <Dropdown.Item>
-                                        <RemoveButton postId={postId} commentId={comment.id} placeholder={true}>  
+                                        <RemoveButton postId={postId} commentId={id} placeholder={true}>  
                                         <Icon name='attention'/> Delete Post
                                         </RemoveButton>
                                     </Dropdown.Item>
@@ -113,7 +120,8 @@ return  (
                             }
                             </Feed.Event>
                             <Divider section />
-                        </Feed>
+                        </Feed>)
+}
                     ) 
                     : "No comments on this post"
                 }
@@ -138,7 +146,12 @@ const GETPOST = gql`
             comments {
                 body
                 createdAt
-                user
+                user  {
+                    id
+                    first
+                    last
+                    picture_url
+                }
                 id
             }
             likes{
